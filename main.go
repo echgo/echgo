@@ -1,1 +1,9 @@
-package echgo
+package main
+
+func init() {
+
+}
+
+func main() {
+
+}
