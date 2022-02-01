@@ -1,11 +1,11 @@
-package smtp
+package email
 
 import (
 	"crypto/tls"
 	"gopkg.in/gomail.v2"
 )
 
-// Smtp is to config the smtp data
+// Smtp is to config the email data
 type Smtp struct {
 	Host     string
 	Port     int
@@ -21,8 +21,8 @@ type Data struct {
 	HTML    string
 }
 
-// CreateEmail is to send an email via smtp
-func CreateEmail(data Data, s Smtp) error {
+// Send is to send an email via email
+func Send(data Data, s Smtp) error {
 
 	// Config go mail
 	m := gomail.NewMessage()
