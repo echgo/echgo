@@ -1,1 +1,83 @@
 package gotify
+
+import (
+	"encoding/json"
+	"time"
+)
+
+// CreateMessageBody is to structure the body data
+type CreateMessageBody struct {
+	Priority int                      `json:"priority"`
+	Title    string                   `json:"title"`
+	Message  string                   `json:"message"`
+	Extras   *CreateMessageBodyExtras `json:"extras"`
+}
+
+type CreateMessageBodyExtras struct {
+	HomeAppliancesLightingOn                  CreateMessageBodyHomeLighting      `json:"home::appliances::lighting::on"`
+	HomeAppliancesThermostatChangeTemperature CreateMessageBodyChangeTemperature `json:"home::appliances::thermostat::change_temperature"`
+}
+
+type CreateMessageBodyHomeLighting struct {
+	Brightness int `json:"brightness"`
+}
+
+type CreateMessageBodyChangeTemperature struct {
+	Temperature int `json:"temperature"`
+}
+
+// CreateMessageReturn is to decode the json data
+type CreateMessageReturn struct {
+	Id       int    `json:"id"`
+	Appid    int    `json:"appid"`
+	Message  string `json:"message"`
+	Title    string `json:"title"`
+	Priority int    `json:"priority"`
+	Extras   struct {
+		HomeAppliancesLightingOn struct {
+			Brightness int `json:"brightness"`
+		} `json:"home::appliances::lighting::on"`
+		HomeAppliancesThermostatChangeTemperature struct {
+			Temperature int `json:"temperature"`
+		} `json:"home::appliances::thermostat::change_temperature"`
+	} `json:"extras"`
+	Date time.Time `json:"date"`
+}
+
+// CreateMessage is to create a new message
+func CreateMessage(body CreateMessageBody, r Request) (CreateMessageReturn, error) {
+
+	// Convert body
+	convert, err := json.Marshal(body)
+	if err != nil {
+		return CreateMessageReturn{}, err
+	}
+
+	// Set config for request
+	c := Config{
+		Path:   "message",
+		Method: "POST",
+		Body:   convert,
+	}
+
+	// Send request
+	response, err := c.Send(r)
+	if err != nil {
+		return CreateMessageReturn{}, err
+	}
+
+	// Close request
+	defer response.Body.Close()
+
+	// Decode data
+	var decode CreateMessageReturn
+
+	err = json.NewDecoder(response.Body).Decode(&decode)
+	if err != nil {
+		return CreateMessageReturn{}, err
+	}
+
+	// Return data
+	return decode, err
+
+}
