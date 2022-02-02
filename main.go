@@ -4,7 +4,6 @@ import (
 	"github.com/echgo/echgo/configuration"
 	"github.com/echgo/echgo/console"
 	"github.com/echgo/echgo/cron"
-	"github.com/go-co-op/gocron"
 	"time"
 )
 
@@ -20,11 +19,8 @@ func init() {
 
 func main() {
 
-	// Define cronjobs &  start scheduler
-	s := gocron.NewScheduler(time.UTC)
-
-	s.Cron("* * * * *").Do(cron.Handler)
-
-	s.StartBlocking()
+	// Start ticker function with cron handler
+	c := cron.Config{Time: time.Now()}
+	c.Ticker(cron.Handler)
 
 }
