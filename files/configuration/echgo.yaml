@@ -1,0 +1,7 @@
+cronjobs:
+    - name: "Test 1"
+      cron: "*/5 * * * *"
+    - name: "Test 2"
+      cron: "*/2 * * * *"
+    - name: "Test 3"
+      cron: "*/1 * * * *"
