@@ -1,16 +1,14 @@
-package cron
+package ticker
 
-import (
-	"time"
-)
+import "time"
 
 // Config is to structure the data
 type Config struct {
 	Time time.Time
 }
 
-// Ticker is to start a job function every minute
-func (c *Config) Ticker(job func()) {
+// Start is to start the ticker with a job function every minute
+func (c *Config) Start(job func()) {
 
 	second := c.Time.Second()
 	nano := c.Time.Nanosecond()
