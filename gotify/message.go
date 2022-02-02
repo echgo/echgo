@@ -45,31 +45,27 @@ type CreateMessageReturn struct {
 }
 
 // CreateMessage is to create a new message
+// To send the request & decode the response
 func CreateMessage(body CreateMessageBody, r Request) (CreateMessageReturn, error) {
 
-	// Convert body
 	convert, err := json.Marshal(body)
 	if err != nil {
 		return CreateMessageReturn{}, err
 	}
 
-	// Set config for request
 	c := Config{
 		Path:   "message",
 		Method: "POST",
 		Body:   convert,
 	}
 
-	// Send request
 	response, err := c.Send(r)
 	if err != nil {
 		return CreateMessageReturn{}, err
 	}
 
-	// Close request
 	defer response.Body.Close()
 
-	// Decode data
 	var decode CreateMessageReturn
 
 	err = json.NewDecoder(response.Body).Decode(&decode)
@@ -77,7 +73,6 @@ func CreateMessage(body CreateMessageBody, r Request) (CreateMessageReturn, erro
 		return CreateMessageReturn{}, err
 	}
 
-	// Return data
 	return decode, err
 
 }

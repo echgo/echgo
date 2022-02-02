@@ -18,15 +18,13 @@ type Request struct {
 }
 
 // Send is to send a new request
+// & return the response
 func (c *Config) Send(r Request) (*http.Response, error) {
 
-	// Set url
 	url := fmt.Sprintf("%s/%s", r.Domain, c.Path)
 
-	// Define client
 	client := &http.Client{}
 
-	// Request
 	request, err := http.NewRequest(c.Method, url, bytes.NewBuffer(c.Body))
 	if err != nil {
 		return nil, err
@@ -35,13 +33,11 @@ func (c *Config) Send(r Request) (*http.Response, error) {
 	request.Header.Set("Content-Type", "application/json")
 	request.Header.Set("X-Gotify-Key", r.XGotifyKey)
 
-	// Send request & get response
 	response, err := client.Do(request)
 	if err != nil {
 		return nil, err
 	}
 
-	// Return data
 	return response, nil
 
 }

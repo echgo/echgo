@@ -31,14 +31,12 @@ type CreateMessageReturn struct {
 // CreateMessage is to create a message with a bot in a Telegram chat
 func CreateMessage(message, chatId, parseMode string, r Request) (CreateMessageReturn, error) {
 
-	// Set config for request
 	c := Config{
 		Path:   "/sendMessage",
 		Method: "GET",
 		Body:   nil,
 	}
 
-	// Parse url & add attributes
 	parse, err := url.Parse(c.Path)
 	if err != nil {
 		return CreateMessageReturn{}, err
@@ -53,25 +51,21 @@ func CreateMessage(message, chatId, parseMode string, r Request) (CreateMessageR
 	newUrl.Add("parse_mode", parseMode)
 	newUrl.Add("text", message)
 
-	// Set new url
 	parse.RawQuery = newUrl.Encode()
 	c.Path = fmt.Sprintf("%s", parse)
 
-	// Send request
 	response, err := c.Send(r)
 	if err != nil {
 		return CreateMessageReturn{}, err
 	}
 
-	// Decode response
 	var decode CreateMessageReturn
 
 	err = json.NewDecoder(response.Body).Decode(&decode)
 	if err != nil {
 		return CreateMessageReturn{}, err
 	}
-
-	// Return data
+	
 	return decode, nil
 
 }
