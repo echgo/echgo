@@ -1,7 +1,6 @@
 package notification
 
 import (
-	"fmt"
 	"github.com/echgo/echgo/configuration"
 	"github.com/echgo/echgo/email"
 	"github.com/echgo/echgo/gotify"
@@ -20,9 +19,8 @@ var (
 
 func Handler(cmd []byte, index int) {
 
-	fmt.Println(configuration.Data.Cronjobs[index].Notification)
-
-	if configuration.Data.Cronjobs[index].Notification.Gotify {
+	switch {
+	case configuration.Data.Cronjobs[index].Notification.Gotify:
 
 		body := gotify.CreateMessageBody{
 			Priority: 0,
@@ -35,19 +33,14 @@ func Handler(cmd []byte, index int) {
 		if err != nil {
 			log.Fatalln(err)
 		}
-
-	}
-
-	if configuration.Data.Cronjobs[index].Notification.Telegram {
+	case configuration.Data.Cronjobs[index].Notification.Telegram:
 
 		_, err := telegram.CreateMessage(string(cmd), "1998631548", "Markdown", telegramRequest)
 		if err != nil {
 			log.Fatalln(err)
 		}
 
-	}
-
-	if configuration.Data.Cronjobs[index].Notification.SMTP {
+	case configuration.Data.Cronjobs[index].Notification.SMTP:
 
 		d := email.Data{
 			Email:   "jonas.kwiedor@jj-ideenschmiede.de",
@@ -61,9 +54,7 @@ func Handler(cmd []byte, index int) {
 			log.Fatalln(err)
 		}
 
-	}
-
-	if configuration.Data.Cronjobs[index].Notification.Webhook {
+	case configuration.Data.Cronjobs[index].Notification.Webhook:
 
 		body := webhook.SendBody{
 			Message: string(cmd),
