@@ -1,27 +1,19 @@
 package main
 
 import (
-	"github.com/echgo/echgo/configuration"
 	"github.com/echgo/echgo/console"
 	"github.com/echgo/echgo/cron"
 	"github.com/echgo/echgo/ticker"
 	"time"
 )
 
+// Initialise the software with a console information
 func init() {
-
-	// Send init to console
 	console.Init()
-
-	// Import configuration
-	configuration.Import()
-
 }
 
+// Start ticker function with cron handler
 func main() {
-
-	// Start ticker function with cron handler
 	c := ticker.Config{Time: time.Now()}
 	c.Start(cron.Handler)
-
 }
