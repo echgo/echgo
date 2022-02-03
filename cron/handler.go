@@ -27,8 +27,10 @@ func Handler() {
 				log.Fatalln(err)
 			}
 
-			if cmd != nil && len(string(cmd)) > 0 {
-				notification.Handler(cmd, index)
+			response := string(cmd)
+
+			if cmd != nil && len(response) > 0 {
+				notification.Handler(response, index)
 			}
 
 		}

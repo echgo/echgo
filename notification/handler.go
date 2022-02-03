@@ -17,7 +17,7 @@ var (
 	webhookRequest  = webhook.Request{Domain: os.Getenv("WEBHOOK_DOMAIN")}
 )
 
-func Handler(cmd []byte, index int) {
+func Handler(response string, index int) {
 
 	switch {
 	case configuration.Data.Cronjobs[index].Notification.Gotify:
@@ -25,7 +25,7 @@ func Handler(cmd []byte, index int) {
 		body := gotify.CreateMessageBody{
 			Priority: 0,
 			Title:    "echGo",
-			Message:  string(cmd),
+			Message:  response,
 			Extras:   nil,
 		}
 
@@ -35,7 +35,7 @@ func Handler(cmd []byte, index int) {
 		}
 	case configuration.Data.Cronjobs[index].Notification.Telegram:
 
-		_, err := telegram.CreateMessage(string(cmd), "1998631548", "Markdown", telegramRequest)
+		_, err := telegram.CreateMessage(response, os.Getenv("TELEGRAM_CHAT_ID"), "Markdown", telegramRequest)
 		if err != nil {
 			log.Fatalln(err)
 		}
@@ -43,10 +43,10 @@ func Handler(cmd []byte, index int) {
 	case configuration.Data.Cronjobs[index].Notification.SMTP:
 
 		d := email.Data{
-			Email:   "jonas.kwiedor@jj-ideenschmiede.de",
+			Email:   os.Getenv("SMTP_EMAIL_RECIPIENT"),
 			Subject: "echGo",
 			File:    nil,
-			HTML:    string(cmd),
+			HTML:    response,
 		}
 
 		err := email.Send(d, smtpData)
@@ -57,7 +57,7 @@ func Handler(cmd []byte, index int) {
 	case configuration.Data.Cronjobs[index].Notification.Webhook:
 
 		body := webhook.SendBody{
-			Message: string(cmd),
+			Message: response,
 		}
 
 		err := webhook.Send(body, webhookRequest)
