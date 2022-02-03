@@ -4,8 +4,7 @@ import "encoding/json"
 
 // SendBody is to structure the body data
 type SendBody struct {
-	Headline string `json:"headline"`
-	Message  string `json:"message"`
+	Message string `json:"message"`
 }
 
 // Send is to send the webhook
