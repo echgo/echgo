@@ -9,7 +9,10 @@ import (
 )
 
 // Handler is to handle the cronjobs & execute these
+// Wo also import the configuration each hour
 func Handler() {
+
+	configuration.Import()
 
 	for index, value := range configuration.Data.Cronjobs {
 
