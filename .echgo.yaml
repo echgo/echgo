@@ -1,0 +1,12 @@
+cronjobs:
+    - path: "/var/lib/test-file.sh"
+      cron: "*/5 * * * *"
+      notification:
+          gotify: true
+          telegram: true
+          smtp: true
+          webhook: true
+    - path: "/var/lib/new/paht/test-file.sh"
+      cron: "0 3 * * *"
+      notification:
+          gotify: true
