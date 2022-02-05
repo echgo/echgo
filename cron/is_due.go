@@ -110,9 +110,8 @@ func IsDue(expression string, date time.Time) bool {
 			}
 
 			if strings.Contains(cron[index].value, ",") {
-				split := strings.Split(cron[index].value, ",")
 				var execute bool
-				for _, value := range split {
+				for _, value := range strings.Split(cron[index].value, ",") {
 					integerValue, err := strconv.Atoi(value)
 					if err != nil {
 						return false
