@@ -14,6 +14,14 @@ type ExpressionKey struct {
 	valid        bool
 }
 
+var maximumKeyValues = map[int]int{
+	0: 59,
+	1: 59,
+	2: 23,
+	3: 31,
+	4: 6,
+}
+
 var keys = map[int]string{
 	0: "minute",
 	1: "hour",
@@ -40,7 +48,7 @@ func IsDue(expression string, date time.Time) bool {
 		}
 
 		if cronKey.integer {
-			if integerValue >= 0 && integerValue <= 59 {
+			if integerValue >= 0 && integerValue <= maximumKeyValues[index] {
 				cronKey.valid = true
 			}
 		} else {
