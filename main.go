@@ -9,6 +9,7 @@ import (
 )
 
 // Initialise the software with a console information
+// And add dummy configuration file, if none exists
 func init() {
 	console.Init()
 	configuration.CreateIfNotExists()

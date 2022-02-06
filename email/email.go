@@ -3,13 +3,12 @@ package email
 import (
 	"crypto/tls"
 	"gopkg.in/gomail.v2"
-	"strconv"
 )
 
 // Smtp is to config the email data
 type Smtp struct {
 	Host     string
-	Port     string
+	Port     int
 	Username string
 	Password string
 }
@@ -38,15 +37,10 @@ func Send(data Data, s Smtp) error {
 
 	m.SetBody("text/html", data.HTML)
 
-	port, err := strconv.Atoi(s.Port)
-	if err != nil {
-		return err
-	}
-
-	d := gomail.NewDialer(s.Host, port, s.Username, s.Password)
+	d := gomail.NewDialer(s.Host, s.Port, s.Username, s.Password)
 	d.TLSConfig = &tls.Config{InsecureSkipVerify: true}
 
-	err = d.DialAndSend(m)
+	err := d.DialAndSend(m)
 	if err != nil {
 		return err
 	}

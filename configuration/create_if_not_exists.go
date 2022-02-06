@@ -13,17 +13,21 @@ func CreateIfNotExists() {
 	if _, err := os.Stat(filePath); os.IsNotExist(err) {
 
 		data := Body{
+			NotificationChannels: NotificationChannels{
+				Gotify:   Gotify{},
+				Telegram: Telegram{},
+			},
 			Cronjobs: []Cronjobs{},
 		}
 
 		data.Cronjobs = append(data.Cronjobs, Cronjobs{
 			Path: "/var/lib/test-file.sh",
-			Cron: "*/5 * * * *",
+			Cron: "0 8 * * 0",
 			Notification: Notification{
-				Gotify:   true,
-				Telegram: true,
-				SMTP:     true,
-				Webhook:  true,
+				Gotify:   false,
+				Telegram: false,
+				SMTP:     false,
+				Webhook:  false,
 			},
 		})
 
@@ -37,7 +41,9 @@ func CreateIfNotExists() {
 			log.Fatalln(err)
 		}
 
-		log.Println("A new configuration file has been created.")
+		log.Println("A new configuration file has been created. Please fill in the configuration file and restart.")
+
+		os.Exit(0)
 
 	}
 
