@@ -7,6 +7,7 @@ import (
 )
 
 // CreateIfNotExists is to create a configuration file, if none exists
+// We add dummy data to the file
 func CreateIfNotExists() {
 
 	if _, err := os.Stat(filePath); os.IsNotExist(err) {
