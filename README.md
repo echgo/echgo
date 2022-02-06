@@ -1,5 +1,5 @@
 <div align="center">
-    <img src=".readme/img/echgo.png" width="200" />
+    <img src=".readme/img/echgo.png" width="150" />
 
 # echGo
 
