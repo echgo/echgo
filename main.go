@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/echgo/echgo/configuration"
 	"github.com/echgo/echgo/console"
 	"github.com/echgo/echgo/cron"
 	"github.com/echgo/echgo/ticker"
@@ -10,6 +11,7 @@ import (
 // Initialise the software with a console information
 func init() {
 	console.Init()
+	configuration.CreateIfNotExists()
 }
 
 // Start ticker function with cron handler
