@@ -24,7 +24,7 @@ func CreateIfNotExists() {
 			log.Fatalln(err)
 		}
 
-		log.Println("A new configuration file has been created. Please fill in the configuration file and restart.")
+		log.Println("A new configuration file has been created at /etc/echgo/configuration. Please fill in the configuration file and restart the container.")
 
 		os.Exit(0)
 
