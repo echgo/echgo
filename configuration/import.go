@@ -7,11 +7,11 @@ import (
 	"os"
 )
 
-// Import is to import the configuration
+// Import is to notification the configuration
 // To open & decode the yaml file
 func Import() {
 
-	open, err := os.Open(filePath)
+	open, err := os.Open(path)
 	if err != nil {
 		log.Fatalln(err)
 	}

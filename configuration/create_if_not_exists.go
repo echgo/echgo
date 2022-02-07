@@ -10,33 +10,16 @@ import (
 // We add dummy data to the file
 func CreateIfNotExists() {
 
-	if _, err := os.Stat(filePath); os.IsNotExist(err) {
+	if _, err := os.Stat(path); os.IsNotExist(err) {
 
-		data := Body{
-			NotificationChannels: NotificationChannels{
-				Gotify:   Gotify{},
-				Telegram: Telegram{},
-			},
-			Cronjobs: []Cronjobs{},
-		}
-
-		data.Cronjobs = append(data.Cronjobs, Cronjobs{
-			Path: "/var/lib/test-file.sh",
-			Cron: "0 8 * * 0",
-			Notification: Notification{
-				Gotify:   false,
-				Telegram: false,
-				SMTP:     false,
-				Webhook:  false,
-			},
-		})
+		data := Body{}
 
 		prepare, err := yaml.Marshal(data)
 		if err != nil {
 			log.Fatalln(err)
 		}
 
-		err = os.WriteFile(filePath, prepare, 0666)
+		err = os.WriteFile(path, prepare, 0666)
 		if err != nil {
 			log.Fatalln(err)
 		}

@@ -2,11 +2,10 @@ package configuration
 
 // Body is to save & decode the yaml data
 type Body struct {
-	NotificationChannels NotificationChannels `yaml:"notification_channels"`
-	Cronjobs             []Cronjobs           `yaml:"cronjobs"`
+	Channels Channels `yaml:"channels"`
 }
 
-type NotificationChannels struct {
+type Channels struct {
 	Gotify   Gotify   `yaml:"gotify"`
 	Telegram Telegram `yaml:"telegram"`
 	SMTP     SMTP     `yaml:"smtp"`
@@ -35,21 +34,12 @@ type Webhook struct {
 	Domain string `Webhook:"domain"`
 }
 
-type Cronjobs struct {
-	Path         string       `yaml:"path"`
-	Cron         string       `yaml:"cron"`
-	Notification Notification `yaml:"notification"`
-}
+// path is to save the path of the configuration file
+const (
+	path = "files/configuration/echgo.yaml"
+)
 
-type Notification struct {
-	Gotify   bool `yaml:"gotify"`
-	Telegram bool `yaml:"telegram"`
-	SMTP     bool `yaml:"smtp"`
-	Webhook  bool `yaml:"webhook"`
-}
-
-// Save variables
+// Data is to save & get the data of the loaded configuration file
 var (
-	filePath = "files/configuration/echgo.yaml"
-	Data     Body
+	Data Body
 )
