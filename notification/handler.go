@@ -21,6 +21,8 @@ func Handler() {
 
 		if value.Name() != ".gitkeep" && !value.IsDir() {
 
+			log.Println("New notification received. This will now be processed further.")
+
 			switch filepath.Ext(value.Name()) {
 			case ".txt":
 				TXT(path + value.Name())
