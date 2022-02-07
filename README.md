@@ -54,6 +54,14 @@ headline=echGo test
 message=This is a test message!
 ```
 
+If we now want to send only one webhook, we can do this with the following text file.
+
+```text
+channel=webhook
+headline=Nice webhook headline! 
+message=This is the best message for the webhook.
+```
+
 In this example we want to send the notification to [Gotify](https://gotify.net/) & [Telegram](https://telegram.org/). Thereby we set a headline and the message.  Now echGo reads the files every minute and sends them to the specified channels.
 
 
