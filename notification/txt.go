@@ -29,7 +29,7 @@ func TXT(path string) {
 		}
 	}
 
-	if len(parameter["channel"]) > 0 && strings.Contains(parameter["channel"], ",") {
+	if len(parameter["channel"]) > 0 {
 		channel := channels.Type{}
 		split := strings.Split(parameter["channel"], ",")
 		for _, value := range split {
