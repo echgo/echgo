@@ -33,7 +33,8 @@ func TXT(path string) {
 		channel := channels.Type{}
 		split := strings.Split(parameter["channel"], ",")
 		for _, value := range split {
-			switch value {
+			trim := strings.TrimSpace(value)
+			switch trim {
 			case "gotify":
 				channel.Gotify = true
 			case "telegram":
