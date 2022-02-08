@@ -29,7 +29,7 @@ func (c *Config) Send(r Request) (*http.Response, error) {
 		return nil, err
 	}
 
-	request.Header.Set("User-Agent", "echgo")
+	request.Header.Set("User-Agent", "echGo")
 	request.Header.Set("Content-Type", "application/json")
 
 	response, err := client.Do(request)
