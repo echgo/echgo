@@ -28,8 +28,8 @@ type CreateMessageReturn struct {
 	} `json:"result"`
 }
 
-// CreateMessage is to create a message with a bot in a Telegram chat
-func CreateMessage(message, chatId, parseMode string, r Request) (CreateMessageReturn, error) {
+// CreateMessage is to create a message with a bot in a telegram chat
+func CreateMessage(message, parseMode string, r Request) (CreateMessageReturn, error) {
 
 	c := Config{
 		Path:   "/sendMessage",
@@ -47,7 +47,7 @@ func CreateMessage(message, chatId, parseMode string, r Request) (CreateMessageR
 		return CreateMessageReturn{}, err
 	}
 
-	newUrl.Add("chat_id", chatId)
+	newUrl.Add("chat_id", r.ChatId)
 	newUrl.Add("parse_mode", parseMode)
 	newUrl.Add("text", message)
 
@@ -65,7 +65,7 @@ func CreateMessage(message, chatId, parseMode string, r Request) (CreateMessageR
 	if err != nil {
 		return CreateMessageReturn{}, err
 	}
-	
+
 	return decode, nil
 
 }

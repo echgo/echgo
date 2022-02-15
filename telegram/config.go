@@ -11,15 +11,13 @@ const baseUrl = "https://api.telegram.org/bot"
 // Config is to define config data
 type Config struct {
 	Path, Method string
-	ContentType  string
 	Body         []byte
-	AccessToken  bool
-	UploadMedia  bool
 }
 
 // Request is to define the request data
 type Request struct {
 	ApiToken string
+	ChatId   string
 }
 
 // Send is to send a new request
