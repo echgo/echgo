@@ -7,6 +7,7 @@ type Body struct {
 
 type Channels struct {
 	Gotify   Gotify   `yaml:"gotify"`
+	Matrix   Matrix   `yaml:"matrix"`
 	Telegram Telegram `yaml:"telegram"`
 	SMTP     SMTP     `yaml:"smtp"`
 	Webhook  Webhook  `yaml:"webhook"`
@@ -15,6 +16,12 @@ type Channels struct {
 type Gotify struct {
 	Domain string `yaml:"domain"`
 	Key    string `yaml:"key"`
+}
+
+type Matrix struct {
+	Domain      string `yaml:"domain"`
+	RoomId      string `yaml:"room_id"`
+	AccessToken string `yaml:"access_token"`
 }
 
 type Telegram struct {

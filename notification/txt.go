@@ -37,6 +37,8 @@ func TXT(path string) {
 			switch trim {
 			case "gotify":
 				channel.Gotify = true
+			case "matrix":
+				channel.Matrix = true
 			case "telegram":
 				channel.Telegram = true
 			case "smtp":

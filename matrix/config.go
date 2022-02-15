@@ -1,12 +1,10 @@
-package telegram
+package matrix
 
 import (
 	"bytes"
+	"fmt"
 	"net/http"
 )
-
-// Set the base url for telegram bot's
-const baseUrl = "https://api.telegram.org/bot"
 
 // Config is to define config data
 type Config struct {
@@ -16,15 +14,14 @@ type Config struct {
 
 // Request is to define the request data
 type Request struct {
-	ApiToken string
-	ChatId   string
+	Domain, RoomId, AccessToken string
 }
 
 // Send is to send a new request
 // & return the response
 func (c *Config) Send(r Request) (*http.Response, error) {
 
-	url := baseUrl + r.ApiToken + c.Path
+	url := fmt.Sprintf("%s/%s", r.Domain, c.Path)
 
 	client := &http.Client{}
 
@@ -32,6 +29,8 @@ func (c *Config) Send(r Request) (*http.Response, error) {
 	if err != nil {
 		return nil, err
 	}
+
+	request.Header.Set("Content-Type", "application/json")
 
 	response, err := client.Do(request)
 	if err != nil {

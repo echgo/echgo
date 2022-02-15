@@ -5,6 +5,7 @@ import (
 	"github.com/echgo/echgo/configuration"
 	"github.com/echgo/echgo/email"
 	"github.com/echgo/echgo/gotify"
+	"github.com/echgo/echgo/matrix"
 	"github.com/echgo/echgo/telegram"
 	"github.com/echgo/echgo/webhook"
 	"log"
@@ -16,19 +17,39 @@ func Handler(headline, message string, channel Type) {
 
 	if channel.Gotify {
 
-		gotifyRequest := gotify.Request{
+		r := gotify.Request{
 			Domain:     configuration.Data.Channels.Gotify.Domain,
 			XGotifyKey: configuration.Data.Channels.Gotify.Key,
 		}
 
-		body := gotify.CreateMessageBody{
+		b := gotify.CreateMessageBody{
 			Priority: 0,
 			Title:    headline,
 			Message:  message,
 			Extras:   nil,
 		}
 
-		_, err := gotify.CreateMessage(body, gotifyRequest)
+		_, err := gotify.CreateMessage(b, r)
+		if err != nil {
+			log.Fatalln(err)
+		}
+
+	}
+
+	if channel.Matrix {
+
+		r := matrix.Request{
+			Domain:      configuration.Data.Channels.Matrix.Domain,
+			RoomId:      configuration.Data.Channels.Matrix.RoomId,
+			AccessToken: configuration.Data.Channels.Matrix.AccessToken,
+		}
+
+		b := matrix.CreateMessageBody{
+			Msgtype: "m.text",
+			Body:    fmt.Sprintf("%s\n%s", headline, message),
+		}
+
+		_, err := matrix.CreateMessage(b, r)
 		if err != nil {
 			log.Fatalln(err)
 		}
@@ -37,11 +58,12 @@ func Handler(headline, message string, channel Type) {
 
 	if channel.Telegram {
 
-		telegramRequest := telegram.Request{
+		r := telegram.Request{
 			ApiToken: configuration.Data.Channels.Telegram.ApiToken,
+			ChatId:   configuration.Data.Channels.Telegram.ChatId,
 		}
 
-		_, err := telegram.CreateMessage(fmt.Sprintf("%s\n%s", headline, message), configuration.Data.Channels.Telegram.ChatId, "Markdown", telegramRequest)
+		_, err := telegram.CreateMessage(fmt.Sprintf("%s\n%s", headline, message), "Markdown", r)
 		if err != nil {
 			log.Fatalln(err)
 		}
@@ -50,7 +72,7 @@ func Handler(headline, message string, channel Type) {
 
 	if channel.SMTP {
 
-		smtpData := email.Smtp{
+		s := email.Smtp{
 			Host:     configuration.Data.Channels.SMTP.Host,
 			Port:     configuration.Data.Channels.SMTP.Port,
 			Username: configuration.Data.Channels.SMTP.Username,
@@ -64,7 +86,7 @@ func Handler(headline, message string, channel Type) {
 			HTML:    message,
 		}
 
-		err := email.Send(d, smtpData)
+		err := email.Send(d, s)
 		if err != nil {
 			log.Fatalln(err)
 		}
@@ -73,16 +95,16 @@ func Handler(headline, message string, channel Type) {
 
 	if channel.Webhook {
 
-		webhookRequest := webhook.Request{
+		r := webhook.Request{
 			Domain: configuration.Data.Channels.Webhook.Domain,
 		}
 
-		body := webhook.SendBody{
+		b := webhook.SendBody{
 			Headline: headline,
 			Message:  message,
 		}
 
-		err := webhook.Send(body, webhookRequest)
+		err := webhook.Send(b, r)
 		if err != nil {
 			log.Fatalln(err)
 		}
