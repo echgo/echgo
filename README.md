@@ -23,9 +23,9 @@ docker run --name echgofig -d --rm \
     echgo/echgo:latest
 ```
 
-If the container was started, then the directory **/etc/echgo/configuration** is created. Here you will find the configuration for the different communication paths. Please fill in and save this as required.
+If the container was started, then the directory **/etc/echgo/configuration** is created. Here you will find the configuration for the different communication paths. Please fill in and save this as required. You can find an example of the configuration file [here](https://github.com/echgo/echgo/blob/master/.echgo.yaml).
 
-The container is stopped automatically and can now be removed.
+The container is stopped automatically and removed.
 
 ### Start the service
 

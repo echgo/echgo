@@ -1,0 +1,19 @@
+channels:
+  gotify:
+    domain: "https://gotify.test.org"
+    key: "your_key"
+  matrix:
+    domain: "https://matrix.org:8008"
+    room_id: "!tRdaaseeJgTOmvinGWe:matrix.org:8008"
+    access_token: "syt_cm223dQ_bcMIld238DSCodH_0IVVKN"
+  telegram:
+    api_token: "5190222484:AAHb32DSFxqetzdOupqF6Lo"
+    chat_id: "-9328751"
+  smtp:
+    host: "mail.server.com"
+    port: 465
+    username: "mail@mail.org"
+    password: "your_passwors"
+    email_recipient: "info@other-mail.com"
+  webhook:
+    domain: "https://webhook.site/9ea0-4f5f-b1d2-38e107bbbd07?"
