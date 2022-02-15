@@ -23,24 +23,24 @@ type Data struct {
 
 // Send is to send an email via email
 // You can send the emails with smtp & add attachment files
-func Send(data Data, s Smtp) error {
+func Send(d Data, s Smtp) error {
 
 	m := gomail.NewMessage()
 
 	m.SetHeader("From", s.Username)
-	m.SetHeader("To", data.Email)
-	m.SetHeader("Subject", data.Subject)
+	m.SetHeader("To", d.Email)
+	m.SetHeader("Subject", d.Subject)
 
-	if data.File != nil {
-		m.Attach(*data.File)
+	if d.File != nil {
+		m.Attach(*d.File)
 	}
 
-	m.SetBody("text/html", data.HTML)
+	m.SetBody("text/html", d.HTML)
 
-	d := gomail.NewDialer(s.Host, s.Port, s.Username, s.Password)
-	d.TLSConfig = &tls.Config{InsecureSkipVerify: true}
+	dialer := gomail.NewDialer(s.Host, s.Port, s.Username, s.Password)
+	dialer.TLSConfig = &tls.Config{InsecureSkipVerify: true}
 
-	err := d.DialAndSend(m)
+	err := dialer.DialAndSend(m)
 	if err != nil {
 		return err
 	}
