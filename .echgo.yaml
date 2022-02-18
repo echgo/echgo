@@ -9,6 +9,9 @@ channels:
   telegram:
     api_token: "5190222484:AAHb32DSFxqetzdOupqF6Lo"
     chat_id: "-9328751"
+  discord:
+    webhook_url: "https://discord.com/api/webhooks/your/webhook/url"
+    bot_name: "echGo"
   smtp:
     host: "mail.server.com"
     port: 465
