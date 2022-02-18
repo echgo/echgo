@@ -3,6 +3,7 @@ package channels
 import (
 	"fmt"
 	"github.com/echgo/echgo/configuration"
+	"github.com/echgo/echgo/discord"
 	"github.com/echgo/echgo/email"
 	"github.com/echgo/echgo/gotify"
 	"github.com/echgo/echgo/matrix"
@@ -64,6 +65,29 @@ func Handler(headline, message string, channel Type) {
 		}
 
 		_, err := telegram.CreateMessage(fmt.Sprintf("%s\n%s", headline, message), "Markdown", r)
+		if err != nil {
+			log.Fatalln(err)
+		}
+
+	}
+
+	if channel.Discord {
+
+		r := discord.Request{
+			Url: configuration.Data.Channels.Discord.WebhookUrl,
+		}
+
+		if len(configuration.Data.Channels.Discord.BotName) == 0 {
+			configuration.Data.Channels.Discord.BotName = "echGo"
+		}
+
+		b := discord.CreateMessageBody{
+			Username:  configuration.Data.Channels.Discord.BotName,
+			AvatarUrl: "https://raw.githubusercontent.com/echgo/logo/main/echGo-small.png",
+			Content:   fmt.Sprintf("%s\n%s", headline, message),
+		}
+
+		err := discord.CreateMessage(b, r)
 		if err != nil {
 			log.Fatalln(err)
 		}
