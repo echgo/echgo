@@ -84,7 +84,7 @@ func Handler(headline, message string, channel Type) {
 		b := discord.CreateMessageBody{
 			Username:  configuration.Data.Channels.Discord.BotName,
 			AvatarUrl: "https://raw.githubusercontent.com/echgo/logo/main/echGo-small.png",
-			Content:   fmt.Sprintf("%s\n%s", headline, message),
+			Content:   fmt.Sprintf("%s - %s", headline, message),
 		}
 
 		err := discord.CreateMessage(b, r)
