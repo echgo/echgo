@@ -60,6 +60,6 @@ func CreateMessage(body CreateMessageBody, r Request) (CreateMessageReturn, erro
 		return CreateMessageReturn{}, err
 	}
 
-	return decode, err
+	return decode, nil
 
 }

@@ -9,6 +9,7 @@ type Channels struct {
 	Gotify   Gotify   `yaml:"gotify"`
 	Matrix   Matrix   `yaml:"matrix"`
 	Telegram Telegram `yaml:"telegram"`
+	Discord  Discord  `yaml:"discord"`
 	SMTP     SMTP     `yaml:"smtp"`
 	Webhook  Webhook  `yaml:"webhook"`
 }
@@ -27,6 +28,11 @@ type Matrix struct {
 type Telegram struct {
 	ApiToken string `yaml:"api_token"`
 	ChatId   string `yaml:"chat_id"`
+}
+
+type Discord struct {
+	WebhookUrl string `yaml:"webhook_url"`
+	BotName    string `yaml:"bot_name"`
 }
 
 type SMTP struct {

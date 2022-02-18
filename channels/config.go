@@ -5,6 +5,7 @@ type Type struct {
 	Gotify   bool
 	Matrix   bool
 	Telegram bool
+	Discord  bool
 	SMTP     bool
 	Webhook  bool
 }

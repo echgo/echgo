@@ -41,6 +41,8 @@ func TXT(path string) {
 				channel.Matrix = true
 			case "telegram":
 				channel.Telegram = true
+			case "discord":
+				channel.Discord = true
 			case "smtp":
 				channel.SMTP = true
 			case "webhook":
