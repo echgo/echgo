@@ -26,6 +26,8 @@ func Handler() {
 			switch filepath.Ext(value.Name()) {
 			case ".txt":
 				TXT(path + value.Name())
+			case ".json":
+				JSON(path + value.Name())
 			}
 
 		}
