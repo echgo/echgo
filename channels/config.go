@@ -6,6 +6,7 @@ type Type struct {
 	Matrix   bool
 	Telegram bool
 	Discord  bool
+	Trello   bool
 	SMTP     bool
 	Webhook  bool
 }

@@ -43,6 +43,8 @@ func TXT(path string) {
 				channel.Telegram = true
 			case "discord":
 				channel.Discord = true
+			case "trello":
+				channel.Trello = true
 			case "smtp":
 				channel.SMTP = true
 			case "webhook":

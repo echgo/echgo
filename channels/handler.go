@@ -8,6 +8,7 @@ import (
 	"github.com/echgo/echgo/gotify"
 	"github.com/echgo/echgo/matrix"
 	"github.com/echgo/echgo/telegram"
+	"github.com/echgo/echgo/trello"
 	"github.com/echgo/echgo/webhook"
 	"log"
 )
@@ -88,6 +89,21 @@ func Handler(headline, message string, channel Type) {
 		}
 
 		err := discord.CreateMessage(b, r)
+		if err != nil {
+			log.Fatalln(err)
+		}
+
+	}
+
+	if channel.Trello {
+
+		r := trello.Request{
+			Key:    configuration.Data.Channels.Trello.Key,
+			Token:  configuration.Data.Channels.Trello.Token,
+			IdList: configuration.Data.Channels.Trello.IdList,
+		}
+
+		_, err := trello.CreateCard(headline, message, r)
 		if err != nil {
 			log.Fatalln(err)
 		}
