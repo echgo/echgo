@@ -15,7 +15,7 @@ func init() {
 	configuration.CreateIfNotExists()
 }
 
-// Start ticker function with cron handler
+// Start ticker function with notification handler
 func main() {
 	c := ticker.Config{Time: time.Now()}
 	c.Start(notification.Handler)
