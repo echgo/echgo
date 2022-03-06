@@ -15,6 +15,7 @@ type JSONBody struct {
 		Matrix   bool `json:"matrix,omitempty"`
 		Telegram bool `json:"telegram,omitempty"`
 		Discord  bool `json:"discord,omitempty"`
+		Trello   bool `json:"trello,omitempty"`
 		Smtp     bool `json:"smtp,omitempty"`
 		Webhook  bool `json:"webhook,omitempty"`
 	} `json:"channels"`
@@ -50,6 +51,7 @@ func JSON(path string) {
 		Matrix:   decode.Channels.Matrix,
 		Telegram: decode.Channels.Telegram,
 		Discord:  decode.Channels.Discord,
+		Trello:   decode.Channels.Trello,
 		SMTP:     decode.Channels.Smtp,
 		Webhook:  decode.Channels.Webhook,
 	}

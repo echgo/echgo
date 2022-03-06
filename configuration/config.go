@@ -10,6 +10,7 @@ type Channels struct {
 	Matrix   Matrix   `yaml:"matrix"`
 	Telegram Telegram `yaml:"telegram"`
 	Discord  Discord  `yaml:"discord"`
+	Trello   Trello   `yaml:"trello"`
 	SMTP     SMTP     `yaml:"smtp"`
 	Webhook  Webhook  `yaml:"webhook"`
 }
@@ -33,6 +34,12 @@ type Telegram struct {
 type Discord struct {
 	WebhookUrl string `yaml:"webhook_url"`
 	BotName    string `yaml:"bot_name"`
+}
+
+type Trello struct {
+	Key    string `yaml:"key"`
+	Token  string `yaml:"token"`
+	IdList string `yaml:"id_list"`
 }
 
 type SMTP struct {
