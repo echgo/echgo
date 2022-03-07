@@ -73,6 +73,7 @@ Instead of a TXT file you can now also store a JSON file in the following direct
         "matrix": true,
         "telegram": false,
         "discord": false,
+        "trello": false,
         "smtp": false,
         "webhook": false
     },
