@@ -23,7 +23,7 @@ docker run --name echgofig -d --rm \
     echgo/echgo:latest
 ```
 
-If the container was started, then the directory **/etc/echgo/configuration** is created. Here you will find the configuration for the different communication paths. Please fill in and save this as required. You can find an example of the configuration file [here](https://github.com/echgo/echgo/blob/master/.echgo.yaml).
+If the container was started, then the directory **/etc/echgo/configuration** is created. Here you will find the configuration for the different communication paths. Please fill in and save this as required. You can find an example of the configuration file [here](https://github.com/echgo/echgo/blob/master/.echgo.yaml). If you want to adjust the configuration. You do not have to restart the Docker container again. The software reads the configuration once before each run, so it is always up-to-date.
 
 The container is stopped automatically and removed.
 
@@ -83,6 +83,17 @@ Instead of a TXT file you can now also store a JSON file in the following direct
 ```
 
 In this example we want to send the notification to [Gotify](https://gotify.net/) & [Telegram](https://telegram.org/). Thereby we set a headline and the message.  Now echGo reads the files every minute and sends them to the specified channels.
+
+## Planned channels
+
+Here you will find channels we have planned or already implemented. If you think of another one, please send it to us.
+
+- Matrix - _Added in version v0.0.3_
+- Discord - _Added in version v0.0.6_
+- Trello - _Added in version v0.0.4_
+- Slack
+- CM (SMS)
+- Threema
 
 
 
