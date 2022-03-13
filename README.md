@@ -94,7 +94,7 @@ Here you will find channels we have planned or already implemented. If you think
 - Slack
 - CM (SMS)
 - Threema
-
-
+- Zendesk
+- osTicket
 
 
