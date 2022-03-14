@@ -16,6 +16,10 @@ channels:
     key: "a4cbc8cf6c409fc385633c1b120"
     token: "d7b223825fdsfe762f1cb1f18e9d238f3013efd7d43080"
     id_list: "692231232fc25b8db569d"
+  zendesk:
+    base_url: "https://echgo.zendesk.com",
+    username: "mail@echgo.org",
+    api_token: "JIOG823945728432895478"
   smtp:
     host: "mail.server.com"
     port: 465
