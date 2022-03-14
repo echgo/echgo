@@ -45,6 +45,8 @@ func TXT(path string) {
 				channel.Discord = true
 			case "trello":
 				channel.Trello = true
+			case "zendesk":
+				channel.Zendesk = true
 			case "smtp":
 				channel.SMTP = true
 			case "webhook":

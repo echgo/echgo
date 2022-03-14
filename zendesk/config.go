@@ -1,7 +1,8 @@
-package gotify
+package zendesk
 
 import (
 	"bytes"
+	"encoding/base64"
 	"net/http"
 )
 
@@ -13,14 +14,18 @@ type Config struct {
 
 // Request is to define the request data
 type Request struct {
-	Domain, XGotifyKey string
+	BaseUrl  string
+	Username string
+	ApiToken string
 }
 
 // Send is to send a new request
 // & return the response
 func (c *Config) Send(r Request) (*http.Response, error) {
 
-	url := r.Domain + c.Path
+	url := r.BaseUrl + c.Path
+
+	encoded := base64.StdEncoding.EncodeToString([]byte(r.Username + "/token:" + r.ApiToken))
 
 	client := &http.Client{}
 
@@ -29,8 +34,8 @@ func (c *Config) Send(r Request) (*http.Response, error) {
 		return nil, err
 	}
 
+	request.Header.Set("Authorization", "Basic "+encoded)
 	request.Header.Set("Content-Type", "application/json")
-	request.Header.Set("X-Gotify-Key", r.XGotifyKey)
 
 	response, err := client.Do(request)
 	if err != nil {

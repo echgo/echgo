@@ -54,7 +54,7 @@ func CreateMessage(body CreateMessageBody, r Request) (CreateMessageReturn, erro
 	}
 
 	c := Config{
-		Path:   "message",
+		Path:   "/message",
 		Method: "POST",
 		Body:   convert,
 	}

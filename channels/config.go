@@ -7,6 +7,7 @@ type Type struct {
 	Telegram bool
 	Discord  bool
 	Trello   bool
+	Zendesk  bool
 	SMTP     bool
 	Webhook  bool
 }
