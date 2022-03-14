@@ -10,6 +10,7 @@ import (
 	"github.com/echgo/echgo/telegram"
 	"github.com/echgo/echgo/trello"
 	"github.com/echgo/echgo/webhook"
+	"github.com/echgo/echgo/zendesk"
 	"log"
 )
 
@@ -104,6 +105,31 @@ func Handler(headline, message string, channel Type) {
 		}
 
 		_, err := trello.CreateCard(headline, message, r)
+		if err != nil {
+			log.Fatalln(err)
+		}
+
+	}
+
+	if channel.Zendesk {
+
+		r := zendesk.Request{
+			BaseUrl:  configuration.Data.Channels.Zendesk.BaseUrl,
+			Username: configuration.Data.Channels.Zendesk.Username,
+			ApiToken: configuration.Data.Channels.Zendesk.ApiToken,
+		}
+
+		b := zendesk.CreateTicketBody{
+			Ticket: zendesk.CreateTicketBodyTicket{
+				Comment: zendesk.CreateTicketBodyComment{
+					Body: message,
+				},
+				Priority: "urgent",
+				Subject:  headline,
+			},
+		}
+
+		_, err := zendesk.CreateTicket(b, r)
 		if err != nil {
 			log.Fatalln(err)
 		}

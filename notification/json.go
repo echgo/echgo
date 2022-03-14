@@ -16,6 +16,7 @@ type JSONBody struct {
 		Telegram bool `json:"telegram,omitempty"`
 		Discord  bool `json:"discord,omitempty"`
 		Trello   bool `json:"trello,omitempty"`
+		Zendesk  bool `json:"zendesk,omitempty"`
 		Smtp     bool `json:"smtp,omitempty"`
 		Webhook  bool `json:"webhook,omitempty"`
 	} `json:"channels"`
@@ -52,6 +53,7 @@ func JSON(path string) {
 		Telegram: decode.Channels.Telegram,
 		Discord:  decode.Channels.Discord,
 		Trello:   decode.Channels.Trello,
+		Zendesk:  decode.Channels.Zendesk,
 		SMTP:     decode.Channels.Smtp,
 		Webhook:  decode.Channels.Webhook,
 	}

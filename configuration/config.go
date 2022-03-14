@@ -11,6 +11,7 @@ type Channels struct {
 	Telegram Telegram `yaml:"telegram"`
 	Discord  Discord  `yaml:"discord"`
 	Trello   Trello   `yaml:"trello"`
+	Zendesk  Zendesk  `yaml:"zendesk"`
 	SMTP     SMTP     `yaml:"smtp"`
 	Webhook  Webhook  `yaml:"webhook"`
 }
@@ -40,6 +41,12 @@ type Trello struct {
 	Key    string `yaml:"key"`
 	Token  string `yaml:"token"`
 	IdList string `yaml:"id_list"`
+}
+
+type Zendesk struct {
+	BaseUrl  string `yaml:"base_url"`
+	Username string `yaml:"username"`
+	ApiToken string `yaml:"api_token"`
 }
 
 type SMTP struct {
