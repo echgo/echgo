@@ -2,7 +2,6 @@ package gotify
 
 import (
 	"bytes"
-	"fmt"
 	"net/http"
 )
 
@@ -21,7 +20,7 @@ type Request struct {
 // & return the response
 func (c *Config) Send(r Request) (*http.Response, error) {
 
-	url := fmt.Sprintf("%s/%s", r.Domain, c.Path)
+	url := r.Domain + c.Path
 
 	client := &http.Client{}
 
