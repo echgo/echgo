@@ -1,5 +1,5 @@
 <div align="center">
-    <br><br><img src="https://raw.githubusercontent.com/echgo/logo/main/echGo.png" width="200" />
+    <br><br><img src="https://raw.githubusercontent.com/echgo/logo/main/echGo.svg" width="200" />
 
 # echGo
 
