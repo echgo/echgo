@@ -5,7 +5,7 @@
 
 [![GitHub go.mod Go version of a Go module](https://img.shields.io/github/go-mod/go-version/echgo/echgo.svg)](https://golang.org/) [![Go](https://github.com/echgo/echgo/actions/workflows/go.yml/badge.svg)](https://github.com/echgo/echgo/actions/workflows/go.yml) [![Docker Image CI](https://github.com/echgo/echgo/actions/workflows/docker-image.yml/badge.svg)](https://github.com/echgo/echgo/actions/workflows/docker-image.yml) [![Go Report Card](https://goreportcard.com/badge/github.com/echgo/echgo)](https://goreportcard.com/report/github.com/echgo/echgo) ![Docker Pulls](https://img.shields.io/docker/pulls/echgo/echgo) [![GitHub issues](https://img.shields.io/github/issues/echgo/echgo)](https://github.com/echgo/echgo/issues) [![GitHub forks](https://img.shields.io/github/forks/echgo/echgo)](https://github.com/echgo/echgo/network) [![GitHub stars](https://img.shields.io/github/stars/echgo/echgo)](https://github.com/echgo/echgo/stargazers) [![GitHub license](https://img.shields.io/github/license/echgo/echgo)](https://github.com/echgo/echgo/blob/master/LICENSE) 
 
-This small Docker project is the easiest way to send notifications directly via .txt files or .json files to services like: [Gotify](https://gotify.net/), [Matrix](https://matrix.org/), [Telegram](https://telegram.org/), [Discord](https://discord.com/), [Trello](https://trello.com/de), SMTP (Email) or Webhook.
+This small Docker project is the easiest way to send notifications directly via .txt files or .json files to services like: [Gotify](https://gotify.net/), [Matrix](https://matrix.org/), [Telegram](https://telegram.org/), [Discord](https://discord.com/), [Trello](https://trello.com/de), [Zendesk](https://www.zendesk.de/), SMTP (Email) or Webhook.
     
 </div>
 
@@ -44,7 +44,7 @@ Now the service should run. With the command we map once the configuration file 
 
 Now we create a notification to be sent to different channels. You can also enter only one channel. How these notification files are created later is up to you. With a bash script or from another program does not matter.
 
-Currently you can store the following channels in the file, if they are configured: **gotify, matrix, telegram, discord, trello, smtp & webhook**.
+Currently you can store the following channels in the file, if they are configured: **gotify, matrix, telegram, discord, trello, zendesk, smtp & webhook**.
 
 It does not matter what the TXT file is called, which is stored in the directory **/var/lib/echgo/notification** defined by us. The only important thing is that we currently only support .txt files. But there are more file types planned.
 
@@ -74,6 +74,7 @@ Instead of a TXT file you can now also store a JSON file in the following direct
         "telegram": false,
         "discord": false,
         "trello": false,
+        "zendesk": false,
         "smtp": false,
         "webhook": false
     },
@@ -94,7 +95,7 @@ Here you will find channels we have planned or already implemented. If you think
 - Slack
 - CM (SMS)
 - Threema
-- Zendesk
+- Zendesk - _Added in version v0.0.7_
 - osTicket
 
 
