@@ -24,8 +24,10 @@ func TXT(path string) {
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
 		if strings.Contains(scanner.Text(), "=") {
-			split := strings.Split(scanner.Text(), "=")
-			parameter[split[0]] = split[1]
+			key, value, found := strings.Cut(scanner.Text(), "=")
+			if found {
+				parameter[key] = value
+			}
 		}
 	}
 
