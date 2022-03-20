@@ -7,6 +7,7 @@ import (
 	"github.com/echgo/echgo/email"
 	"github.com/echgo/echgo/gotify"
 	"github.com/echgo/echgo/matrix"
+	"github.com/echgo/echgo/osticket"
 	"github.com/echgo/echgo/telegram"
 	"github.com/echgo/echgo/trello"
 	"github.com/echgo/echgo/webhook"
@@ -130,6 +131,33 @@ func Handler(headline, message string, channel Type) {
 		}
 
 		_, err := zendesk.CreateTicket(b, r)
+		if err != nil {
+			log.Fatalln(err)
+		}
+
+	}
+
+	if channel.OsTicket {
+
+		r := osticket.Request{
+			BaseUrl:  configuration.Data.Channels.OsTicket.BaseUrl,
+			ApiToken: configuration.Data.Channels.OsTicket.ApiToken,
+		}
+
+		b := osticket.CreateTicketBody{
+			Alert:       true,
+			Autorespond: true,
+			Source:      "API",
+			Name:        configuration.Data.Channels.OsTicket.Username,
+			Email:       configuration.Data.Channels.OsTicket.EmailRecipient,
+			Phone:       "",
+			Subject:     headline,
+			Ip:          "",
+			Message:     fmt.Sprintf("data:text/plain,%s", message),
+			Attachments: nil,
+		}
+
+		_, err := osticket.CreateTicket(b, r)
 		if err != nil {
 			log.Fatalln(err)
 		}

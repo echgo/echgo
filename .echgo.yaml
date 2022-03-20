@@ -20,6 +20,11 @@ channels:
     base_url: "https://echgo.zendesk.com"
     username: "mail@echgo.org"
     api_token: "JIOG823945728432895478"
+  osticket:
+    base_url: "https://osticket.echgo.org"
+    api_token: "1234567890"
+    username: "echGo"
+    email_recipient: "mail@echgo.org"
   smtp:
     host: "mail.server.com"
     port: 465

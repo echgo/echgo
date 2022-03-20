@@ -12,6 +12,7 @@ type Channels struct {
 	Discord  Discord  `yaml:"discord"`
 	Trello   Trello   `yaml:"trello"`
 	Zendesk  Zendesk  `yaml:"zendesk"`
+	OsTicket OsTicket `json:"osticket"`
 	SMTP     SMTP     `yaml:"smtp"`
 	Webhook  Webhook  `yaml:"webhook"`
 }
@@ -47,6 +48,13 @@ type Zendesk struct {
 	BaseUrl  string `yaml:"base_url"`
 	Username string `yaml:"username"`
 	ApiToken string `yaml:"api_token"`
+}
+
+type OsTicket struct {
+	BaseUrl        string `yaml:"base_url"`
+	ApiToken       string `yaml:"api_token"`
+	Username       string `yaml:"username"`
+	EmailRecipient string `yaml:"email_recipient"`
 }
 
 type SMTP struct {
