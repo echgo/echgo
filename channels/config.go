@@ -8,6 +8,7 @@ type Type struct {
 	Discord  bool
 	Trello   bool
 	Zendesk  bool
+	OsTicket bool
 	SMTP     bool
 	Webhook  bool
 }
