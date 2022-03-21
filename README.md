@@ -18,7 +18,7 @@ Here you can find the instructions on how to set up the Docker container and def
 First, we start the Docker container to create the configuration file. For this you can use the following command.
 
 ```console
-docker run --name echgofig -d --rm \
+docker run --name echgo-init -d --rm \
     -v /etc/echgo/configuration:/go/src/app/files/configuration \
     echgo/echgo:latest
 ```
