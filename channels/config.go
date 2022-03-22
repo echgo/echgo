@@ -6,6 +6,7 @@ type Type struct {
 	Matrix   bool
 	Telegram bool
 	Discord  bool
+	Slack    bool
 	Trello   bool
 	Zendesk  bool
 	OsTicket bool

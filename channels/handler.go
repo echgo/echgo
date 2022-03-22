@@ -8,6 +8,7 @@ import (
 	"github.com/echgo/echgo/gotify"
 	"github.com/echgo/echgo/matrix"
 	"github.com/echgo/echgo/osticket"
+	"github.com/echgo/echgo/slack"
 	"github.com/echgo/echgo/telegram"
 	"github.com/echgo/echgo/trello"
 	"github.com/echgo/echgo/webhook"
@@ -91,6 +92,23 @@ func Handler(headline, message string, channel Type) {
 		}
 
 		err := discord.CreateMessage(b, r)
+		if err != nil {
+			log.Fatalln(err)
+		}
+
+	}
+
+	if channel.Slack {
+
+		r := slack.Request{
+			Url: configuration.Data.Channels.Discord.WebhookUrl,
+		}
+
+		b := slack.CreateMessageBody{
+			Text: fmt.Sprintf("%s - %s", headline, message),
+		}
+
+		err := slack.CreateMessage(b, r)
 		if err != nil {
 			log.Fatalln(err)
 		}
