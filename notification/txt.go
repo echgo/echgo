@@ -43,6 +43,8 @@ func TXT(path string) {
 				channel.Telegram = true
 			case "discord":
 				channel.Discord = true
+			case "slack":
+				channel.Slack = true
 			case "trello":
 				channel.Trello = true
 			case "zendesk":

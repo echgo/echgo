@@ -10,6 +10,7 @@ type Channels struct {
 	Matrix   Matrix   `yaml:"matrix"`
 	Telegram Telegram `yaml:"telegram"`
 	Discord  Discord  `yaml:"discord"`
+	Slack    Slack    `yaml:"slack"`
 	Trello   Trello   `yaml:"trello"`
 	Zendesk  Zendesk  `yaml:"zendesk"`
 	OsTicket OsTicket `json:"osticket"`
@@ -36,6 +37,10 @@ type Telegram struct {
 type Discord struct {
 	WebhookUrl string `yaml:"webhook_url"`
 	BotName    string `yaml:"bot_name"`
+}
+
+type Slack struct {
+	WebhookUrl string `yaml:"webhook_url"`
 }
 
 type Trello struct {

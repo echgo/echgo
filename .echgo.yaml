@@ -12,6 +12,8 @@ channels:
     discord:
         webhook_url: "https://discord.com/api/webhooks/your/webhook/url"
         bot_name: "echGo"
+    slack:
+        webhook_url: "https://hooks.slack.com/services/your/webhook/url"
     trello:
         key: "a4cbc8cf6c409fc385633c1b120"
         token: "d7b223825fdsfe762f1cb1f18e9d238f3013efd7d43080"
