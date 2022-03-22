@@ -1,0 +1,23 @@
+version: "3.3"
+services:
+    echgo:
+        container_name: echgo
+        volumes:
+            - /etc/echgo/configuration:/go/src/app/files/configuration
+            - /var/lib/echgo/notification:/go/src/app/files/notification
+        labels:
+            - com.centurylinklabs.watchtower.enable=true
+        restart: always
+        image: echgo/echgo:latest
+    watchtower:
+        container_name: watchtower
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+        restart: always
+        image: containrrr/watchtower:latest
+        command: --cleanup
+        command: --include-restarting
+        command: --rolling-restart
+        command: --include-stopped
+        command: --label-enable
+        command: --interval 3600
