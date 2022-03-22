@@ -92,7 +92,28 @@ If you want to get updates for echGo automated, then this is surely exciting for
 
 In order for the echGo service to start properly, you must either do [this](https://github.com/echgo/echgo#create-the-configuration-files) step once before or place [this file](https://raw.githubusercontent.com/echgo/echgo/master/.echgo.yaml) with your correct data on your system in the **etc/echgo/configuration** directory.
 
-Now you can download [this file](https://raw.githubusercontent.com/echgo/echgo/master/docker-compose.yml) and start it via ssh in the upload directory with the command **docker-compose up -d**.
+Now you can download [this file](https://raw.githubusercontent.com/echgo/echgo/master/docker-compose.yaml) and start it via ssh in the upload directory with the command **docker-compose up -d**. Or you can copy the code from here.
+
+```yaml
+version: "3.3"
+services:
+    echgo:
+        container_name: echgo
+        volumes:
+            - /etc/echgo/configuration:/go/src/app/files/configuration
+            - /var/lib/echgo/notification:/go/src/app/files/notification
+        labels:
+            - com.centurylinklabs.watchtower.enable=true
+        restart: always
+        image: echgo/echgo:latest
+    watchtower:
+        container_name: watchtower
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+        restart: always
+        image: containrrr/watchtower:latest
+        command: --cleanup --include-restarting --rolling-restart --include-stopped --label-enable --interval 3600
+```
 
 ## Planned channels
 
