@@ -15,9 +15,4 @@ services:
             - /var/run/docker.sock:/var/run/docker.sock
         restart: always
         image: containrrr/watchtower:latest
-        command: --cleanup
-        command: --include-restarting
-        command: --rolling-restart
-        command: --include-stopped
-        command: --label-enable
-        command: --interval 3600
+        command: --cleanup --include-restarting --rolling-restart --include-stopped --label-enable --interval 3600
