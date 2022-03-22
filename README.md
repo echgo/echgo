@@ -116,6 +116,8 @@ services:
         command: --cleanup --include-restarting --rolling-restart --include-stopped --label-enable --interval 3600
 ```
 
+[Here](https://docs.docker.com/compose/reference/) you can find a list of all docker-compose commands.
+
 ## Planned channels
 
 Here you will find channels we have planned or already implemented. If you think of another one, please send it to us.
