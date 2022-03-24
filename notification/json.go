@@ -18,7 +18,7 @@ type JSONBody struct {
 		Slack    bool `json:"slack,omitempty"`
 		Trello   bool `json:"trello,omitempty"`
 		Zendesk  bool `json:"zendesk,omitempty"`
-		OsTicket bool `json:"osticket,omitempty"`
+		Osticket bool `json:"osticket,omitempty"`
 		Smtp     bool `json:"smtp,omitempty"`
 		Webhook  bool `json:"webhook,omitempty"`
 	} `json:"channels"`
@@ -57,7 +57,7 @@ func JSON(path string) {
 		Slack:    decode.Channels.Slack,
 		Trello:   decode.Channels.Trello,
 		Zendesk:  decode.Channels.Zendesk,
-		OsTicket: decode.Channels.OsTicket,
+		Osticket: decode.Channels.Osticket,
 		SMTP:     decode.Channels.Smtp,
 		Webhook:  decode.Channels.Webhook,
 	}
