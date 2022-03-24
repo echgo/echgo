@@ -155,7 +155,7 @@ func Handler(headline, message string, channel Type) {
 
 	}
 
-	if channel.OsTicket {
+	if channel.Osticket {
 
 		r := osticket.Request{
 			BaseUrl:  configuration.Data.Channels.OsTicket.BaseUrl,

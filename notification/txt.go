@@ -50,7 +50,7 @@ func TXT(path string) {
 			case "zendesk":
 				channel.Zendesk = true
 			case "osticket":
-				channel.OsTicket = true
+				channel.Osticket = true
 			case "smtp":
 				channel.SMTP = true
 			case "webhook":

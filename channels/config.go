@@ -9,7 +9,7 @@ type Type struct {
 	Slack    bool
 	Trello   bool
 	Zendesk  bool
-	OsTicket bool
+	Osticket bool
 	SMTP     bool
 	Webhook  bool
 }
