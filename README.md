@@ -122,12 +122,19 @@ services:
 
 Here you will find channels we have planned or already implemented. If you think of another one, please send it to us.
 
+- Twilio
+- Ntfy
+- Message Bird
+- Pushover
+- Microsoft Teams
+
+## Added channels
+
+Here you can find all added channels and in which version they are added.
+
 - Matrix - _Added in version v0.0.3_
-- Discord - _Added in version v0.0.6_
 - Trello - _Added in version v0.0.4_
-- Slack - _Added in version v0.1.3_
-- Threema
+- Discord - _Added in version v0.0.6_
 - Zendesk - _Added in version v0.0.7_
 - osTicket - _Added in version v0.1.2_
-
-
+- Slack - _Added in version v0.1.3_
