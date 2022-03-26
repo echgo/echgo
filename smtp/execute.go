@@ -1,4 +1,4 @@
-package email
+package smtp
 
 import (
 	"github.com/echgo/echgo/configuration"
@@ -9,7 +9,7 @@ import (
 // & lead all configuration data
 func Execute(headline, message string) {
 
-	s := Smtp{
+	a := Access{
 		Host:     configuration.Data.Channels.SMTP.Host,
 		Port:     configuration.Data.Channels.SMTP.Port,
 		Username: configuration.Data.Channels.SMTP.Username,
@@ -23,7 +23,7 @@ func Execute(headline, message string) {
 		HTML:    message,
 	}
 
-	err := Send(d, s)
+	err := SendEmail(d, a)
 	if err != nil {
 		log.Fatalln(err)
 	}
