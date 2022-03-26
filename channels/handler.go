@@ -2,11 +2,11 @@ package channels
 
 import (
 	"github.com/echgo/echgo/discord"
-	"github.com/echgo/echgo/email"
 	"github.com/echgo/echgo/gotify"
 	"github.com/echgo/echgo/matrix"
 	"github.com/echgo/echgo/osticket"
 	"github.com/echgo/echgo/slack"
+	"github.com/echgo/echgo/smtp"
 	"github.com/echgo/echgo/telegram"
 	"github.com/echgo/echgo/trello"
 	"github.com/echgo/echgo/webhook"
@@ -50,7 +50,7 @@ func Handler(headline, message string, channel Type) {
 	}
 
 	if channel.SMTP {
-		email.Execute(headline, message)
+		smtp.Execute(headline, message)
 	}
 
 	if channel.Webhook {
