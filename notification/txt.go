@@ -30,7 +30,9 @@ func TXT(path string) {
 	}
 
 	if len(parameter["channel"]) > 0 {
+
 		channel := channels.Type{}
+
 		split := strings.Split(parameter["channel"], ",")
 		for _, value := range split {
 			trim := strings.TrimSpace(value)
@@ -57,7 +59,9 @@ func TXT(path string) {
 				channel.Webhook = true
 			}
 		}
+
 		channels.Handler(parameter["headline"], parameter["message"], channel)
+		
 	}
 
 	err = os.Remove(path)
