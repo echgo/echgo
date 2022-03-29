@@ -96,10 +96,12 @@ In order for the echGo service to start properly, you must either do [this](http
 Now you can download [this file](https://raw.githubusercontent.com/echgo/echgo/master/docker-compose.yaml) and start it via ssh in the upload directory with the command **docker-compose up -d**. Or you can copy the code from here.
 
 ```yaml
-version: "3.3"
+version: "3.5"
 services:
     echgo:
         container_name: echgo
+        networks:
+            - echgo_org
         volumes:
             - /etc/echgo/configuration:/go/src/app/files/configuration
             - /var/lib/echgo/notification:/go/src/app/files/notification
@@ -109,14 +111,56 @@ services:
         image: echgo/echgo:latest
     watchtower:
         container_name: watchtower
+        networks:
+            - echgo_org
         volumes:
             - /var/run/docker.sock:/var/run/docker.sock
         restart: always
         image: containrrr/watchtower:latest
         command: --cleanup --include-restarting --rolling-restart --include-stopped --label-enable --interval 3600
+networks:
+    echgo_org:
 ```
 
 [Here](https://docs.docker.com/compose/reference/) you can find a list of all docker-compose commands.
+
+If you eventually want to run multiple servers with echgo, then this might still be interesting for you. Here I have set up a NFS server on which the echgo configuration file is located and create a mount on this server in the volume **echgo_configuration** and use this for the echgo container. A guide for NFS servers and how to use them can be found [here](https://ubuntu.com/server/docs/service-nfs). You can also start this with the usual commands like **docker-compose up -d**. But please remember to enter the IP of the client server at the NSF server before.
+
+```yaml
+version: "3.5"
+services:
+    echgo:
+        container_name: echgo
+        networks:
+            - echgo_org
+        volumes:
+            - /var/lib/echgo/notification:/go/src/app/files/notification
+            - echgo_configuration:/go/src/app/files/configuration
+        labels:
+            - com.centurylinklabs.watchtower.enable=true
+        restart: always
+        image: echgo/echgo:latest
+    watchtower:
+        container_name: watchtower
+        networks:
+            - echgo_org
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+        restart: always
+        image: containrrr/watchtower:latest
+        command: --cleanup --include-restarting --rolling-restart --include-stopped --label-enable --interval 3600
+volumes:
+    echgo_configuration:
+        driver: local
+        driver_opts:
+            type: nfs
+            o: nfsvers=4,addr=1.2.3.4,ro,async
+            device: :/mnt/docker/echgo
+networks:
+    echgo_org:
+```
+
+If you want to use this docker-compose, just copy the part and save it in a docker-compose.yaml file. Then you can start directly with it.
 
 ## Planned channels
 
