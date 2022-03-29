@@ -61,7 +61,7 @@ func TXT(path string) {
 		}
 
 		channels.Handler(parameter["headline"], parameter["message"], channel)
-		
+
 	}
 
 	err = os.Remove(path)
