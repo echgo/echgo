@@ -8,8 +8,8 @@ import (
 	"os"
 )
 
-// JSONBody is to decode the json file
-type JSONBody struct {
+// JsonBody is to decode the json file
+type JsonBody struct {
 	Channels struct {
 		Gotify   bool `json:"gotify,omitempty"`
 		Matrix   bool `json:"matrix,omitempty"`
@@ -26,18 +26,11 @@ type JSONBody struct {
 	Message  string `json:"message"`
 }
 
-// JSON is to handle the json files from the notification
+// Json is to handle the json files from the notification
 // Check them & send them to the channel handler
-// Them remove the files
-func JSON(path string) {
+func Json(file *os.File) {
 
-	file, err := os.Open(path)
-	if err != nil {
-		log.Fatalln(err)
-	}
-	defer file.Close()
-
-	var decode JSONBody
+	var decode JsonBody
 
 	read, err := io.ReadAll(file)
 	if err != nil {
@@ -63,10 +56,5 @@ func JSON(path string) {
 	}
 
 	channels.Handler(decode.Headline, decode.Message, channel)
-
-	err = os.Remove(path)
-	if err != nil {
-		log.Fatalln(err)
-	}
 
 }
