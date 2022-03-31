@@ -22,7 +22,7 @@ func SendEmail(d Data, a Access) error {
 	m.SetBody("text/html", d.HTML)
 
 	dialer := gomail.NewDialer(a.Host, a.Port, a.Username, a.Password)
-	dialer.TLSConfig = &tls.Config{InsecureSkipVerify: true}
+	dialer.TLSConfig = &tls.Config{ServerName: a.Host}
 
 	err := dialer.DialAndSend(m)
 	if err != nil {
