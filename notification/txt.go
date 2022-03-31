@@ -3,21 +3,13 @@ package notification
 import (
 	"bufio"
 	"github.com/echgo/echgo/channels"
-	"log"
 	"os"
 	"strings"
 )
 
-// TXT is to handle the txt files from the notification
+// Txt is to handle the txt files from the notification
 // Check them & send them to the channel handler
-// Them remove the files
-func TXT(path string) {
-
-	file, err := os.Open(path)
-	if err != nil {
-		log.Fatalln(err)
-	}
-	defer file.Close()
+func Txt(file *os.File) {
 
 	parameter := make(map[string]string)
 
@@ -62,11 +54,6 @@ func TXT(path string) {
 
 		channels.Handler(parameter["headline"], parameter["message"], channel)
 
-	}
-
-	err = os.Remove(path)
-	if err != nil {
-		log.Fatalln(err)
 	}
 
 }

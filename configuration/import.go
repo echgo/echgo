@@ -8,15 +8,20 @@ import (
 )
 
 // Import is to notification the configuration
-// To open & decode the yaml file
+// To open, decode & close the yaml file
 func Import() {
 
-	open, err := os.Open(path)
+	file, err := os.Open(path)
 	if err != nil {
 		log.Fatalln(err)
 	}
 
-	read, err := io.ReadAll(open)
+	read, err := io.ReadAll(file)
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	err = file.Close()
 	if err != nil {
 		log.Fatalln(err)
 	}
