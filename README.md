@@ -101,7 +101,7 @@ services:
     echgo:
         container_name: echgo
         networks:
-            - echgo_org
+            - default
         volumes:
             - /etc/echgo/configuration:/go/src/app/files/configuration
             - /var/lib/echgo/notification:/go/src/app/files/notification
@@ -112,14 +112,16 @@ services:
     watchtower:
         container_name: watchtower
         networks:
-            - echgo_org
+            - default
         volumes:
             - /var/run/docker.sock:/var/run/docker.sock
+        ports:
+            - 8080:8080
         restart: always
         image: containrrr/watchtower:latest
         command: --cleanup --include-restarting --rolling-restart --include-stopped --label-enable --interval 3600
 networks:
-    echgo_org:
+    default:
 ```
 
 [Here](https://docs.docker.com/compose/reference/) you can find a list of all docker-compose commands.
@@ -132,7 +134,7 @@ services:
     echgo:
         container_name: echgo
         networks:
-            - echgo_org
+            - default
         volumes:
             - /var/lib/echgo/notification:/go/src/app/files/notification
             - echgo_configuration:/go/src/app/files/configuration
@@ -143,9 +145,11 @@ services:
     watchtower:
         container_name: watchtower
         networks:
-            - echgo_org
+            - default
         volumes:
             - /var/run/docker.sock:/var/run/docker.sock
+        ports:
+            - 8080:8080
         restart: always
         image: containrrr/watchtower:latest
         command: --cleanup --include-restarting --rolling-restart --include-stopped --label-enable --interval 3600
@@ -157,7 +161,7 @@ volumes:
             o: nfsvers=4,addr=1.2.3.4,ro,async
             device: :/mnt/docker/echgo
 networks:
-    echgo_org:
+    default:
 ```
 
 If you want to use this docker-compose, just copy the part and save it in a docker-compose.yaml file. Then you can start directly with it.
