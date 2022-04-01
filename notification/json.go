@@ -10,20 +10,9 @@ import (
 
 // JsonBody is to decode the json file
 type JsonBody struct {
-	Channels struct {
-		Gotify   bool `json:"gotify,omitempty"`
-		Matrix   bool `json:"matrix,omitempty"`
-		Telegram bool `json:"telegram,omitempty"`
-		Discord  bool `json:"discord,omitempty"`
-		Slack    bool `json:"slack,omitempty"`
-		Trello   bool `json:"trello,omitempty"`
-		Zendesk  bool `json:"zendesk,omitempty"`
-		Osticket bool `json:"osticket,omitempty"`
-		Smtp     bool `json:"smtp,omitempty"`
-		Webhook  bool `json:"webhook,omitempty"`
-	} `json:"channels"`
-	Headline string `json:"headline"`
-	Message  string `json:"message"`
+	Channels []string `json:"channels"`
+	Headline string   `json:"headline"`
+	Message  string   `json:"message"`
 }
 
 // Json is to handle the json files from the notification
@@ -42,17 +31,9 @@ func Json(file *os.File) {
 		log.Fatalln(err)
 	}
 
-	channel := channels.Type{
-		Gotify:   decode.Channels.Gotify,
-		Matrix:   decode.Channels.Matrix,
-		Telegram: decode.Channels.Telegram,
-		Discord:  decode.Channels.Discord,
-		Slack:    decode.Channels.Slack,
-		Trello:   decode.Channels.Trello,
-		Zendesk:  decode.Channels.Zendesk,
-		Osticket: decode.Channels.Osticket,
-		SMTP:     decode.Channels.Smtp,
-		Webhook:  decode.Channels.Webhook,
+	var channel []string
+	for _, value := range decode.Channels {
+		channel = append(channel, value)
 	}
 
 	channels.Handler(decode.Headline, decode.Message, channel)

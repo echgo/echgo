@@ -64,22 +64,15 @@ headline=Nice webhook headline!
 message=This is the best message for the webhook.
 ```
 
-Instead of a TXT file you can now also store a JSON file in the following directory: **/var/lib/echgo/notification**. In this file one or more of the channels can be defined.
+Instead of a TXT file you can now also store a JSON file in the following directory: **/var/lib/echgo/notification**. In this file one or more of the channels can be defined. **Important! The data format has been adapted from version v0.2.0. Please take into account.**
 
 ```json
 {
-    "channels": {
-        "gotify": true,
-        "matrix": true,
-        "telegram": false,
-        "discord": false,
-        "slack": false,
-        "trello": false,
-        "zendesk": false,
-        "osticket": false,
-        "smtp": false,
-        "webhook": false
-    },
+    "channels": [
+        "gotify",
+        "matrix",
+        "zendesk"
+    ],
     "headline": "Nice headline",
     "message": "This is a test message."
 }
