@@ -34,6 +34,8 @@ func Handler() {
 				Txt(file)
 			case ".json":
 				Json(file)
+			case ".xml":
+				Xml(file)
 			}
 
 			err = file.Close()
