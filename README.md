@@ -54,16 +54,16 @@ Now let's create a test.txt file in the directory with the following content:
 
 ```text
 channels=gotify,telegram
-headline=Nice headline 
-message=This is a test message!
+headline=echGo
+message=This is a test message from a txt file.
 ```
 
 If we now want to send only one webhook, we can do this with the following text file.
 
 ```text
 channels=webhook
-headline=Nice webhook headline! 
-message=This is the best message for the webhook.
+headline=echGo
+message=This is a test message from a txt file.
 ```
 
 Instead of a TXT file you can now also store a JSON file in the following directory: **/var/lib/echgo/notification**. In this file one or more of the channels can be defined. **Important! The data format has been adapted from version v0.2.0. Please take into account.**
@@ -76,7 +76,7 @@ Instead of a TXT file you can now also store a JSON file in the following direct
         "zendesk"
     ],
     "headline": "Nice headline",
-    "message": "This is a test message."
+    "message": "This is a test message from a json file."
 }
 ```
 
