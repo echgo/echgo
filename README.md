@@ -87,7 +87,7 @@ channels:
     - "gotify"
     - "slack"
 headline: "echGo"
-message: "This is a Test"
+message: "This is a test message from a yaml file."
 ```
 
 If you prefer to use an XML file, you can do that as well. The file can be read in like the others. It must be in the following format:
