@@ -31,11 +31,11 @@ func Json(file *os.File) {
 		log.Fatalln(err)
 	}
 
-	var channel []string
+	var types []string
 	for _, value := range decode.Channels {
-		channel = append(channel, value)
+		types = append(types, value)
 	}
 
-	channels.Handler(decode.Headline, decode.Message, channel)
+	channels.Handler(decode.Headline, decode.Message, types)
 
 }

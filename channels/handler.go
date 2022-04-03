@@ -16,9 +16,9 @@ import (
 
 // Handler is to handle the channels
 // And send the notifications to them
-func Handler(headline, message string, channel []string) {
+func Handler(headline, message string, types []string) {
 
-	for _, value := range channel {
+	for _, value := range types {
 		switch {
 		case strings.EqualFold("gotify", value):
 			gotify.Execute(headline, message)

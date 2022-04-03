@@ -11,7 +11,7 @@ import (
 // XmlBody is to decode the xml file
 type XmlBody struct {
 	Channels struct {
-		Item []string `xml:"item"`
+		Type []string `xml:"type"`
 	} `xml:"channels"`
 	Headline string `xml:"headline"`
 	Message  string `xml:"message"`
@@ -33,11 +33,11 @@ func Xml(file *os.File) {
 		log.Fatalln(err)
 	}
 
-	var channel []string
-	for _, value := range decode.Channels.Item {
-		channel = append(channel, value)
+	var types []string
+	for _, value := range decode.Channels.Type {
+		types = append(types, value)
 	}
 
-	channels.Handler(decode.Headline, decode.Message, channel)
+	channels.Handler(decode.Headline, decode.Message, types)
 
 }

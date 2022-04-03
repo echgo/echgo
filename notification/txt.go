@@ -21,17 +21,17 @@ func Txt(file *os.File) {
 		}
 	}
 
-	if len(parameter["channel"]) > 0 {
+	if len(parameter["channels"]) > 0 {
 
-		var channel []string
+		var types []string
 
-		split := strings.Split(parameter["channel"], ",")
+		split := strings.Split(parameter["channels"], ",")
 		for _, value := range split {
 			trim := strings.TrimSpace(value)
-			channel = append(channel, trim)
+			types = append(types, trim)
 		}
 
-		channels.Handler(parameter["headline"], parameter["message"], channel)
+		channels.Handler(parameter["headline"], parameter["message"], types)
 
 	}
 
