@@ -109,9 +109,9 @@ Now echGo reads the files every minute and sends them to the specified channels.
 
 If you want to get updates for echGo automated, then this is surely exciting for you. Here we use [watchtower](https://github.com/containrrr/watchtower/) to update the container. Watchtower is defined so that it only updates containers with the label **com.centurylinklabs.watchtower.enable=true**. That means you don't have to worry about your other containers.
 
-In order for the echGo service to start properly, you must either do [this](https://github.com/echgo/echgo#create-the-configuration-files) step once before or place [this file](https://raw.githubusercontent.com/echgo/echgo/master/.echgo.yaml) with your correct data on your system in the **/etc/echgo/configuration** directory.
+In order for the echGo service to start properly, you must either do [this](https://github.com/echgo/echgo#create-the-configuration-files) step once before or place [this file](https://github.com/echgo/echgo/blob/master/.echgo.yaml) with your correct data on your system in the **/etc/echgo/configuration** directory.
 
-Now you can download [this file](https://raw.githubusercontent.com/echgo/echgo/master/docker-compose.yaml) and start it via ssh in the upload directory with the command **docker-compose up -d**. Or you can copy the code from here.
+Now you can download [this file](https://github.com/echgo/echgo/blob/master/docker-compose.yaml) and start it via ssh in the upload directory with the command **docker-compose up -d**. Or you can copy the code from here.
 
 ```yaml
 version: "3.5"
