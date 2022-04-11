@@ -3,7 +3,7 @@
 # After that we create a scratch image that based on alpine:latest, copy the files from the build image & start the application
 FROM golang:alpine as build
 
-RUN apk add --no-cache git
+RUN apk --no-cache add git
 
 COPY . /tmp/go/src/app
 WORKDIR /tmp/go/src/app
