@@ -16,7 +16,7 @@ func (c *Config) Start(job func()) {
 	wait := 60*1000000000 - (second*1000000000 + nano)
 	time.Sleep(time.Duration(wait) * time.Nanosecond)
 
-	for _ = range time.Tick(time.Minute) {
+	for range time.Tick(time.Minute) {
 		job()
 	}
 
