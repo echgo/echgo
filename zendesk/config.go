@@ -34,8 +34,8 @@ func (c *Config) Send(r Request) (*http.Response, error) {
 		return nil, err
 	}
 
-	request.Header.Set("Authorization", "Basic "+encoded)
 	request.Header.Set("Content-Type", "application/json")
+	request.Header.Set("Authorization", "Basic "+encoded)
 
 	response, err := client.Do(request)
 	if err != nil {
