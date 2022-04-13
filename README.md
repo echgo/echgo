@@ -188,7 +188,6 @@ If you want to use this docker-compose, just copy the part and save it in a dock
 
 Here you will find channels we have planned or already implemented. If you think of another one, please send it to us.
 
-- Twilio
 - Ntfy
 - Message Bird
 - Pushover
@@ -204,3 +203,4 @@ Here you can find all added channels and in which version they are added.
 - Zendesk - _Added in version v0.0.7_
 - osTicket - _Added in version v0.1.2_
 - Slack - _Added in version v0.1.3_
+- twilio - _Added in version v1.0.3_
