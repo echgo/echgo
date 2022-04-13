@@ -26,7 +26,7 @@ func CreateMessage(body CreateMessageBody, r Request) (CreateMessageReturn, erro
 	}
 
 	c := Config{
-		Path:   "_matrix/client/r0/rooms/" + r.RoomId + "/send/m.room.message",
+		Path:   "/_matrix/client/r0/rooms/" + r.RoomId + "/send/m.room.message",
 		Method: "POST",
 		Body:   convert,
 	}
