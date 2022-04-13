@@ -30,8 +30,8 @@ func (c *Config) Send(r Request) (*http.Response, error) {
 		return nil, err
 	}
 
-	request.Header.Set("X-API-Key", r.ApiToken)
 	request.Header.Set("Content-Type", "application/json")
+	request.Header.Set("X-API-Key", r.ApiToken)
 
 	response, err := client.Do(request)
 	if err != nil {

@@ -14,6 +14,7 @@ type Channels struct {
 	Trello   Trello   `yaml:"trello"`
 	Zendesk  Zendesk  `yaml:"zendesk"`
 	OsTicket OsTicket `json:"osticket"`
+	Twillo   Twillo   `json:"twillo"`
 	SMTP     SMTP     `yaml:"smtp"`
 	Webhook  Webhook  `yaml:"webhook"`
 }
@@ -60,6 +61,13 @@ type OsTicket struct {
 	ApiToken       string `yaml:"api_token"`
 	Username       string `yaml:"username"`
 	EmailRecipient string `yaml:"email_recipient"`
+}
+
+type Twillo struct {
+	AccountSid    string `yaml:"account_sid"`
+	AuthToken     string `yaml:"auth_token"`
+	PhoneNumber   string `yaml:"phone_number"`
+	MyPhoneNumber string `yaml:"my_phone_number"`
 }
 
 type SMTP struct {

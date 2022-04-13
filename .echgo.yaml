@@ -27,6 +27,11 @@ channels:
         api_token: "1234567890"
         username: "echGo"
         email_recipient: "mail@echgo.org"
+    twillo:
+        account_sid: ""
+        auth_token: ""
+        phone_number: ""
+        my_phone_number: ""
     smtp:
         host: "mail.server.com"
         port: 465

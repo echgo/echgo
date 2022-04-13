@@ -1,40 +1,42 @@
-package zendesk
+package twillo
 
 import (
-	"bytes"
 	"encoding/base64"
 	"net/http"
+	"strings"
 )
+
+// Set the base url for twillo
+const baseUrl = "https://api.twilio.com/2010-04-01"
 
 // Config is to define config data
 type Config struct {
 	Path, Method string
-	Body         []byte
+	Body         string
 }
 
 // Request is to define the request data
 type Request struct {
-	BaseUrl  string
-	Username string
-	ApiToken string
+	AccountSid string
+	AuthToken  string
 }
 
 // Send is to send a new request
 // & return the response
 func (c *Config) Send(r Request) (*http.Response, error) {
 
-	url := r.BaseUrl + c.Path
+	url := baseUrl + c.Path
 
-	encoded := base64.StdEncoding.EncodeToString([]byte(r.Username + "/token:" + r.ApiToken))
+	encoded := base64.StdEncoding.EncodeToString([]byte(r.AccountSid + ":" + r.AuthToken))
 
 	client := &http.Client{}
 
-	request, err := http.NewRequest(c.Method, url, bytes.NewBuffer(c.Body))
+	request, err := http.NewRequest(c.Method, url, strings.NewReader(c.Body))
 	if err != nil {
 		return nil, err
 	}
 
-	request.Header.Set("Content-Type", "application/json")
+	request.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 	request.Header.Set("Authorization", "Basic "+encoded)
 
 	response, err := client.Do(request)
