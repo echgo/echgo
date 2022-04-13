@@ -16,9 +16,9 @@ func Execute(headline, message string) {
 	}
 
 	b := CreateMessageBody{
-		Message:           fmt.Sprintf("%s - %s", headline, message),
-		MyPhoneNumber:     configuration.Data.Channels.Twillo.MyPhoneNumber,
-		TwilloPhoneNumber: configuration.Data.Channels.Twillo.TwilloPhoneNumber,
+		Message:       fmt.Sprintf("%s - %s", headline, message),
+		PhoneNumber:   configuration.Data.Channels.Twillo.PhoneNumber,
+		MyPhoneNumber: configuration.Data.Channels.Twillo.MyPhoneNumber,
 	}
 
 	_, err := CreateMessage(b, r)

@@ -7,9 +7,9 @@ import (
 
 // CreateMessageBody is to structure the body data
 type CreateMessageBody struct {
-	Message           string
-	MyPhoneNumber     string
-	TwilloPhoneNumber string
+	Message       string
+	PhoneNumber   string
+	MyPhoneNumber string
 }
 
 // CreateMessageReturn is to decode the json data
@@ -48,7 +48,7 @@ func CreateMessage(body CreateMessageBody, r Request) (CreateMessageReturn, erro
 
 	data.Set("Body", body.Message)
 	data.Set("To", body.MyPhoneNumber)
-	data.Set("From", body.TwilloPhoneNumber)
+	data.Set("From", body.PhoneNumber)
 
 	encode := data.Encode()
 
