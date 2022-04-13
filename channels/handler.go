@@ -9,6 +9,7 @@ import (
 	"github.com/echgo/echgo/smtp"
 	"github.com/echgo/echgo/telegram"
 	"github.com/echgo/echgo/trello"
+	"github.com/echgo/echgo/twillo"
 	"github.com/echgo/echgo/webhook"
 	"github.com/echgo/echgo/zendesk"
 	"strings"
@@ -36,6 +37,8 @@ func Handler(headline, message string, types []string) {
 			zendesk.Execute(headline, message)
 		case strings.EqualFold("osticket", value):
 			osticket.Execute(headline, message)
+		case strings.EqualFold("twillo", value):
+			twillo.Execute(headline, message)
 		case strings.EqualFold("smtp", value):
 			smtp.Execute(headline, message)
 		case strings.EqualFold("webhook", value):
