@@ -1,6 +1,8 @@
 package ticker
 
-import "time"
+import (
+	"time"
+)
 
 // Config is to structure the data
 type Config struct {
@@ -17,7 +19,7 @@ func (c *Config) Start(job func()) {
 	time.Sleep(time.Duration(wait) * time.Nanosecond)
 
 	for range time.Tick(time.Minute) {
-		job()
+		go job()
 	}
 
 }
