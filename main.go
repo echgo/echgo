@@ -9,14 +9,17 @@ import (
 )
 
 // Initialise the software with a console information
-// And add dummy configuration file, if none exists
 func init() {
 	console.Init()
-	configuration.CreateIfNotExists()
 }
 
-// Start ticker function with notification handler
+// Add dummy configuration file, if none exists
+// And start ticker function with notification handler
 func main() {
+
+	configuration.CreateIfNotExists()
+
 	c := ticker.Config{Time: time.Now()}
 	c.Start(notification.Handler)
+
 }
