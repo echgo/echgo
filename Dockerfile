@@ -5,15 +5,15 @@ FROM golang:alpine AS build
 
 RUN apk --no-cache add git
 
-COPY . /tmp/go/src/app
-WORKDIR /tmp/go/src/app
+COPY . /tmp/go/src/app/
+WORKDIR /tmp/go/src/app/
 
 RUN go get ./
 RUN go build -o echgo
 
 FROM alpine:latest AS scratch
 
-COPY --from=build /tmp/go/src/app /go/src/app
-WORKDIR /go/src/app
+COPY --from=build /tmp/go/src/app/echgo /tmp/go/src/app/files/* /go/src/app/
+WORKDIR /go/src/app/
 
 CMD ["./echgo"]
