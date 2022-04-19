@@ -20,7 +20,7 @@ func Execute(headline, message string) {
 
 	b := CreateMessageBody{
 		Username:  configuration.Data.Channels.Discord.BotName,
-		AvatarUrl: "https://raw.githubusercontent.com/echgo/logo/main/echGo-small.png",
+		AvatarUrl: "https://raw.githubusercontent.com/echgo/logo/main/logo-small.png",
 		Content:   fmt.Sprintf("%s - %s", headline, message),
 	}
 
