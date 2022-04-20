@@ -17,8 +17,13 @@ services:
             - echgo_org
         volumes:
             - /var/run/docker.sock:/var/run/docker.sock
+        expose:
+            - 8080
+        depends_on:
+            - echgo
         restart: always
         image: containrrr/watchtower:latest
         command: --cleanup --include-restarting --rolling-restart --include-stopped --label-enable --interval 3600
 networks:
     echgo_org:
+        driver: bridge
