@@ -17,7 +17,7 @@ RUN apk --no-cache add tzdata
 
 ENV TZ=Europe/Berlin
 
-COPY --from=build /tmp/go/src/app/echgo /tmp/go/src/app/files/* /go/src/app/
+COPY --from=build /tmp/go/src/app/echgo /go/src/app/
 WORKDIR /go/src/app/
 
 CMD ["./echgo"]
