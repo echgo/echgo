@@ -120,6 +120,8 @@ services:
         container_name: echgo
         networks:
             - echgo_org
+        environment:
+            - TZ=Europe/Berlin
         volumes:
             - /etc/echgo/configuration:/go/src/app/files/configuration
             - /var/lib/echgo/notification:/go/src/app/files/notification
@@ -156,6 +158,8 @@ services:
         container_name: echgo
         networks:
             - echgo_org
+        environment:
+            - TZ=Europe/Berlin
         volumes:
             - /var/lib/echgo/notification:/go/src/app/files/notification
             - echgo_configuration:/go/src/app/files/configuration

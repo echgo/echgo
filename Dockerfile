@@ -13,6 +13,10 @@ RUN go build -o echgo
 
 FROM alpine:latest AS scratch
 
+RUN apk --no-cache add tzdata
+
+ENV TZ=Europe/Berlin
+
 COPY --from=build /tmp/go/src/app/echgo /tmp/go/src/app/files/* /go/src/app/
 WORKDIR /go/src/app/
 
