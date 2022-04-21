@@ -11,6 +11,8 @@ import (
 // To open, decode & close the yaml file
 func Import() {
 
+	path := absolutePath()
+
 	file, err := os.Open(path)
 	if err != nil {
 		log.Fatalln(err)
