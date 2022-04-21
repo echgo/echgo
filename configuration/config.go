@@ -1,5 +1,10 @@
 package configuration
 
+import (
+	"log"
+	"path/filepath"
+)
+
 // Body is to save & decode the yaml data
 type Body struct {
 	Channels Channels `yaml:"channels"`
@@ -84,10 +89,22 @@ type Webhook struct {
 
 // path is to save the path of the configuration file
 const (
-	path = "files/configuration/echgo.yaml"
+	localPath = "files/configuration/echgo.yaml"
 )
 
 // Data is to save & get the data of the loaded configuration file
 var (
 	Data Body
 )
+
+// absolutePath is to get the absolute file path
+func absolutePath() string {
+
+	path, err := filepath.Abs(localPath)
+	if err != nil {
+		log.Fatalln()
+	}
+
+	return path
+
+}

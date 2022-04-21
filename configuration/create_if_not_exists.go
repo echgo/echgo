@@ -10,6 +10,8 @@ import (
 // We add dummy data to the file
 func CreateIfNotExists() {
 
+	path := absolutePath()
+
 	if _, err := os.Stat(path); os.IsNotExist(err) {
 
 		data := Body{}
@@ -26,7 +28,7 @@ func CreateIfNotExists() {
 
 		log.Println("A new configuration file has been created at /etc/echgo/configuration. Please fill in the configuration file and restart the container.")
 
-		os.Exit(0)
+		os.Exit(1)
 
 	}
 
