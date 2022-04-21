@@ -19,7 +19,7 @@ First, we start the Docker container to create the configuration file. For this 
 
 ```console
 docker run --name echgo-init -d --rm \
-    -v /etc/echgo/configuration:/go/src/app/files/configuration \
+    -v /etc/echgo/configuration:/app/files/configuration \
     echgo/echgo:latest
 ```
 
@@ -33,8 +33,8 @@ Now we can start the service directly. To do this, please run the following comm
 
 ```console
 docker run --name echgo -d --restart always \
-    -v /etc/echgo/configuration:/go/src/app/files/configuration \
-    -v /var/lib/echgo/notification:/go/src/app/files/notification \
+    -v /etc/echgo/configuration:/app/files/configuration \
+    -v /var/lib/echgo/notification:/app/files/notification \
     echgo/echgo:latest
 ```
 
@@ -123,8 +123,8 @@ services:
         environment:
             - TZ=Europe/Berlin
         volumes:
-            - /etc/echgo/configuration:/go/src/app/files/configuration
-            - /var/lib/echgo/notification:/go/src/app/files/notification
+            - /etc/echgo/configuration:/app/files/configuration
+            - /var/lib/echgo/notification:/app/files/notification
         labels:
             - com.centurylinklabs.watchtower.enable=true
         restart: always
@@ -161,8 +161,8 @@ services:
         environment:
             - TZ=Europe/Berlin
         volumes:
-            - /var/lib/echgo/notification:/go/src/app/files/notification
-            - echgo_configuration:/go/src/app/files/configuration
+            - /var/lib/echgo/notification:/app/files/notification
+            - echgo_configuration:/app/files/configuration
         labels:
             - com.centurylinklabs.watchtower.enable=true
         restart: always

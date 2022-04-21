@@ -5,8 +5,8 @@ FROM golang:alpine AS build
 
 RUN apk --no-cache add git
 
-COPY . /tmp/go/src/app/
-WORKDIR /tmp/go/src/app/
+COPY . /tmp/src/
+WORKDIR /tmp/src/
 
 RUN go get ./
 RUN go build -o echgo
@@ -17,7 +17,7 @@ RUN apk --no-cache add tzdata
 
 ENV TZ=Europe/Berlin
 
-COPY --from=build /tmp/go/src/app/echgo /go/src/app/
-WORKDIR /go/src/app/
+COPY --from=build /tmp/src/echgo /app/
+WORKDIR /app/
 
 CMD ["./echgo"]
