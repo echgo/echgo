@@ -1,6 +1,7 @@
 package configuration
 
 import (
+	"flag"
 	"gopkg.in/yaml.v2"
 	"log"
 	"os"
@@ -28,7 +29,9 @@ func CreateIfNotExists() {
 
 		log.Println("A new configuration file has been created at /etc/echgo/configuration. Please fill in the configuration file and restart the container.")
 
-		os.Exit(1)
+		if flag.Lookup("test.v") == nil {
+			os.Exit(1)
+		}
 
 	}
 
