@@ -22,12 +22,12 @@ func Handler() {
 
 		if !value.IsDir() {
 
-			log.Printf("A file with the name: '%s' was imported.\n", value.Name())
-
 			file, err := os.Open(path + value.Name())
 			if err != nil {
 				log.Fatalln(err)
 			}
+
+			log.Printf("A file with the name: '%s' was imported.\n", value.Name())
 
 			switch filepath.Ext(value.Name()) {
 			case ".txt":
