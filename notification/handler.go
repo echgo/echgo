@@ -20,9 +20,9 @@ func Handler() {
 
 	for _, value := range files {
 
-		if value.Name() != ".gitkeep" && !value.IsDir() {
+		if !value.IsDir() {
 
-			log.Println("New notification received. These are now being processed.")
+			log.Printf("A file with the name: '%s' was imported.\n", value.Name())
 
 			file, err := os.Open(path + value.Name())
 			if err != nil {
