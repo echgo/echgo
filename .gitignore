@@ -1,4 +1,3 @@
-
+# First irgnore all unused folders
+# After that we ignore all other files
 .idea/
-
-.DS_Store
