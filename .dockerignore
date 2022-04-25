@@ -1,11 +1,11 @@
-# First we ignore all git, github & ide folders & files
-# After that we ignore file types & then the other rest
+# First we ignore all folders & files
+# After that we ignore the file types & more
 .git/
 .github/
-.gitignore
 .idea/
+
+.gitignore
+LICENSE
 
 *.yaml
 *.md
-
-LICENSE
