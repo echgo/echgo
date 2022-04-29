@@ -5,7 +5,7 @@
 
 [![GitHub go.mod Go version of a Go module](https://img.shields.io/github/go-mod/go-version/echgo/echgo.svg)](https://golang.org/) [![Go](https://github.com/echgo/echgo/actions/workflows/go.yml/badge.svg)](https://github.com/echgo/echgo/actions/workflows/go.yml) [![Docker Image CI](https://github.com/echgo/echgo/actions/workflows/docker-image.yml/badge.svg)](https://github.com/echgo/echgo/actions/workflows/docker-image.yml) [![CodeQL](https://github.com/echgo/echgo/actions/workflows/codeql.yml/badge.svg)](https://github.com/echgo/echgo/actions/workflows/codeql.yml) [![Go Report Card](https://goreportcard.com/badge/github.com/echgo/echgo)](https://goreportcard.com/report/github.com/echgo/echgo) ![Docker Pulls](https://img.shields.io/docker/pulls/echgo/echgo) [![GitHub issues](https://img.shields.io/github/issues/echgo/echgo)](https://github.com/echgo/echgo/issues) [![GitHub forks](https://img.shields.io/github/forks/echgo/echgo)](https://github.com/echgo/echgo/network) [![GitHub stars](https://img.shields.io/github/stars/echgo/echgo)](https://github.com/echgo/echgo/stargazers) [![GitHub license](https://img.shields.io/github/license/echgo/echgo)](https://github.com/echgo/echgo/blob/master/LICENSE) 
 
-This small Docker project is the easiest way to send notifications directly via .txt, .json, .yaml or .xml files to services like: [Gotify](https://gotify.net/), [Matrix](https://matrix.org/), [Telegram](https://telegram.org/), [Discord](https://discord.com/), [Slack](https://slack.com/), [Trello](https://trello.com/de), [Zendesk](https://www.zendesk.de/), [osTicket](https://osticket.com/), [twillo](https://www.twilio.com/), SMTP (Email) or Webhook. **Now with 97,97% smaller compressed docker image.**
+This small Docker project is the easiest way to send notifications directly via .txt, .json, .yaml or .xml files to services like: [Gotify](https://gotify.net/), [Matrix](https://matrix.org/), [Telegram](https://telegram.org/), [Discord](https://discord.com/), [Slack](https://slack.com/), [Trello](https://trello.com/de), [Zendesk](https://www.zendesk.de/), [osTicket](https://osticket.com/), [twillo](https://www.twilio.com/), SMTP (Email) or Webhook. `Now with 97,97% smaller compressed docker image.`
     
 </div>
 
@@ -23,7 +23,7 @@ docker run --name echgo-init -d --rm \
     echgo/echgo:latest
 ```
 
-If the container was started, then the directory **/etc/echgo/configuration** is created. Here you will find the configuration for the different communication paths. Please fill in and save this as required. You can find an example of the configuration file [here](https://github.com/echgo/echgo/blob/master/.echgo.yaml). If you want to adjust the configuration. You do not have to restart the Docker container again. The software reads the configuration once before each run, so it is always up-to-date.
+If the container was started, then the directory `/etc/echgo/configuration` is created. Here you will find the configuration for the different communication paths. Please fill in and save this as required. You can find an example of the configuration file [here](https://github.com/echgo/echgo/blob/master/.echgo.yaml). If you want to adjust the configuration. You do not have to restart the Docker container again. The software reads the configuration once before each run, so it is always up-to-date.
 
 The container is stopped automatically and removed.
 
@@ -44,9 +44,9 @@ Now the service should run. With the command we map once the configuration file 
 
 Now we create a notification to be sent to different channels. You can also enter only one channel. How these notification files are created later is up to you. With a bash script or from another program does not matter.
 
-The only important thing is that the file is placed in this folder **/var/lib/echgo/notification**. The name of the file does not matter. It only matters that the file extension and the file format are correct. Currently, we can read the following formats: **.txt, .json, .yaml & .xml**. 
+The only important thing is that the file is placed in this folder `/var/lib/echgo/notification`. The name of the file does not matter. It only matters that the file extension and the file format are correct. Currently, we can read the following formats: `.txt, .json, .yaml & .xml`. 
 
-You can store the following channels in the file, if they are configured: **gotify, matrix, telegram, discord, slack, trello, zendesk, osticket, twillo, smtp & webhook**. These are always specified in an array. That means you can address one or more channels with one notification file. Now let's look at the currently available file formats and how you can configure them.
+You can store the following channels in the file, if they are configured: `gotify, matrix, telegram, discord, slack, trello, zendesk, osticket, twillo, smtp & webhook`. These are always specified in an array. That means you can address one or more channels with one notification file. Now let's look at the currently available file formats and how you can configure them.
 
 #### TXT file
 
@@ -107,14 +107,14 @@ Now echGo reads the files every minute and sends them to the specified channels.
 
 ## Run the service with updates & docker-compose
 
-If you want to get updates for echGo automated, then this is surely exciting for you. Here we use [watchtower](https://github.com/containrrr/watchtower/) to update the container. Watchtower is defined so that it only updates containers with the label **com.centurylinklabs.watchtower.enable=true**. That means you don't have to worry about your other containers.
+If you want to get updates for echGo automated, then this is surely exciting for you. Here we use [watchtower](https://github.com/containrrr/watchtower/) to update the container. Watchtower is defined so that it only updates containers with the label `com.centurylinklabs.watchtower.enable=true`. That means you don't have to worry about your other containers.
 
-In order for the echGo service to start properly, you must either do [this](https://github.com/echgo/echgo#create-the-configuration-files) step once before or place [this file](https://github.com/echgo/echgo/blob/master/.echgo.yaml) with your correct data on your system in the **/etc/echgo/configuration** directory.
+In order for the echGo service to start properly, you must either do [this](https://github.com/echgo/echgo#create-the-configuration-files) step once before or place [this file](https://github.com/echgo/echgo/blob/master/.echgo.yaml) with your correct data on your system in the `/etc/echgo/configuration` directory.
 
-Now you can download [this file](https://github.com/echgo/echgo/blob/master/docker-compose.yaml) and start it via ssh in the upload directory with the command **docker-compose up -d**. Or you can copy the code from here.
+Now you can create a docker-compose.yaml and start it via ssh in the upload directory with the command `docker compose up -d` order from version 2 with `docker compose up -d`. Or you can copy the code from here.
 
 ```yaml
-version: "3.9"
+version: "3.5"
 services:
     echgo:
         container_name: echgo
@@ -149,10 +149,10 @@ networks:
 
 [Here](https://docs.docker.com/compose/reference/) you can find a list of all docker-compose commands.
 
-If you eventually want to run multiple servers with echgo, then this might still be interesting for you. Here I have set up a NFS server on which the echgo configuration file is located and create a mount on this server in the volume **echgo_configuration** and use this for the echgo container. A guide for NFS servers and how to use them can be found [here](https://ubuntu.com/server/docs/service-nfs). You can also start this with the usual commands like **docker-compose up -d**. But please remember to enter the IP of the client server at the NSF server before.
+If you eventually want to run multiple servers with echgo, then this might still be interesting for you. Here I have set up a NFS server on which the echgo configuration file is located and create a mount on this server in the volume `echgo_configuration` and use this for the echgo container. A guide for NFS servers and how to use them can be found [here](https://ubuntu.com/server/docs/service-nfs). But please remember to enter the IP of the client server at the NSF server before you start the services via docker compose file.
 
 ```yaml
-version: "3.9"
+version: "3.5"
 services:
     echgo:
         container_name: echgo
