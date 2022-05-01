@@ -13,12 +13,12 @@ type Config struct {
 func (c *Config) Start(job func()) {
 
 	second := c.Time.Second()
-	nano := c.Time.Nanosecond()
+	milli := c.Time.Nanosecond() / 1000000
 
-	wait := 60*1000000000 - (second*1000000000 + nano)
-	time.Sleep(time.Duration(wait) * time.Nanosecond)
+	wait := 60*1000 - (second*1000 + milli)
+	time.Sleep(time.Duration(wait) * time.Millisecond)
 
-	for range time.Tick(time.Minute) {
+	for range time.Tick(time.Minute / 4) {
 		go job()
 	}
 
