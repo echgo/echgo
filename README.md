@@ -103,7 +103,7 @@ The file type .xml can also be used. The structure of the file looks as follows.
 </data>
 ```
 
-Now echGo reads the files every minute and sends them to the specified channels. It is also possible to read in several files of different types at the same time.
+Now echGo reads the files every 15 seconds and sends them to the specified channels. It is also possible to read in several files of different types at the same time.
 
 ## Run the service with updates & docker-compose
 
