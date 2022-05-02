@@ -7,5 +7,5 @@
 .gitignore
 LICENSE
 
-*.yaml
 *.md
+**/.gitkeep
