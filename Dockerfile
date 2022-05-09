@@ -14,11 +14,13 @@ RUN go build -o echgo
 
 FROM alpine:latest AS production
 
+RUN apk --no-cache add \
+    tzdata \
+    curl
+
 ENV TZ=Europe/Berlin
 
 WORKDIR /app/
-
-RUN apk --no-cache add tzdata
 
 COPY files/ files/
 COPY --from=build /tmp/src/echgo .
@@ -26,4 +28,4 @@ COPY --from=build /tmp/src/echgo .
 CMD ["./echgo"]
 
 HEALTHCHECK --interval=1s --timeout=3s \
-    CMD stat files/configuration/echgo.yaml || exit 1
+    CMD curl http://localhost:8888/health | grep good || exit 1
