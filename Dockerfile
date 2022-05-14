@@ -26,6 +26,3 @@ COPY files/ files/
 COPY --from=build /tmp/src/echgo .
 
 CMD ["./echgo"]
-
-HEALTHCHECK --interval=1s --timeout=3s \
-    CMD curl --silent http://localhost:8888/health | grep good || exit 1
