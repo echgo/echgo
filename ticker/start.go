@@ -9,7 +9,7 @@ type Config struct {
 	Time time.Time
 }
 
-// Start is to start the ticker with a job function every minute
+// Start is to start the ticker with a job function every 15 seconds
 func (c *Config) Start(job func()) {
 
 	second := c.Time.Second()

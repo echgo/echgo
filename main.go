@@ -14,7 +14,7 @@ func init() {
 }
 
 // Add dummy configuration file, if none exists
-// And start ticker as go function with notification handler
+// And start ticker function with notification handler
 func main() {
 
 	configuration.CreateIfNotExists()
