@@ -2,7 +2,6 @@ package trello
 
 import (
 	"encoding/json"
-	"fmt"
 	"net/url"
 	"time"
 )
@@ -102,7 +101,7 @@ func CreateCard(name, desc string, r Request) (CreateCardReturn, error) {
 	newUrl.Add("token", r.Token)
 
 	parse.RawQuery = newUrl.Encode()
-	c.Path = fmt.Sprintf("%s", parse)
+	c.Path = parse.String()
 
 	response, err := c.Send()
 	if err != nil {

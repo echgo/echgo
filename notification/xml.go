@@ -34,9 +34,7 @@ func Xml(file *os.File) {
 	}
 
 	var types []string
-	for _, value := range decode.Channels.Type {
-		types = append(types, value)
-	}
+	types = append(types, decode.Channels.Type...)
 
 	channels.Handler(decode.Headline, decode.Message, types)
 

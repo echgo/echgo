@@ -2,7 +2,6 @@ package telegram
 
 import (
 	"encoding/json"
-	"fmt"
 	"net/url"
 )
 
@@ -52,7 +51,7 @@ func CreateMessage(message, parseMode string, r Request) (CreateMessageReturn, e
 	newUrl.Add("text", message)
 
 	parse.RawQuery = newUrl.Encode()
-	c.Path = fmt.Sprintf("%s", parse)
+	c.Path = parse.String()
 
 	response, err := c.Send(r)
 	if err != nil {
