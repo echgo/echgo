@@ -32,9 +32,7 @@ func Yaml(file *os.File) {
 	}
 
 	var types []string
-	for _, value := range decode.Channels {
-		types = append(types, value)
-	}
+	types = append(types, decode.Channels...)
 
 	channels.Handler(decode.Headline, decode.Message, types)
 
