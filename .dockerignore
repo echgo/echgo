@@ -6,6 +6,7 @@
 
 .gitignore
 LICENSE
+Makefile
 
 *.md
 **/.gitkeep
