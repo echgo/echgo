@@ -2,7 +2,6 @@ package matrix
 
 import (
 	"encoding/json"
-	"fmt"
 	"net/url"
 )
 
@@ -44,7 +43,7 @@ func CreateMessage(body CreateMessageBody, r Request) (CreateMessageReturn, erro
 	newUrl.Add("access_token", r.AccessToken)
 
 	parse.RawQuery = newUrl.Encode()
-	c.Path = fmt.Sprintf("%s", parse)
+	c.Path = parse.String()
 
 	response, err := c.Send(r)
 	if err != nil {
