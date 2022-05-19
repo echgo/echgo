@@ -1,7 +1,7 @@
 # Here you can reformat, check, test or publish the software
 BINARY_NAME=echgo
 DOCKER_IMAGE_NAME=echgo/echgo
-DOCKER_IMAGE_VERSION=$(shell git describe --tags --abbrev=0)
+GIT_TAG=$(shell git describe --tags --abbrev=0)
 
 fmt:
 	go fmt ./...
@@ -11,6 +11,15 @@ vet:
 
 lint:
 	golangci-lint run ./...
+
+view-upgrade:
+	go list -u -m all
+
+upgrade:
+	go get -u ./...
+
+download:
+	go mod download
 
 test-build:
 	docker build -t ${DOCKER_IMAGE_NAME}:testing .
@@ -33,4 +42,4 @@ publish:
 	docker buildx b \
 		--platform linux/amd64,linux/arm64,linux/arm/v7 \
 		--push \
-		-t ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_VERSION} -t ${DOCKER_IMAGE_NAME}:latest .
+		-t ${DOCKER_IMAGE_NAME}:${GIT_TAG} -t ${DOCKER_IMAGE_NAME}:latest .
