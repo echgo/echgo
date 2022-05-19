@@ -1,6 +1,7 @@
 # Here you can reformat, check, test or publish the software
 BINARY_NAME=echgo
 DOCKER_IMAGE_NAME=echgo/echgo
+DOCKER_IMAGE_VERSION=$(shell git describe --tags --abbrev=0)
 
 fmt:
 	go fmt ./...
@@ -29,10 +30,7 @@ test-run:
         ${DOCKER_IMAGE_NAME}:testing
 
 publish:
-	git checkout master
-	git pull
 	docker buildx b \
 		--platform linux/amd64,linux/arm64,linux/arm/v7 \
 		--push \
-		-t ${DOCKER_IMAGE_NAME}:$(shell git describe --tags --abbrev=0) -t ${DOCKER_IMAGE_NAME}:latest .
-	git checkout development
+		-t ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_VERSION} -t ${DOCKER_IMAGE_NAME}:latest .
