@@ -38,6 +38,13 @@ test-run:
         -v /var/lib/${BINARY_NAME}/notification:/app/files/notification \
         ${DOCKER_IMAGE_NAME}:testing
 
+test-kill:
+	docker stop ${BINARY_NAME}-testing
+	docker rm ${BINARY_NAME}-testing
+
+test-remove:
+	docker image rm ${DOCKER_IMAGE_NAME}:testing
+
 publish:
 	docker buildx b \
 		--platform linux/amd64,linux/arm64,linux/arm/v7 \
