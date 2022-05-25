@@ -25,4 +25,4 @@ WORKDIR /app/
 COPY files/ files/
 COPY --from=build /tmp/src/echgo .
 
-CMD ["./echgo"]
+ENTRYPOINT ["./echgo"]
