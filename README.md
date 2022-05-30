@@ -203,6 +203,7 @@ Here you will find channels we have planned or already implemented. If you think
 - Message Bird
 - Pushover
 - Microsoft Teams
+- WhatsApp Business
 
 ## Added channels
 
