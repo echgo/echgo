@@ -1,17 +1,19 @@
 package smtp
 
+import "net/mail"
+
 // Access is to config the smtp access data
 type Access struct {
 	Host     string
 	Port     int
-	Username string
+	Username mail.Address
 	Password string
 }
 
-// Data is to structure the data
+// Data is to structure the email data
 type Data struct {
-	Email   string
+	Email   mail.Address
 	Subject string
-	File    *string
-	HTML    string
+	Type    string
+	Message string
 }

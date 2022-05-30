@@ -2,29 +2,73 @@ package smtp
 
 import (
 	"crypto/tls"
-	"gopkg.in/gomail.v2"
+	"net/smtp"
+	"strconv"
 )
 
 // SendEmail is to send an email
 // You can send the emails with smtp & add attachment files
 func SendEmail(d Data, a Access) error {
 
-	m := gomail.NewMessage()
+	headers := make(map[string]string)
+	headers["Content-Type"] = d.Type
+	headers["From"] = a.Username.String()
+	headers["To"] = d.Email.String()
+	headers["Subject"] = d.Subject
 
-	m.SetHeader("From", a.Username)
-	m.SetHeader("To", d.Email)
-	m.SetHeader("Subject", d.Subject)
+	var message string
+	for index, value := range headers {
+		message += index + ": " + value + "\r\n"
+	}
+	message += "\r\n" + d.Message
 
-	if d.File != nil {
-		m.Attach(*d.File)
+	authentication := smtp.PlainAuth("", a.Username.Address, a.Password, a.Host)
+
+	configuration := &tls.Config{
+		ServerName: a.Host,
 	}
 
-	m.SetBody("text/html", d.HTML)
+	connection, err := tls.Dial("tcp", a.Host+":"+strconv.Itoa(a.Port), configuration)
+	if err != nil {
+		return err
+	}
 
-	dialer := gomail.NewDialer(a.Host, a.Port, a.Username, a.Password)
-	dialer.TLSConfig = &tls.Config{ServerName: a.Host}
+	client, err := smtp.NewClient(connection, a.Host)
+	if err != nil {
+		return err
+	}
 
-	err := dialer.DialAndSend(m)
+	err = client.Auth(authentication)
+	if err != nil {
+		return err
+	}
+
+	err = client.Mail(a.Username.Address)
+	if err != nil {
+		return err
+	}
+
+	err = client.Rcpt(d.Email.Address)
+	if err != nil {
+		return err
+	}
+
+	writer, err := client.Data()
+	if err != nil {
+		return err
+	}
+
+	_, err = writer.Write([]byte(message))
+	if err != nil {
+		return err
+	}
+
+	err = writer.Close()
+	if err != nil {
+		return err
+	}
+
+	err = client.Quit()
 	if err != nil {
 		return err
 	}
