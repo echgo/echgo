@@ -3,24 +3,29 @@ package smtp
 import (
 	"github.com/echgo/echgo/configuration"
 	"log"
+	"net/mail"
 )
 
 // Execute is to execute the send function
-// & lead all configuration data
+// & load all configuration data
 func Execute(headline, message string) {
 
-	a := Access{
-		Host:     configuration.Data.Channels.SMTP.Host,
-		Port:     configuration.Data.Channels.SMTP.Port,
-		Username: configuration.Data.Channels.SMTP.Username,
-		Password: configuration.Data.Channels.SMTP.Password,
+	d := Data{
+		Email: mail.Address{
+			Address: configuration.Data.Channels.SMTP.EmailRecipient,
+		},
+		Subject: headline,
+		Type:    "text/plain",
+		Message: message,
 	}
 
-	d := Data{
-		Email:   configuration.Data.Channels.SMTP.EmailRecipient,
-		Subject: headline,
-		File:    nil,
-		HTML:    message,
+	a := Access{
+		Host: configuration.Data.Channels.SMTP.Host,
+		Port: configuration.Data.Channels.SMTP.Port,
+		Username: mail.Address{
+			Address: configuration.Data.Channels.SMTP.Username,
+		},
+		Password: configuration.Data.Channels.SMTP.Password,
 	}
 
 	err := SendEmail(d, a)
