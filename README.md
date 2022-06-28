@@ -216,3 +216,7 @@ Here you can find all added channels and in which version they are added.
 - osTicket - _Added in version v0.1.2_
 - Slack - _Added in version v0.1.3_
 - twilio - _Added in version v1.0.3_
+
+## Special thanks
+
+Thanks to [JetBrains](https://github.com/JetBrains) for supporting me with this and other [open source projects](https://www.jetbrains.com/community/opensource/#support)!
