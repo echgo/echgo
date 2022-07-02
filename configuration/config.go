@@ -89,7 +89,7 @@ type Webhook struct {
 
 // path is to save the path of the configuration file
 const (
-	localPath = "files/configuration/default.sjson"
+	localPath = "files/configuration/default.json"
 )
 
 // Data is to save & get the data of the loaded configuration file
