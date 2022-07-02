@@ -1,14 +1,14 @@
 package configuration
 
 import (
-	"gopkg.in/yaml.v2"
+	"encoding/json"
 	"io"
 	"log"
 	"os"
 )
 
 // Import is to notification the configuration
-// To open, decode & close the yaml file
+// To open, decode & close the json file
 func Import() {
 
 	path := absolutePath()
@@ -28,7 +28,7 @@ func Import() {
 		log.Fatalln(err)
 	}
 
-	err = yaml.Unmarshal(read, &Data)
+	err = json.Unmarshal(read, &Data)
 	if err != nil {
 		log.Fatalln(err)
 	}
