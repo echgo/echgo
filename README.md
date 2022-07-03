@@ -5,7 +5,7 @@
 
 [![GitHub go.mod Go version of a Go module](https://img.shields.io/github/go-mod/go-version/echgo/echgo.svg)](https://golang.org/) [![Go](https://github.com/echgo/echgo/actions/workflows/go.yml/badge.svg)](https://github.com/echgo/echgo/actions/workflows/go.yml) [![Docker Image CI](https://github.com/echgo/echgo/actions/workflows/docker-image.yml/badge.svg)](https://github.com/echgo/echgo/actions/workflows/docker-image.yml) [![CodeQL](https://github.com/echgo/echgo/actions/workflows/codeql.yml/badge.svg)](https://github.com/echgo/echgo/actions/workflows/codeql.yml) [![Go Report Card](https://goreportcard.com/badge/github.com/echgo/echgo)](https://goreportcard.com/report/github.com/echgo/echgo) ![Docker Pulls](https://img.shields.io/docker/pulls/echgo/echgo) [![GitHub issues](https://img.shields.io/github/issues/echgo/echgo)](https://github.com/echgo/echgo/issues) [![GitHub forks](https://img.shields.io/github/forks/echgo/echgo)](https://github.com/echgo/echgo/network) [![GitHub stars](https://img.shields.io/github/stars/echgo/echgo)](https://github.com/echgo/echgo/stargazers) [![GitHub license](https://img.shields.io/github/license/echgo/echgo)](https://github.com/echgo/echgo/blob/master/LICENSE) 
 
-This small Docker project is the easiest way to send notifications directly via .txt, .json, .yaml or .xml files to services like: [Gotify](https://gotify.net/), [Matrix](https://matrix.org/), [Telegram](https://telegram.org/), [Discord](https://discord.com/), [Slack](https://slack.com/), [Trello](https://trello.com/de), [Zendesk](https://www.zendesk.de/), [osTicket](https://osticket.com/), [twillo](https://www.twilio.com/), SMTP (Email) or Webhook. **Now with 97,97% smaller compressed docker image.**
+This small Docker project is the easiest way to send notifications directly via .txt, .json or .xml files to services like: [Gotify](https://gotify.net/), [Matrix](https://matrix.org/), [Telegram](https://telegram.org/), [Discord](https://discord.com/), [Slack](https://slack.com/), [Trello](https://trello.com/de), [Zendesk](https://www.zendesk.de/), [osTicket](https://osticket.com/), [twillo](https://www.twilio.com/), SMTP (Email) or Webhook. **Now with 97,97% smaller compressed docker image.**
     
 </div>
 
@@ -44,7 +44,7 @@ Now the service should run. With the command we map once the configuration file 
 
 Now we create a notification to be sent to different channels. You can also enter only one channel. How these notification files are created later is up to you. With a bash script or from another program does not matter.
 
-The only important thing is that the file is placed in this folder `/var/lib/echgo/notification`. The name of the file does not matter. It only matters that the file extension and the file format are correct. Currently, we can read the following formats: **.txt, .json, .yaml & .xml**. 
+The only important thing is that the file is placed in this folder `/var/lib/echgo/notification`. The name of the file does not matter. It only matters that the file extension and the file format are correct. Currently, we can read the following formats: **.txt, .json & .xml**. 
 
 You can store the following channels in the file, if they are configured: **gotify, matrix, telegram, discord, slack, trello, zendesk, osticket, twillo, smtp & webhook**. These are always specified in an array. That means you can address one or more channels with one notification file. Now let's look at the currently available file formats and how you can configure them.
 
@@ -76,18 +76,6 @@ Here you can find an example for a .json file. Here you can also enter several o
 }
 ```
 
-#### YAML file
-
-If we now take a look at the .yaml file, we can directly see the connection to the .json file. This can be recorded in exactly the same way as the other file types. If you need more information about YAML, you can find the official site [here](https://yaml.org/).
-
-```yaml
-channels:
-    - "gotify"
-    - "slack"
-headline: "echGo"
-message: "This is a test message from a yaml file."
-```
-
 #### XML file
 
 The file type .xml can also be used. The structure of the file looks as follows. If you need to XML, you can find it [here](https://www.xml.com/).
@@ -109,9 +97,9 @@ Now echGo reads the files every 15 seconds and sends them to the specified chann
 
 If you want to get updates for echGo automated, then this is surely exciting for you. Here we use [watchtower](https://github.com/containrrr/watchtower/) to update the container. Watchtower is defined so that it only updates containers with the label `com.centurylinklabs.watchtower.enable=true`. That means you don't have to worry about your other containers.
 
-In order for the echGo service to start properly, you must either do [this](https://github.com/echgo/echgo#create-the-configuration-files) step once before or place [this file](https://github.com/echgo/echgo/blob/master/.echgo.yaml) with your correct data on your system in the `/etc/echgo/configuration` directory.
+In order for the echGo service to start properly, you must either do [this](https://github.com/echgo/echgo#create-the-configuration-files) step once before.
 
-Now you can create a docker-compose.yaml and start it via ssh in the upload directory with the command `docker-compose up -d` order from version 2 with `docker compose up -d`. Or you can copy the code from here.
+Now you can create a docker-compose.yml and start it via ssh in the upload directory with the command `docker-compose up -d` order from version 2 with `docker compose up -d`. Or you can copy the code from here.
 
 ```yaml
 version: "3.5"
@@ -192,7 +180,7 @@ networks:
         driver: bridge
 ```
 
-If you want to use this docker-compose, just copy the part and save it in a docker-compose.yaml file. Then you can start directly with it.
+If you want to use this docker-compose, just copy the part and save it in a docker-compose.yml file. Then you can start directly with it.
 
 ## Planned channels
 
@@ -219,4 +207,4 @@ Here you can find all added channels and in which version they are added.
 
 ## Special thanks
 
-Thanks to [JetBrains](https://github.com/JetBrains) for supporting me with this and other [open source projects](https://www.jetbrains.com/community/opensource/#support)!
+Thanks to [JetBrains](https://github.com/JetBrains) for supporting me with this and other [open source projects](https://www.jetbrains.com/community/opensource/#support)

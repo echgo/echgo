@@ -1,8 +1,8 @@
 package configuration
 
 import (
+	"encoding/json"
 	"flag"
-	"gopkg.in/yaml.v2"
 	"log"
 	"os"
 )
@@ -17,7 +17,7 @@ func CreateIfNotExists() {
 
 		data := Body{}
 
-		prepare, err := yaml.Marshal(data)
+		prepare, err := json.Marshal(data)
 		if err != nil {
 			log.Fatalln(err)
 		}
