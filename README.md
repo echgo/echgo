@@ -186,9 +186,6 @@ If you want to use this docker-compose, just copy the part and save it in a dock
 
 Here you will find channels we have planned or already implemented. If you think of another one, please send it to us.
 
-- CM
-- Ntfy
-- Message Bird
 - Pushover
 - Microsoft Teams
 - WhatsApp Business
