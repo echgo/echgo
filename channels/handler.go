@@ -5,6 +5,7 @@ import (
 	"github.com/echgo/echgo/gotify"
 	"github.com/echgo/echgo/matrix"
 	"github.com/echgo/echgo/osticket"
+	"github.com/echgo/echgo/pushover"
 	"github.com/echgo/echgo/slack"
 	"github.com/echgo/echgo/smtp"
 	"github.com/echgo/echgo/telegram"
@@ -23,6 +24,8 @@ func Handler(headline, message string, types []string) {
 		switch {
 		case strings.EqualFold("gotify", value):
 			gotify.Execute(headline, message)
+		case strings.EqualFold("pushover", value):
+			pushover.Execute(headline, message)
 		case strings.EqualFold("matrix", value):
 			matrix.Execute(headline, message)
 		case strings.EqualFold("telegram", value):

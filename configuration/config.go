@@ -12,6 +12,7 @@ type Body struct {
 
 type Channels struct {
 	Gotify   Gotify   `json:"gotify"`
+	Pushover Pushover `json:"pushover"`
 	Matrix   Matrix   `json:"matrix"`
 	Telegram Telegram `json:"telegram"`
 	Discord  Discord  `json:"discord"`
@@ -27,6 +28,11 @@ type Channels struct {
 type Gotify struct {
 	Domain string `json:"domain"`
 	Key    string `json:"key"`
+}
+
+type Pushover struct {
+	Token string `json:"token"`
+	User  string `json:"user"`
 }
 
 type Matrix struct {
