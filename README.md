@@ -19,8 +19,8 @@ First, we start the Docker container to create the configuration file. For this 
 
 ```console
 docker run --name echgo-init -d --rm \
-	-v /etc/echgo/configuration:/app/files/configuration \
-	echgo/echgo:latest
+    -v /etc/echgo/configuration:/app/files/configuration \
+    echgo/echgo:latest
 ```
 
 If the container was started, then the directory `/etc/echgo/configuration` is created. Here you will find the configuration for the different communication paths. Please fill in and save this as required. If you want to adjust the configuration. You do not have to restart the Docker container again. The software reads the configuration once before each run, so it is always up-to-date.
@@ -33,9 +33,9 @@ Now we can start the service directly. To do this, please run the following comm
 
 ```console
 docker run --name echgo -d --restart always \
-	-v /etc/echgo/configuration:/app/files/configuration \
-	-v /var/lib/echgo/notification:/app/files/notification \
-	echgo/echgo:latest
+    -v /etc/echgo/configuration:/app/files/configuration \
+    -v /var/lib/echgo/notification:/app/files/notification \
+    echgo/echgo:latest
 ```
 
 Now the service should run. With the command we map once the configuration file and the location of the notifications.
@@ -66,13 +66,13 @@ Here you can find an example for a .json file. Here you can also enter several o
 
 ```json
 {
-	"channels": [
-		"gotify",
-		"matrix",
-		"zendesk"
-	],
-	"headline": "Nice headline",
-	"message": "This is a test message from a json file."
+    "channels": [
+        "gotify",
+        "matrix",
+        "zendesk"
+    ],
+    "headline": "Nice headline",
+    "message": "This is a test message from a json file."
 }
 ```
 
@@ -82,12 +82,12 @@ The file type .xml can also be used. The structure of the file looks as follows.
 
 ```xml
 <data>
-	<channels>
-		<type>gotify</type>
-		<type>discord</type>
-	</channels>
-	<headline>echGo</headline>
-	<message>This is a test message from a xml file.</message>
+    <channels>
+        <type>gotify</type>
+        <type>discord</type>
+    </channels>
+    <headline>echGo</headline>
+    <message>This is a test message from a xml file.</message>
 </data>
 ```
 
@@ -104,28 +104,28 @@ Now you can create a docker-compose.yml and start it via ssh in the upload direc
 ```yaml
 version: "3.5"
 services:
-	watchtower:
-		container_name: watchtower
-		volumes:
-			- /var/run/docker.sock:/var/run/docker.sock
-		expose:
-			- 8080
-		restart: always
-		image: containrrr/watchtower:latest
-		command: --cleanup --include-restarting --rolling-restart --include-stopped --label-enable --interval 3600
-	echgo:
-		container_name: echgo
-		environment:
-			- TZ=Europe/Berlin
-		volumes:
-			- /etc/echgo/configuration:/app/files/configuration
-			- /var/lib/echgo/notification:/app/files/notification
-		labels:
-			- com.centurylinklabs.watchtower.enable=true
-		depends_on:
-			- watchtower
-		restart: always
-		image: echgo/echgo:latest
+    watchtower:
+        container_name: watchtower
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+        expose:
+            - 8080
+        restart: always
+        image: containrrr/watchtower:latest
+        command: --cleanup --include-restarting --rolling-restart --include-stopped --label-enable --interval 3600
+    echgo:
+        container_name: echgo
+        environment:
+            - TZ=Europe/Berlin
+        volumes:
+            - /etc/echgo/configuration:/app/files/configuration
+            - /var/lib/echgo/notification:/app/files/notification
+        labels:
+            - com.centurylinklabs.watchtower.enable=true
+        depends_on:
+            - watchtower
+        restart: always
+        image: echgo/echgo:latest
 ```
 
 [Here](https://docs.docker.com/compose/reference/) you can find a list of all docker-compose commands.
@@ -135,33 +135,33 @@ If you eventually want to run multiple servers with echgo, then this might still
 ```yaml
 version: "3.5"
 services:
-	watchtower:
-		container_name: watchtower
-		volumes:
-			- /var/run/docker.sock:/var/run/docker.sock
-		expose:
-			- 8080
-		restart: always
-		image: containrrr/watchtower:latest
-		command: --cleanup --include-restarting --rolling-restart --include-stopped --label-enable --interval 3600
-	echgo:
-		container_name: echgo
-		environment:
-			- TZ=Europe/Berlin
-		volumes:
-			- /var/lib/echgo/notification:/app/files/notification
-			- echgo_configuration:/app/files/configuration
-		labels:
-			- com.centurylinklabs.watchtower.enable=true
-		restart: always
-		image: echgo/echgo:latest
+    watchtower:
+        container_name: watchtower
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+        expose:
+            - 8080
+        restart: always
+        image: containrrr/watchtower:latest
+        command: --cleanup --include-restarting --rolling-restart --include-stopped --label-enable --interval 3600
+    echgo:
+        container_name: echgo
+        environment:
+            - TZ=Europe/Berlin
+        volumes:
+            - /var/lib/echgo/notification:/app/files/notification
+            - echgo_configuration:/app/files/configuration
+        labels:
+            - com.centurylinklabs.watchtower.enable=true
+        restart: always
+        image: echgo/echgo:latest
 volumes:
-	echgo_configuration:
-		driver: local
-		driver_opts:
-			type: nfs
-			o: nfsvers=4,addr=1.2.3.4,ro,async
-			device: :/mnt/docker/echgo
+    echgo_configuration:
+        driver: local
+        driver_opts:
+            type: nfs
+            o: nfsvers=4,addr=1.2.3.4,ro,async
+            device: :/mnt/docker/echgo
 ```
 
 If you want to use this docker-compose, just copy the part and save it in a docker-compose.yml file. Then you can start directly with it.
