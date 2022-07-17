@@ -90,7 +90,7 @@ type SMTP struct {
 }
 
 type Webhook struct {
-	Domain string `Webhook:"domain"`
+	Domain string `json:"domain"`
 }
 
 // path is to save the path of the configuration file
