@@ -108,7 +108,7 @@ func absolutePath() string {
 
 	path, err := filepath.Abs(localPath)
 	if err != nil {
-		log.Fatalln()
+		log.Fatalln(err)
 	}
 
 	return path
