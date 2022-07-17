@@ -2,7 +2,7 @@ package smtp
 
 import (
 	"github.com/echgo/echgo/configuration"
-	"log"
+	"github.com/echgo/echgo/console"
 	"net/mail"
 )
 
@@ -30,7 +30,9 @@ func Execute(headline, message string) {
 
 	err := SendEmail(d, a)
 	if err != nil {
-		log.Fatalln(err)
+		attributes := make(map[string]any)
+		attributes["error"] = err
+		console.Log("error", "An error occurred while sending the email via smtp.", attributes)
 	}
 
 }

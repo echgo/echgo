@@ -2,7 +2,7 @@ package trello
 
 import (
 	"github.com/echgo/echgo/configuration"
-	"log"
+	"github.com/echgo/echgo/console"
 )
 
 // Execute is to execute the create card function
@@ -17,7 +17,9 @@ func Execute(headline, message string) {
 
 	_, err := CreateCard(headline, message, r)
 	if err != nil {
-		log.Fatalln(err)
+		attributes := make(map[string]any)
+		attributes["error"] = err
+		console.Log("error", "An error occurred while creating the card via trello.", attributes)
 	}
 
 }
