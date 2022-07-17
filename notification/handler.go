@@ -2,6 +2,7 @@ package notification
 
 import (
 	"github.com/echgo/echgo/configuration"
+	"github.com/echgo/echgo/console"
 	"log"
 	"os"
 	"path/filepath"
@@ -27,7 +28,9 @@ func Handler() {
 				log.Fatalln(err)
 			}
 
-			log.Printf("A file with the name: '%s' was imported.\n", value.Name())
+			attributes := make(map[string]any)
+			attributes["file_name"] = value.Name()
+			console.Log("info", "A file was imported.", attributes)
 
 			switch filepath.Ext(value.Name()) {
 			case ".txt":
