@@ -3,6 +3,7 @@ package configuration
 import (
 	"encoding/json"
 	"flag"
+	"github.com/echgo/echgo/console"
 	"log"
 	"os"
 )
@@ -27,7 +28,7 @@ func CreateIfNotExists() {
 			log.Fatalln(err)
 		}
 
-		log.Println("A new configuration file has been created at /etc/echgo/configuration. Please fill in the configuration file and restart the container.")
+		console.Log("info", "A new configuration file has been created at /etc/echgo/configuration. Please fill in the configuration file and restart the container.", map[string]any{})
 
 		if flag.Lookup("test.v") == nil {
 			os.Exit(1)
