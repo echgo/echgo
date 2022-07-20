@@ -5,13 +5,14 @@ import (
 	"io"
 	"log"
 	"os"
+	"path/filepath"
 )
 
 // Import is to notification the configuration
 // To open, decode & close the json file
 func Import() {
 
-	path := absolutePath()
+	path := filepath.Join("files", "configuration", "default.json")
 
 	file, err := os.Open(path)
 	if err != nil {

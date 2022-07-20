@@ -17,7 +17,7 @@ func init() {
 // And start ticker function with notification handler
 func main() {
 
-	configuration.CreateIfNotExists()
+	configuration.Create()
 
 	c := ticker.Config{Time: time.Now()}
 	c.Start(notification.Handler)

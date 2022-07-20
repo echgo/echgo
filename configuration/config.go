@@ -1,10 +1,5 @@
 package configuration
 
-import (
-	"log"
-	"path/filepath"
-)
-
 // Body is to save & decode the json data
 type Body struct {
 	Channels Channels `json:"channels"`
@@ -93,24 +88,7 @@ type Webhook struct {
 	Domain string `json:"domain"`
 }
 
-// path is to save the path of the configuration file
-const (
-	localPath = "files/configuration/default.json"
-)
-
 // Data is to save & get the data of the loaded configuration file
 var (
 	Data Body
 )
-
-// absolutePath is to get the absolute file path
-func absolutePath() string {
-
-	path, err := filepath.Abs(localPath)
-	if err != nil {
-		log.Fatalln(err)
-	}
-
-	return path
-
-}
