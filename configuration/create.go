@@ -17,9 +17,7 @@ func Create() {
 
 	if _, err := os.Stat(path); os.IsNotExist(err) {
 
-		data := Body{}
-
-		prepare, err := json.Marshal(data)
+		prepare, err := json.MarshalIndent(Body{}, "", "	")
 		if err != nil {
 			log.Fatalln(err)
 		}
