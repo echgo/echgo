@@ -6,19 +6,18 @@ import (
 	"github.com/echgo/echgo/console"
 	"log"
 	"os"
+	"path/filepath"
 )
 
-// CreateIfNotExists is to create a configuration file, if none exists
+// Create is to create a configuration file, if none exists
 // We add dummy data to the file
-func CreateIfNotExists() {
+func Create() {
 
-	path := absolutePath()
+	path := filepath.Join("files", "configuration", "default.json")
 
 	if _, err := os.Stat(path); os.IsNotExist(err) {
 
-		data := Body{}
-
-		prepare, err := json.Marshal(data)
+		prepare, err := json.MarshalIndent(Body{}, "", "	")
 		if err != nil {
 			log.Fatalln(err)
 		}
@@ -28,7 +27,7 @@ func CreateIfNotExists() {
 			log.Fatalln(err)
 		}
 
-		console.Log("info", "A new configuration file has been created at /etc/echgo/configuration. Please fill in the configuration file and restart the container.", map[string]any{})
+		console.Log("info", "A new configuration file has been created at /etc/echgo/configuration.", map[string]any{})
 
 		if flag.Lookup("test.v") == nil {
 			os.Exit(1)
