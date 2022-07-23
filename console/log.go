@@ -27,9 +27,9 @@ func Log(kind, message string, attributes map[string]any) {
 		color = cyan
 	}
 
-	kind = fmt.Sprintf("%s%s%s[%d]", color, strings.ToUpper(kind), reset, time.Now().Unix())
+	kind = fmt.Sprintf("%s%s%s[%s]", color, strings.ToUpper(kind), reset, time.Now().Format("2006-01-02T15:04:05"))
 
-	fmt.Printf("%-30s", kind)
+	fmt.Printf("%-*s", len(kind)+2, kind)
 	fmt.Printf("%s\t", message)
 
 	keys := make([]string, 0, len(attributes))
