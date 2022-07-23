@@ -102,7 +102,7 @@ In order for the echGo service to start properly, you must either do [this](http
 Now you can create a docker-compose.yml and start it via ssh in the upload directory with the command `docker-compose up -d` order from version 2 with `docker compose up -d`. Or you can copy the code from here.
 
 ```yaml
-version: "3.5"
+version: "3.9"
 services:
     watchtower:
         container_name: watchtower
@@ -123,7 +123,8 @@ services:
         labels:
             - com.centurylinklabs.watchtower.enable=true
         depends_on:
-            - watchtower
+            watchtower:
+              condition: service_started
         restart: always
         image: echgo/echgo:latest
 ```
@@ -133,7 +134,7 @@ services:
 If you eventually want to run multiple servers with echgo, then this might still be interesting for you. Here I have set up a NFS server on which the echgo configuration file is located and create a mount on this server in the volume `echgo_configuration` and use this for the echgo container. A guide for NFS servers and how to use them can be found [here](https://ubuntu.com/server/docs/service-nfs). But please remember to enter the IP of the client server at the NSF server before you start the services via docker compose file.
 
 ```yaml
-version: "3.5"
+version: "3.9"
 services:
     watchtower:
         container_name: watchtower
@@ -153,6 +154,9 @@ services:
             - echgo_configuration:/app/files/configuration
         labels:
             - com.centurylinklabs.watchtower.enable=true
+        depends_on:
+          watchtower:
+            condition: service_started
         restart: always
         image: echgo/echgo:latest
 volumes:
