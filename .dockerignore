@@ -3,6 +3,7 @@
 .git/
 .github/
 .idea/
+testing/
 
 .gitignore
 LICENSE
