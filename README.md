@@ -188,4 +188,4 @@ Here you can find all added channels and in which version they are added.
 
 ## Special thanks
 
-Thanks to [JetBrains](https://github.com/JetBrains) for supporting me with this and other [open source projects](https://www.jetbrains.com/community/opensource/#support)
+Thanks to [JetBrains](https://github.com/JetBrains) for supporting me with this and other [open source projects](https://www.jetbrains.com/community/opensource/#support).
