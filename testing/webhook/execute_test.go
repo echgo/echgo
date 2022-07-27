@@ -1,13 +1,13 @@
-package pushover
+package webhook
 
 import (
 	"github.com/echgo/echgo/configuration"
-	"github.com/echgo/echgo/pushover"
 	_ "github.com/echgo/echgo/testing"
+	"github.com/echgo/echgo/webhook"
 	"testing"
 )
 
-// TestExecute is to test the pushover execute function
+// TestExecute is to test the webhook execute function
 func TestExecute(t *testing.T) {
 
 	configuration.Import()
@@ -15,6 +15,6 @@ func TestExecute(t *testing.T) {
 	headline := "Testing"
 	message := "This is a message about test corners."
 
-	pushover.Execute(headline, message)
+	webhook.Execute(headline, message)
 
 }

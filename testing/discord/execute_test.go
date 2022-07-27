@@ -1,13 +1,13 @@
-package pushover
+package discord
 
 import (
 	"github.com/echgo/echgo/configuration"
-	"github.com/echgo/echgo/pushover"
+	"github.com/echgo/echgo/discord"
 	_ "github.com/echgo/echgo/testing"
 	"testing"
 )
 
-// TestExecute is to test the pushover execute function
+// TestExecute is to test the discord execute function
 func TestExecute(t *testing.T) {
 
 	configuration.Import()
@@ -15,6 +15,6 @@ func TestExecute(t *testing.T) {
 	headline := "Testing"
 	message := "This is a message about test corners."
 
-	pushover.Execute(headline, message)
+	discord.Execute(headline, message)
 
 }
