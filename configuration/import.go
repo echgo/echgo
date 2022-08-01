@@ -8,8 +8,8 @@ import (
 	"path/filepath"
 )
 
-// Import is to notification the configuration
-// To open, decode & close the json file
+// Import is to import the configuration file
+// An open, decode & close the json file
 func Import() {
 
 	path := filepath.Join("files", "configuration", "default.json")
