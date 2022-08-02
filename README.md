@@ -5,7 +5,7 @@
 
 [![GitHub go.mod Go version of a Go module](https://img.shields.io/github/go-mod/go-version/echgo/echgo.svg)](https://golang.org/) [![Go](https://github.com/echgo/echgo/actions/workflows/go.yml/badge.svg)](https://github.com/echgo/echgo/actions/workflows/go.yml) [![Docker Image CI](https://github.com/echgo/echgo/actions/workflows/docker-image.yml/badge.svg)](https://github.com/echgo/echgo/actions/workflows/docker-image.yml) [![CodeQL](https://github.com/echgo/echgo/actions/workflows/codeql.yml/badge.svg)](https://github.com/echgo/echgo/actions/workflows/codeql.yml) [![Go Report Card](https://goreportcard.com/badge/github.com/echgo/echgo)](https://goreportcard.com/report/github.com/echgo/echgo) ![Docker Pulls](https://img.shields.io/docker/pulls/echgo/echgo) [![GitHub issues](https://img.shields.io/github/issues/echgo/echgo)](https://github.com/echgo/echgo/issues) [![GitHub forks](https://img.shields.io/github/forks/echgo/echgo)](https://github.com/echgo/echgo/network) [![GitHub stars](https://img.shields.io/github/stars/echgo/echgo)](https://github.com/echgo/echgo/stargazers) [![GitHub license](https://img.shields.io/github/license/echgo/echgo)](https://github.com/echgo/echgo/blob/master/LICENSE) 
 
-This small Docker project is the easiest way to send notifications directly via .txt, .json or .xml files to services like: [Gotify](https://gotify.net/), [Pushover](https://pushover.net/), [Matrix](https://matrix.org/), [Telegram](https://telegram.org/), [Discord](https://discord.com/), [Slack](https://slack.com/), [Trello](https://trello.com/de), [Zendesk](https://www.zendesk.de/), [osTicket](https://osticket.com/), [twillo](https://www.twilio.com/), SMTP (Email) or Webhook. **Now with 97,97% smaller compressed docker image.**
+This small Docker project is the easiest way to send notifications directly via .txt, .json or .xml files to services like: [Gotify](https://gotify.net/), [Pushover](https://pushover.net/), [Matrix](https://matrix.org/), [Telegram](https://telegram.org/), [Discord](https://discord.com/), [Slack](https://slack.com/), [Trello](https://trello.com/de), [Zendesk](https://www.zendesk.de/), [osTicket](https://osticket.com/), [twillo](https://www.twilio.com/), SMTP (Email) or Webhook. 
     
 </div>
 
@@ -40,13 +40,27 @@ docker run --name echgo -d --restart always \
 
 Now the service should run. With the command we map once the configuration file and the location of the notifications.
 
+### Further adjustments
+
+If you like to adjust the interval of 15 seconds, you can do this with the following variable `INTERVALL`. This must be of type `integer`, otherwise it will not be taken into account. The whole thing looks like this.
+
+```console
+docker run --name echgo -d --restart always \
+    -e INTERVALL=5
+    -v /etc/echgo/configuration:/app/files/configuration \
+    -v /var/lib/echgo/notification:/app/files/notification \
+    echgo/echgo:latest
+```
+
+With these settings, the service now reads the notifications every 5 seconds.
+
 ### Create notification
 
 Now we create a notification to be sent to different channels. You can also enter only one channel. How these notification files are created later is up to you. With a bash script or from another program does not matter.
 
-The only important thing is that the file is placed in this folder `/var/lib/echgo/notification`. The name of the file does not matter. It only matters that the file extension and the file format are correct. Currently, we can read the following formats: **.txt, .json & .xml**. 
+The only important thing is that the file is placed in this folder `/var/lib/echgo/notification`. The name of the file does not matter. It only matters that the file extension and the file format are correct. Currently, we can read the following formats: `.txt, .json & .xml`. 
 
-You can store the following channels in the file, if they are configured: **gotify, pushover, matrix, telegram, discord, slack, trello, zendesk, osticket, twillo, smtp & webhook**. These are always specified in an array. That means you can address one or more channels with one notification file. Now let's look at the currently available file formats and how you can configure them.
+You can store the following channels in the file, if they are configured: gotify, pushover, matrix, telegram, discord, slack, trello, zendesk, osticket, twillo, smtp & webhook`. These are always specified in an array. That means you can address one or more channels with one notification file. Now let's look at the currently available file formats and how you can configure them.
 
 #### TXT file
 
