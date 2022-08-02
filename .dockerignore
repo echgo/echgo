@@ -10,3 +10,4 @@ Makefile
 
 *.md
 **/.gitkeep
+**/*_test.go
