@@ -6,18 +6,14 @@ import (
 	"testing"
 )
 
-// domain, roomId, accessToken are important for the testing
-// Please fill them out for successfully test
-const (
-	domain      = ""
-	roomId      = ""
-	accessToken = ""
-)
-
 // TestExecute is to test the execute function
-// We set the environment from the local const's
+// We set the environment from the local variables
 // And send a testing message to the service
 func TestExecute(t *testing.T) {
+
+	domain := ""
+	roomId := ""
+	accessToken := ""
 
 	err := os.Setenv("MATRIX_DOMAIN", domain)
 	if err != nil {

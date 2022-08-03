@@ -6,16 +6,12 @@ import (
 	"testing"
 )
 
-// webhookUrl are important for the testing
-// Please fill them out for successfully test
-const (
-	webhookUrl = ""
-)
-
 // TestExecute is to test the execute function
-// We set the environment from the local const's
+// We set the environment from the local variables
 // And send a testing message to the service
 func TestExecute(t *testing.T) {
+
+	webhookUrl := ""
 
 	err := os.Setenv("SLACK_WEBHOOK_URL", webhookUrl)
 	if err != nil {

@@ -6,16 +6,12 @@ import (
 	"testing"
 )
 
-// domain are important for the testing
-// Please fill them out for successfully test
-const (
-	domain = ""
-)
-
 // TestExecute is to test the execute function
-// We set the environment from the local const's
+// We set the environment from the local variables
 // And send a testing message to the service
 func TestExecute(t *testing.T) {
+
+	domain := ""
 
 	err := os.Setenv("WEBHOOK_DOMAIN", domain)
 	if err != nil {

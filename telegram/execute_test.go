@@ -6,17 +6,13 @@ import (
 	"testing"
 )
 
-// apiToken, chatId are important for the testing
-// Please fill them out for successfully test
-const (
-	apiToken = ""
-	chatId   = ""
-)
-
 // TestExecute is to test the execute function
-// We set the environment from the local const's
+// We set the environment from the local variables
 // And send a testing message to the service
 func TestExecute(t *testing.T) {
+
+	apiToken := ""
+	chatId := ""
 
 	err := os.Setenv("TELEGRAM_API_TOKEN", apiToken)
 	if err != nil {

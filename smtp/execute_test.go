@@ -6,20 +6,16 @@ import (
 	"testing"
 )
 
-// host, port, username, password, emailRecipient are important for the testing
-// Please fill them out for successfully test
-const (
-	host           = ""
-	port           = ""
-	username       = ""
-	password       = ""
-	emailRecipient = ""
-)
-
 // TestExecute is to test the execute function
 // We set the environment from the local const's
 // And send a testing message to the service
 func TestExecute(t *testing.T) {
+
+	host := ""
+	port := ""
+	username := ""
+	password := ""
+	emailRecipient := ""
 
 	err := os.Setenv("SMTP_HOST", host)
 	if err != nil {

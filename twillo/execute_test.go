@@ -6,19 +6,15 @@ import (
 	"testing"
 )
 
-// accountSid, authToken, phoneNumber, myPhoneNumber are important for the testing
-// Please fill them out for successfully test
-const (
-	accountSid    = ""
-	authToken     = ""
-	phoneNumber   = ""
-	myPhoneNumber = ""
-)
-
 // TestExecute is to test the execute function
 // We set the environment from the local const's
 // And send a testing message to the service
 func TestExecute(t *testing.T) {
+
+	accountSid := ""
+	authToken := ""
+	phoneNumber := ""
+	myPhoneNumber := ""
 
 	err := os.Setenv("TWILLO_ACCOUNT_SID", accountSid)
 	if err != nil {
