@@ -2,8 +2,8 @@ package telegram
 
 import (
 	"fmt"
-	"github.com/echgo/echgo/configuration"
 	"github.com/echgo/echgo/console"
+	"github.com/echgo/echgo/environment"
 )
 
 // Execute is to execute the create message function
@@ -11,8 +11,8 @@ import (
 func Execute(headline, message string) {
 
 	r := Request{
-		ApiToken: configuration.Data.Channels.Telegram.ApiToken,
-		ChatId:   configuration.Data.Channels.Telegram.ChatId,
+		ApiToken: environment.String("TELEGRAM_API_TOKEN"),
+		ChatId:   environment.String("TELEGRAM_CHAT_ID"),
 	}
 
 	_, err := CreateMessage(fmt.Sprintf("%s\n%s", headline, message), "Markdown", r)

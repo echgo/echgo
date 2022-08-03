@@ -1,8 +1,8 @@
 package trello
 
 import (
-	"github.com/echgo/echgo/configuration"
 	"github.com/echgo/echgo/console"
+	"github.com/echgo/echgo/environment"
 )
 
 // Execute is to execute the create card function
@@ -10,9 +10,9 @@ import (
 func Execute(headline, message string) {
 
 	r := Request{
-		Key:    configuration.Data.Channels.Trello.Key,
-		Token:  configuration.Data.Channels.Trello.Token,
-		IdList: configuration.Data.Channels.Trello.IdList,
+		Key:    environment.String("TRELLO_KEY"),
+		Token:  environment.String("TRELLO_TOKEN"),
+		IdList: environment.String("TRELLO_ID_LIST"),
 	}
 
 	_, err := CreateCard(headline, message, r)

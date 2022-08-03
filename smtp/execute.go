@@ -1,8 +1,8 @@
 package smtp
 
 import (
-	"github.com/echgo/echgo/configuration"
 	"github.com/echgo/echgo/console"
+	"github.com/echgo/echgo/environment"
 	"net/mail"
 )
 
@@ -12,7 +12,7 @@ func Execute(headline, message string) {
 
 	d := Data{
 		Email: mail.Address{
-			Address: configuration.Data.Channels.SMTP.EmailRecipient,
+			Address: environment.String("SMTP_EMAIL_RECIPIENT"),
 		},
 		Subject: headline,
 		Type:    "text/plain",
@@ -20,12 +20,12 @@ func Execute(headline, message string) {
 	}
 
 	a := Access{
-		Host: configuration.Data.Channels.SMTP.Host,
-		Port: configuration.Data.Channels.SMTP.Port,
+		Host: environment.String("SMTP_HOST"),
+		Port: environment.Integer("SMTP_PORT"),
 		Username: mail.Address{
-			Address: configuration.Data.Channels.SMTP.Username,
+			Address: environment.String("SMTP_USERNAME"),
 		},
-		Password: configuration.Data.Channels.SMTP.Password,
+		Password: environment.String("SMTP_PASSWORD"),
 	}
 
 	err := SendEmail(d, a)
