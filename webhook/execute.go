@@ -1,8 +1,8 @@
 package webhook
 
 import (
-	"github.com/echgo/echgo/configuration"
 	"github.com/echgo/echgo/console"
+	"github.com/echgo/echgo/environment"
 )
 
 // Execute is to execute the webhook function
@@ -10,7 +10,7 @@ import (
 func Execute(headline, message string) {
 
 	r := Request{
-		Domain: configuration.Data.Channels.Webhook.Domain,
+		Domain: environment.String("WEBHOOK_DOMAIN"),
 	}
 
 	b := SendBody{

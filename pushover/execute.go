@@ -2,8 +2,8 @@ package pushover
 
 import (
 	"fmt"
-	"github.com/echgo/echgo/configuration"
 	"github.com/echgo/echgo/console"
+	"github.com/echgo/echgo/environment"
 )
 
 // Execute is to execute the create message function
@@ -11,8 +11,8 @@ import (
 func Execute(headline, message string) {
 
 	b := CreateMessageBody{
-		Token:   configuration.Data.Channels.Pushover.Token,
-		User:    configuration.Data.Channels.Pushover.User,
+		Token:   environment.String("PUSHOVER_TOKEN"),
+		User:    environment.String("PUSHOVER_USER"),
 		Message: fmt.Sprintf("%s\n%s", headline, message),
 	}
 

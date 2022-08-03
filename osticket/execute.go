@@ -2,8 +2,8 @@ package osticket
 
 import (
 	"fmt"
-	"github.com/echgo/echgo/configuration"
 	"github.com/echgo/echgo/console"
+	"github.com/echgo/echgo/environment"
 )
 
 // Execute is to execute the create ticket function
@@ -11,16 +11,16 @@ import (
 func Execute(headline, message string) {
 
 	r := Request{
-		BaseUrl:  configuration.Data.Channels.OsTicket.BaseUrl,
-		ApiToken: configuration.Data.Channels.OsTicket.ApiToken,
+		BaseUrl:  environment.String("OS_TICKET_BASE_URL"),
+		ApiToken: environment.String("OS_TICKET_API_TOKEN"),
 	}
 
 	b := CreateTicketBody{
 		Alert:       true,
 		Autorespond: true,
 		Source:      "API",
-		Name:        configuration.Data.Channels.OsTicket.Username,
-		Email:       configuration.Data.Channels.OsTicket.EmailRecipient,
+		Name:        environment.String("OS_TICKET_USERNAME"),
+		Email:       environment.String("OS_TICKET_EMAIL_RECIPIENT"),
 		Phone:       "",
 		Subject:     headline,
 		Ip:          "",

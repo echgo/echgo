@@ -2,23 +2,23 @@ package twillo
 
 import (
 	"fmt"
-	"github.com/echgo/echgo/configuration"
 	"github.com/echgo/echgo/console"
+	"github.com/echgo/echgo/environment"
 )
 
-// Execute is to execute the send message function
+// Execute is to execute to send message function
 // & lead all configuration data
 func Execute(headline, message string) {
 
 	r := Request{
-		AccountSid: configuration.Data.Channels.Twillo.AccountSid,
-		AuthToken:  configuration.Data.Channels.Twillo.AuthToken,
+		AccountSid: environment.String("TWILLO_ACCOUNT_SID"),
+		AuthToken:  environment.String("TWILLO_AUTH_TOKEN"),
 	}
 
 	b := CreateMessageBody{
 		Message:       fmt.Sprintf("%s - %s", headline, message),
-		PhoneNumber:   configuration.Data.Channels.Twillo.PhoneNumber,
-		MyPhoneNumber: configuration.Data.Channels.Twillo.MyPhoneNumber,
+		PhoneNumber:   environment.String("TWILLO_PHONE_NUMBER"),
+		MyPhoneNumber: environment.String("TWILLO_MY_PHONE_NUMBER"),
 	}
 
 	_, err := CreateMessage(b, r)

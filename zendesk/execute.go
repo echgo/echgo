@@ -1,8 +1,8 @@
 package zendesk
 
 import (
-	"github.com/echgo/echgo/configuration"
 	"github.com/echgo/echgo/console"
+	"github.com/echgo/echgo/environment"
 )
 
 // Execute is to execute the create ticket function
@@ -10,9 +10,9 @@ import (
 func Execute(headline, message string) {
 
 	r := Request{
-		BaseUrl:  configuration.Data.Channels.Zendesk.BaseUrl,
-		Username: configuration.Data.Channels.Zendesk.Username,
-		ApiToken: configuration.Data.Channels.Zendesk.ApiToken,
+		BaseUrl:  environment.String("ZENDESK_BASE_URL"),
+		Username: environment.String("ZENDESK_USERNAME"),
+		ApiToken: environment.String("ZENDESK_API_TOKEN"),
 	}
 
 	b := CreateTicketBody{

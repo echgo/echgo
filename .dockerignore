@@ -3,7 +3,6 @@
 .git/
 .github/
 .idea/
-testing/
 
 .gitignore
 LICENSE
@@ -11,3 +10,4 @@ Makefile
 
 *.md
 **/.gitkeep
+**/*_test.go

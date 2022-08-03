@@ -2,8 +2,8 @@ package matrix
 
 import (
 	"fmt"
-	"github.com/echgo/echgo/configuration"
 	"github.com/echgo/echgo/console"
+	"github.com/echgo/echgo/environment"
 )
 
 // Execute is to execute the create message function
@@ -11,9 +11,9 @@ import (
 func Execute(headline, message string) {
 
 	r := Request{
-		Domain:      configuration.Data.Channels.Matrix.Domain,
-		RoomId:      configuration.Data.Channels.Matrix.RoomId,
-		AccessToken: configuration.Data.Channels.Matrix.AccessToken,
+		Domain:      environment.String("MATRIX_DOMAIN"),
+		RoomId:      environment.String("MATRIX_ROOM_ID"),
+		AccessToken: environment.String("MATRIX_ACCESS_TOKEN"),
 	}
 
 	b := CreateMessageBody{
