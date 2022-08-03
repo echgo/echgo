@@ -21,17 +21,17 @@ func TestExecute(t *testing.T) {
 
 	err := os.Setenv("ZENDESK_BASE_URL", baseUrl)
 	if err != nil {
-		t.Log(err)
+		t.Fatal(err)
 	}
 
 	err = os.Setenv("ZENDESK_USERNAME", username)
 	if err != nil {
-		t.Log(err)
+		t.Fatal(err)
 	}
 
 	err = os.Setenv("ZENDESK_API_TOKEN", apiToken)
 	if err != nil {
-		t.Log(err)
+		t.Fatal(err)
 	}
 
 	headline := "Testing"

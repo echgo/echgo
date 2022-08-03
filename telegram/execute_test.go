@@ -20,12 +20,12 @@ func TestExecute(t *testing.T) {
 
 	err := os.Setenv("TELEGRAM_API_TOKEN", apiToken)
 	if err != nil {
-		t.Log(err)
+		t.Fatal(err)
 	}
 
 	err = os.Setenv("TELEGRAM_CHAT_ID", chatId)
 	if err != nil {
-		t.Log(err)
+		t.Fatal(err)
 	}
 
 	headline := "Testing"

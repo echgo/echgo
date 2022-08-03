@@ -23,27 +23,27 @@ func TestExecute(t *testing.T) {
 
 	err := os.Setenv("SMTP_HOST", host)
 	if err != nil {
-		t.Log(err)
+		t.Fatal(err)
 	}
 
 	err = os.Setenv("SMTP_PORT", port)
 	if err != nil {
-		t.Log(err)
+		t.Fatal(err)
 	}
 
 	err = os.Setenv("SMTP_USERNAME", username)
 	if err != nil {
-		t.Log(err)
+		t.Fatal(err)
 	}
 
 	err = os.Setenv("SMTP_PASSWORD", password)
 	if err != nil {
-		t.Log(err)
+		t.Fatal(err)
 	}
 
 	err = os.Setenv("SMTP_EMAIL_RECIPIENT", emailRecipient)
 	if err != nil {
-		t.Log(err)
+		t.Fatal(err)
 	}
 
 	headline := "Testing"

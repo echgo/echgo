@@ -22,22 +22,22 @@ func TestExecute(t *testing.T) {
 
 	err := os.Setenv("OS_TICKET_BASE_URL", baseUrl)
 	if err != nil {
-		t.Log(err)
+		t.Fatal(err)
 	}
 
 	err = os.Setenv("OS_TICKET_API_TOKEN", apiToken)
 	if err != nil {
-		t.Log(err)
+		t.Fatal(err)
 	}
 
 	err = os.Setenv("OS_TICKET_USERNAME", username)
 	if err != nil {
-		t.Log(err)
+		t.Fatal(err)
 	}
 
 	err = os.Setenv("OS_TICKET_EMAIL_RECIPIENT", emailRecipient)
 	if err != nil {
-		t.Log(err)
+		t.Fatal(err)
 	}
 
 	headline := "Testing"

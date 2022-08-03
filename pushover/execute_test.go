@@ -20,12 +20,12 @@ func TestExecute(t *testing.T) {
 
 	err := os.Setenv("PUSHOVER_TOKEN", token)
 	if err != nil {
-		t.Log(err)
+		t.Fatal(err)
 	}
 
 	err = os.Setenv("PUSHOVER_USER", user)
 	if err != nil {
-		t.Log(err)
+		t.Fatal(err)
 	}
 
 	headline := "Testing"

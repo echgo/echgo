@@ -21,17 +21,17 @@ func TestExecute(t *testing.T) {
 
 	err := os.Setenv("MATRIX_DOMAIN", domain)
 	if err != nil {
-		t.Log(err)
+		t.Fatal(err)
 	}
 
 	err = os.Setenv("MATRIX_ROOM_ID", roomId)
 	if err != nil {
-		t.Log(err)
+		t.Fatal(err)
 	}
 
 	err = os.Setenv("MATRIX_ACCESS_TOKEN", accessToken)
 	if err != nil {
-		t.Log(err)
+		t.Fatal(err)
 	}
 
 	headline := "Testing"

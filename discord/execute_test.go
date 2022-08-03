@@ -20,12 +20,12 @@ func TestExecute(t *testing.T) {
 
 	err := os.Setenv("DISCORD_WEBHOOK_URL", webhookUrl)
 	if err != nil {
-		t.Log(err)
+		t.Fatal(err)
 	}
 
 	err = os.Setenv("DISCORD_BOT_NAME", botName)
 	if err != nil {
-		t.Log(err)
+		t.Fatal(err)
 	}
 
 	headline := "Testing"

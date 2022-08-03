@@ -19,7 +19,7 @@ func TestExecute(t *testing.T) {
 
 	err := os.Setenv("SLACK_WEBHOOK_URL", webhookUrl)
 	if err != nil {
-		t.Log(err)
+		t.Fatal(err)
 	}
 
 	headline := "Testing"

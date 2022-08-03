@@ -19,7 +19,7 @@ func TestExecute(t *testing.T) {
 
 	err := os.Setenv("WEBHOOK_DOMAIN", domain)
 	if err != nil {
-		t.Log(err)
+		t.Fatal(err)
 	}
 
 	headline := "Testing"

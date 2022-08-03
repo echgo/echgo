@@ -20,12 +20,12 @@ func TestExecute(t *testing.T) {
 
 	err := os.Setenv("GOTIFY_DOMAIN", domain)
 	if err != nil {
-		t.Log(err)
+		t.Fatal(err)
 	}
 
 	err = os.Setenv("GOTIFY_KEY", key)
 	if err != nil {
-		t.Log(err)
+		t.Fatal(err)
 	}
 
 	headline := "Testing"

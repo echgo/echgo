@@ -22,22 +22,22 @@ func TestExecute(t *testing.T) {
 
 	err := os.Setenv("TWILLO_ACCOUNT_SID", accountSid)
 	if err != nil {
-		t.Log(err)
+		t.Fatal(err)
 	}
 
 	err = os.Setenv("TWILLO_AUTH_TOKEN", authToken)
 	if err != nil {
-		t.Log(err)
+		t.Fatal(err)
 	}
 
 	err = os.Setenv("TWILLO_PHONE_NUMBER", phoneNumber)
 	if err != nil {
-		t.Log(err)
+		t.Fatal(err)
 	}
 
 	err = os.Setenv("TWILLO_MY_PHONE_NUMBER", myPhoneNumber)
 	if err != nil {
-		t.Log(err)
+		t.Fatal(err)
 	}
 
 	headline := "Testing"
