@@ -2,8 +2,8 @@ package slack
 
 import (
 	"fmt"
-	"github.com/echgo/echgo/configuration"
 	"github.com/echgo/echgo/console"
+	"github.com/echgo/echgo/environment"
 )
 
 // Execute is to execute the create message function
@@ -11,7 +11,7 @@ import (
 func Execute(headline, message string) {
 
 	r := Request{
-		Url: configuration.Data.Channels.Slack.WebhookUrl,
+		Url: environment.String("SLACK_WEBHOOK_URL"),
 	}
 
 	b := CreateMessageBody{
