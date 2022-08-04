@@ -10,19 +10,24 @@ import (
 // & lead all configuration data
 func Execute(headline, message string) {
 
-	r := Request{
-		Url: environment.String("SLACK_WEBHOOK_URL"),
-	}
+	lookup := environment.Lookup("SLACK_WEBHOOK_URL")
+	if lookup {
 
-	b := CreateMessageBody{
-		Text: fmt.Sprintf("%s - %s", headline, message),
-	}
+		r := Request{
+			Url: environment.String("SLACK_WEBHOOK_URL"),
+		}
 
-	_, err := CreateMessage(b, r)
-	if err != nil {
-		attributes := make(map[string]any)
-		attributes["error"] = err
-		console.Log("error", "An error occurred while creating the message via slack.", attributes)
+		b := CreateMessageBody{
+			Text: fmt.Sprintf("%s - %s", headline, message),
+		}
+
+		_, err := CreateMessage(b, r)
+		if err != nil {
+			attributes := make(map[string]any)
+			attributes["error"] = err
+			console.Log("error", "An error occurred while creating the message via slack.", attributes)
+		}
+
 	}
 
 }

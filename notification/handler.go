@@ -3,6 +3,7 @@ package notification
 import (
 	"github.com/echgo/echgo/configuration"
 	"github.com/echgo/echgo/console"
+	"github.com/echgo/echgo/environment"
 	"log"
 	"os"
 	"path/filepath"
@@ -12,7 +13,9 @@ import (
 // To open the file, check the file extension & remove the files
 func Handler() {
 
-	configuration.Import()
+	if !environment.Boolean("USE_ENVIRONMENT") {
+		configuration.Import()
+	}
 
 	files, err := os.ReadDir(path)
 	if err != nil {

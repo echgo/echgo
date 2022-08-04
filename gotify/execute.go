@@ -9,23 +9,28 @@ import (
 // & lead all configuration data
 func Execute(headline, message string) {
 
-	r := Request{
-		Domain:     environment.String("GOTIFY_DOMAIN"),
-		XGotifyKey: environment.String("GOTIFY_KEY"),
-	}
+	lookup := environment.Lookup("GOTIFY_DOMAIN", "GOTIFY_KEY")
+	if lookup {
 
-	b := CreateMessageBody{
-		Priority: 0,
-		Title:    headline,
-		Message:  message,
-		Extras:   nil,
-	}
+		r := Request{
+			Domain:     environment.String("GOTIFY_DOMAIN"),
+			XGotifyKey: environment.String("GOTIFY_KEY"),
+		}
 
-	_, err := CreateMessage(b, r)
-	if err != nil {
-		attributes := make(map[string]any)
-		attributes["error"] = err
-		console.Log("error", "An error occurred while creating the message via gotify.", attributes)
+		b := CreateMessageBody{
+			Priority: 0,
+			Title:    headline,
+			Message:  message,
+			Extras:   nil,
+		}
+
+		_, err := CreateMessage(b, r)
+		if err != nil {
+			attributes := make(map[string]any)
+			attributes["error"] = err
+			console.Log("error", "An error occurred while creating the message via gotify.", attributes)
+		}
+
 	}
 
 }

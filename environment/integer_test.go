@@ -6,12 +6,12 @@ import (
 	"testing"
 )
 
-// TestExecute is to test the environment integer function
+// TestInteger is to test the environment integer function
 // We set the environment from the local variables & test the function
 // The return value is output in logging
 func TestInteger(t *testing.T) {
 
-	name := "INTERVALL"
+	name := "INTERVAL"
 	content := "15"
 
 	err := os.Setenv(name, content)

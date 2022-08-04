@@ -10,22 +10,27 @@ import (
 // & lead all configuration data
 func Execute(headline, message string) {
 
-	r := Request{
-		Domain:      environment.String("MATRIX_DOMAIN"),
-		RoomId:      environment.String("MATRIX_ROOM_ID"),
-		AccessToken: environment.String("MATRIX_ACCESS_TOKEN"),
-	}
+	lookup := environment.Lookup("MATRIX_DOMAIN", "MATRIX_ROOM_ID", "MATRIX_ACCESS_TOKEN")
+	if lookup {
 
-	b := CreateMessageBody{
-		Msgtype: "m.text",
-		Body:    fmt.Sprintf("%s\n%s", headline, message),
-	}
+		r := Request{
+			Domain:      environment.String("MATRIX_DOMAIN"),
+			RoomId:      environment.String("MATRIX_ROOM_ID"),
+			AccessToken: environment.String("MATRIX_ACCESS_TOKEN"),
+		}
 
-	_, err := CreateMessage(b, r)
-	if err != nil {
-		attributes := make(map[string]any)
-		attributes["error"] = err
-		console.Log("error", "An error occurred while creating the message via matrix.", attributes)
+		b := CreateMessageBody{
+			Msgtype: "m.text",
+			Body:    fmt.Sprintf("%s\n%s", headline, message),
+		}
+
+		_, err := CreateMessage(b, r)
+		if err != nil {
+			attributes := make(map[string]any)
+			attributes["error"] = err
+			console.Log("error", "An error occurred while creating the message via matrix.", attributes)
+		}
+
 	}
 
 }

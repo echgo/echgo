@@ -10,16 +10,21 @@ import (
 // & lead all configuration data
 func Execute(headline, message string) {
 
-	r := Request{
-		ApiToken: environment.String("TELEGRAM_API_TOKEN"),
-		ChatId:   environment.String("TELEGRAM_CHAT_ID"),
-	}
+	lookup := environment.Lookup("TELEGRAM_API_TOKEN", "TELEGRAM_CHAT_ID")
+	if lookup {
 
-	_, err := CreateMessage(fmt.Sprintf("%s\n%s", headline, message), "Markdown", r)
-	if err != nil {
-		attributes := make(map[string]any)
-		attributes["error"] = err
-		console.Log("error", "An error occurred while creating the message via telegram.", attributes)
+		r := Request{
+			ApiToken: environment.String("TELEGRAM_API_TOKEN"),
+			ChatId:   environment.String("TELEGRAM_CHAT_ID"),
+		}
+
+		_, err := CreateMessage(fmt.Sprintf("%s\n%s", headline, message), "Markdown", r)
+		if err != nil {
+			attributes := make(map[string]any)
+			attributes["error"] = err
+			console.Log("error", "An error occurred while creating the message via telegram.", attributes)
+		}
+
 	}
 
 }

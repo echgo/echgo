@@ -18,7 +18,7 @@ func init() {
 // And start ticker function with notification handler
 func main() {
 
-	if !environment.Boolean("USE_ENV") {
+	if !environment.Boolean("USE_ENVIRONMENT") {
 		configuration.Create()
 	}
 
