@@ -6,7 +6,7 @@ import (
 	"testing"
 )
 
-// TestExecute is to test the environment boolean function
+// TestBoolean is to test the environment boolean function
 // We set the environment from the local variables & test the function
 // The return value is output in logging
 func TestBoolean(t *testing.T) {
