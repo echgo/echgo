@@ -20,7 +20,8 @@ func Execute(headline, message string) {
 		Content:   fmt.Sprintf("%s - %s", headline, message),
 	}
 
-	if len(environment.String("DISCORD_BOT_NAME")) > 0 {
+	lookup := environment.Lookup("DISCORD_BOT_NAME")
+	if lookup {
 		b.Username = environment.String("DISCORD_BOT_NAME")
 	}
 
