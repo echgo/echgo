@@ -12,7 +12,7 @@ type Config struct {
 
 // Start is to start the ticker with a job function every
 // The default value is 15 to tick every 15 seconds
-// You can overwrite this default with the environment `INTERVALL`
+// You can overwrite this default with the environment `INTERVAL`
 func (c *Config) Start(job func()) {
 
 	second := c.Time.Second()
