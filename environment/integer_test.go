@@ -11,7 +11,7 @@ import (
 // The return value is output in logging
 func TestInteger(t *testing.T) {
 
-	name := "INTERVALL"
+	name := "INTERVAL"
 	content := "15"
 
 	err := os.Setenv(name, content)

@@ -42,11 +42,13 @@ Now the service should run. With the command we map once the configuration file 
 
 ### Further adjustments
 
-If you like to adjust the interval of 15 seconds, you can do this with the following variable `INTERVALL`. This must be of type `integer`, otherwise it will not be taken into account. The whole thing looks like this.
+#### Adjust interval
+
+If you like to adjust the interval of 15 seconds, you can do this with the following variable `INTERVAL`. This must be of type `integer`, otherwise it will not be taken into account. The whole thing looks like this.
 
 ```console
 docker run --name echgo -d --restart always \
-    -e INTERVALL=5
+    -e INTERVAL=5
     -v /etc/echgo/configuration:/app/files/configuration \
     -v /var/lib/echgo/notification:/app/files/notification \
     echgo/echgo:latest

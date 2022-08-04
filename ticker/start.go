@@ -21,12 +21,12 @@ func (c *Config) Start(job func()) {
 	wait := 60*1000 - (second*1000 + milli)
 	time.Sleep(time.Duration(wait) * time.Millisecond)
 
-	intervall := time.Duration(15)
-	if environment.Integer("INTERVALL") > 0 {
-		intervall = time.Duration(environment.Integer("INTERVALL"))
+	interval := time.Duration(15)
+	if environment.Integer("INTERVAL") > 0 {
+		interval = time.Duration(environment.Integer("INTERVAL"))
 	}
 
-	for range time.Tick(intervall * time.Second) {
+	for range time.Tick(interval * time.Second) {
 		go job()
 	}
 
