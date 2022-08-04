@@ -67,7 +67,7 @@ docker run --name echgo -d --restart always \
     echgo/echgo:latest
 ```
 
-Now you can use the following variables for the different services. If a service is running notification file but has no access data stored, the notification will not be executed. A list of all variables can be found [here](https://github.com/echgo/echgo/wiki/Environment-Variables).
+Now you can use the following variables for the different services. If a service is running notification file but has no access data stored, the notification will not be executed. A list of all variables can be found [here](https://github.com/echgo/echgo/wiki/Environment-Variables#channel-variables).
 
 ### Create notification
 
