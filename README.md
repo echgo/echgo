@@ -56,6 +56,56 @@ docker run --name echgo -d --restart always \
 
 With these settings, the service now reads the notifications every 5 seconds.
 
+#### Use environments
+
+If you want to use environments instead of the json configuration, you can force this with the variable `USE_ENVIRONMENT`. This value is a `boolean`. This is the way json configuration is taken no longer.
+
+```console
+docker run --name echgo -d --restart always \
+    -e USE_ENVIRONMENT=true 
+    -v /var/lib/echgo/notification:/app/files/notification \
+    echgo/echgo:latest
+```
+
+Now you can use the following variables for the different services. If a service is running notification file but has no access data stored, the notification will not be executed.
+
+| Channel  | Environment Variable      | Type    | Is required |
+|----------|---------------------------|---------|-------------|
+| Gotify   | GOTIFY_DOMAIN             | string  | true        |
+| Gotify   | GOTIFY_KEY                | string  | true        |
+| Pushover | PUSHOVER_TOKEN            | string  | true        |
+| Pushover | PUSHOVER_USER             | string  | true        |
+| Matrix   | MATRIX_DOMAIN             | string  | true        |
+| Matrix   | MATRIX_ROOM_ID            | string  | true        |
+| Matrix   | MATRIX_ACCESS_TOKEN       | string  | true        |
+| Telegram | TELEGRAM_API_TOKEN        | string  | true        |
+| Telegram | TELEGRAM_CHAT_ID          | string  | true        |
+| Discord  | DISCORD_WEBHOOK_URL       | string  | true        |
+| Discord  | DISCORD_BOT_NAME          | string  | false       |
+| Slack    | SLACK_WEBHOOK_URL         | string  | true        |
+| Trello   | TRELLO_KEY                | string  | true        |
+| Trello   | TRELLO_TOKEN              | string  | true        |
+| Trello   | TRELLO_ID_LIST            | string  | true        |
+| Zendesk  | ZENDESK_BASE_URL          | string  | true        |
+| Zendesk  | ZENDESK_USERNAME          | string  | true        |
+| Zendesk  | ZENDESK_API_TOKEN         | string  | true        |
+| osTicket | OS_TICKET_BASE_URL        | string  | true        |
+| osTicket | OS_TICKET_API_TOKEN       | string  | true        |
+| osTicket | OS_TICKET_USERNAME        | string  | true        |
+| osTicket | OS_TICKET_EMAIL_RECIPIENT | string  | true        |
+| Twillo   | TWILLO_ACCOUNT_SID        | string  | true        |
+| Twillo   | TWILLO_AUTH_TOKEN         | string  | true        |
+| Twillo   | TWILLO_PHONE_NUMBER       | string  | true        |
+| Twillo   | TWILLO_MY_PHONE_NUMBER    | string  | true        |
+| SMTP     | SMTP_HOST                 | string  | true        |
+| SMTP     | SMTP_PORT                 | integer | true        |
+| SMTP     | SMTP_USERNAME             | string  | true        |
+| SMTP     | SMTP_PASSWORD             | string  | true        |
+| SMTP     | SMTP_EMAIL_RECIPIENT      | string  | true        |
+| Webhook  | WEBHOOK_DOMAIN            | string  | true        |
+
+The required only refers to when you want to use this channel, otherwise the values do not need to be filled in.
+
 ### Create notification
 
 Now we create a notification to be sent to different channels. You can also enter only one channel. How these notification files are created later is up to you. With a bash script or from another program does not matter.
