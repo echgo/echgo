@@ -50,21 +50,27 @@ func Import() {
 		suffix = strings.ToUpper(suffix)
 
 		channel := reflect.ValueOf(channels.Field(i).Interface())
-		for i := 0; i < channel.NumField(); i++ {
+		if !channel.IsZero() {
 
-			tag := string(channel.Type().Field(i).Tag)
+			for i := 0; i < channel.NumField(); i++ {
 
-			prefix := regex.ReplaceAllString(tag, "")
-			prefix = strings.ToUpper(prefix)
+				tag := string(channel.Type().Field(i).Tag)
 
-			content := fmt.Sprintf("%v", channel.Field(i).Interface())
+				prefix := regex.ReplaceAllString(tag, "")
+				prefix = strings.ToUpper(prefix)
 
-			if len(content) > 0 {
-				key := strings.Join([]string{suffix, prefix}, "_")
-				err := os.Setenv(key, content)
-				if err != nil {
-					log.Fatalln(err)
+				content := reflect.ValueOf(channel.Field(i).Interface())
+				if !content.IsZero() {
+
+					key := strings.Join([]string{suffix, prefix}, "_")
+					value := fmt.Sprintf("%v", channel.Field(i).Interface())
+					err := os.Setenv(key, value)
+					if err != nil {
+						log.Fatalln(err)
+					}
+
 				}
+
 			}
 
 		}
