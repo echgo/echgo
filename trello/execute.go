@@ -9,17 +9,22 @@ import (
 // & lead all configuration data
 func Execute(headline, message string) {
 
-	r := Request{
-		Key:    environment.String("TRELLO_KEY"),
-		Token:  environment.String("TRELLO_TOKEN"),
-		IdList: environment.String("TRELLO_ID_LIST"),
-	}
+	lookup := environment.Lookup("TRELLO_KEY", "TRELLO_TOKEN", "TRELLO_ID_LIST")
+	if lookup {
 
-	_, err := CreateCard(headline, message, r)
-	if err != nil {
-		attributes := make(map[string]any)
-		attributes["error"] = err
-		console.Log("error", "An error occurred while creating the card via trello.", attributes)
+		r := Request{
+			Key:    environment.String("TRELLO_KEY"),
+			Token:  environment.String("TRELLO_TOKEN"),
+			IdList: environment.String("TRELLO_ID_LIST"),
+		}
+
+		_, err := CreateCard(headline, message, r)
+		if err != nil {
+			attributes := make(map[string]any)
+			attributes["error"] = err
+			console.Log("error", "An error occurred while creating the card via trello.", attributes)
+		}
+
 	}
 
 }
