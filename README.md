@@ -17,7 +17,7 @@ Here you can find the instructions on how to set up the Docker container and def
 
 First, we start the Docker container to create the configuration file. For this you can use the following command.
 
-```console
+```shell
 docker run --name echgo-init -d --rm \
     -v /etc/echgo/configuration:/app/files/configuration \
     echgo/echgo:latest
@@ -31,7 +31,7 @@ The container is stopped automatically and removed.
 
 Now we can start the service directly. To do this, please run the following command once.
 
-```console
+```shell
 docker run --name echgo -d --restart always \
     -v /etc/echgo/configuration:/app/files/configuration \
     -v /var/lib/echgo/notification:/app/files/notification \
@@ -46,7 +46,7 @@ Now the service should run. With the command we map once the configuration file 
 
 If you like to adjust the interval of 15 seconds, you can do this with the following variable `INTERVAL`. This must be of type `integer`, otherwise it will not be taken into account. The whole thing looks like this.
 
-```console
+```shell
 docker run --name echgo -d --restart always \
     -e INTERVAL=5
     -v /etc/echgo/configuration:/app/files/configuration \
@@ -60,7 +60,7 @@ With these settings, the service now reads the notifications every 5 seconds.
 
 If you want to use environments instead of the json configuration, you can force this with the variable `USE_ENVIRONMENT`. This value is a `boolean`. This is the way json configuration is taken no longer.
 
-```console
+```shell
 docker run --name echgo -d --restart always \
     -e USE_ENVIRONMENT=true 
     -v /var/lib/echgo/notification:/app/files/notification \
