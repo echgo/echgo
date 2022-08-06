@@ -48,7 +48,7 @@ If you like to adjust the interval of 15 seconds, you can do this with the follo
 
 ```console
 docker run --name echgo -d --restart always \
-    -e INTERVAL=5
+    -e INTERVAL=5 \
     -v /etc/echgo/configuration:/app/files/configuration \
     -v /var/lib/echgo/notification:/app/files/notification \
     echgo/echgo:latest
@@ -62,7 +62,7 @@ If you want to use environments instead of the json configuration, you can force
 
 ```console
 docker run --name echgo -d --restart always \
-    -e USE_ENVIRONMENT=true 
+    -e USE_ENVIRONMENT=true \ 
     -v /var/lib/echgo/notification:/app/files/notification \
     echgo/echgo:latest
 ```
