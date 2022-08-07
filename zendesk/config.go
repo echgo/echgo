@@ -8,8 +8,8 @@ import (
 
 // Config is to define config data
 type Config struct {
-	Path, Method string
-	Body         []byte
+	Url, Method string
+	Body        []byte
 }
 
 // Request is to define the request data
@@ -23,13 +23,11 @@ type Request struct {
 // & return the response
 func (c *Config) Send(r Request) (*http.Response, error) {
 
-	url := r.BaseUrl + c.Path
-
 	encoded := base64.StdEncoding.EncodeToString([]byte(r.Username + "/token:" + r.ApiToken))
 
 	client := &http.Client{}
 
-	request, err := http.NewRequest(c.Method, url, bytes.NewBuffer(c.Body))
+	request, err := http.NewRequest(c.Method, c.Url, bytes.NewBuffer(c.Body))
 	if err != nil {
 		return nil, err
 	}

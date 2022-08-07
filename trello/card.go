@@ -79,12 +79,17 @@ type CreateCardReturn struct {
 // CreateCard is to create a card to trello
 func CreateCard(name, desc string, r Request) (CreateCardReturn, error) {
 
+	address, err := url.JoinPath(baseUrl, "1", "cards")
+	if err != nil {
+		return CreateCardReturn{}, err
+	}
+
 	c := Config{
-		Path:   "/1/cards",
+		Url:    address,
 		Method: "POST",
 	}
 
-	parse, err := url.Parse(c.Path)
+	parse, err := url.Parse(c.Url)
 	if err != nil {
 		return CreateCardReturn{}, err
 	}
@@ -101,7 +106,7 @@ func CreateCard(name, desc string, r Request) (CreateCardReturn, error) {
 	newUrl.Add("token", r.Token)
 
 	parse.RawQuery = newUrl.Encode()
-	c.Path = parse.String()
+	c.Url = parse.String()
 
 	response, err := c.Send()
 	if err != nil {

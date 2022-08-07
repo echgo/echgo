@@ -2,6 +2,7 @@ package zendesk
 
 import (
 	"encoding/json"
+	"net/url"
 	"time"
 )
 
@@ -128,13 +129,18 @@ type CreateTicketReturn struct {
 // CreateTicket is to create a ticket in zendesk
 func CreateTicket(body CreateTicketBody, r Request) (CreateTicketReturn, error) {
 
+	address, err := url.JoinPath(r.BaseUrl, "api", "v2", "tickets")
+	if err != nil {
+		return CreateTicketReturn{}, err
+	}
+
 	convert, err := json.Marshal(body)
 	if err != nil {
 		return CreateTicketReturn{}, err
 	}
 
 	c := Config{
-		Path:   "/api/v2/tickets",
+		Url:    address,
 		Method: "POST",
 		Body:   convert,
 	}

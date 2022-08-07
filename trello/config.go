@@ -9,7 +9,7 @@ const baseUrl = "https://api.trello.com"
 
 // Config is to define config data
 type Config struct {
-	Path, Method string
+	Url, Method string
 }
 
 // Request is to define the request data
@@ -23,11 +23,9 @@ type Request struct {
 // & return the response
 func (c *Config) Send() (*http.Response, error) {
 
-	url := baseUrl + c.Path
-
 	client := &http.Client{}
 
-	request, err := http.NewRequest(c.Method, url, nil)
+	request, err := http.NewRequest(c.Method, c.Url, nil)
 	if err != nil {
 		return nil, err
 	}

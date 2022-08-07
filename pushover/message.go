@@ -2,6 +2,7 @@ package pushover
 
 import (
 	"encoding/json"
+	"net/url"
 )
 
 // CreateMessageBody is to structure the body data
@@ -20,13 +21,18 @@ type CreateMessageReturn struct {
 // CreateMessage is to create a message to pushover
 func CreateMessage(body CreateMessageBody) (CreateMessageReturn, error) {
 
+	address, err := url.JoinPath(baseUrl, "1", "messages.json")
+	if err != nil {
+		return CreateMessageReturn{}, err
+	}
+
 	convert, err := json.Marshal(body)
 	if err != nil {
 		return CreateMessageReturn{}, err
 	}
 
 	c := Config{
-		Path:   "/messages.json",
+		Url:    address,
 		Method: "POST",
 		Body:   convert,
 	}

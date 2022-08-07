@@ -2,6 +2,7 @@ package telegram
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/url"
 )
 
@@ -30,13 +31,18 @@ type CreateMessageReturn struct {
 // CreateMessage is to create a message with a bot in a telegram chat
 func CreateMessage(message, parseMode string, r Request) (CreateMessageReturn, error) {
 
+	address, err := url.JoinPath(baseUrl, r.ApiToken, "sendMessage")
+	if err != nil {
+		return CreateMessageReturn{}, err
+	}
+
 	c := Config{
-		Path:   "/sendMessage",
+		Url:    address,
 		Method: "GET",
 		Body:   nil,
 	}
 
-	parse, err := url.Parse(c.Path)
+	parse, err := url.Parse(c.Url)
 	if err != nil {
 		return CreateMessageReturn{}, err
 	}
@@ -51,7 +57,9 @@ func CreateMessage(message, parseMode string, r Request) (CreateMessageReturn, e
 	newUrl.Add("text", message)
 
 	parse.RawQuery = newUrl.Encode()
-	c.Path = parse.String()
+	c.Url = parse.String()
+
+	fmt.Println(c.Url)
 
 	response, err := c.Send(r)
 	if err != nil {
