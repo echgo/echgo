@@ -49,7 +49,7 @@ type CreateMessageReturn struct {
 // To send the request & decode the response
 func CreateMessage(body CreateMessageBody, r Request) (CreateMessageReturn, error) {
 
-	address, err := url.JoinPath(r.Domain, "message")
+	address, err := url.JoinPath(r.BaseUrl, "message")
 	if err != nil {
 		return CreateMessageReturn{}, err
 	}

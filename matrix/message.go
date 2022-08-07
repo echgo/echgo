@@ -19,7 +19,7 @@ type CreateMessageReturn struct {
 // CreateMessage is to create a message on a matrix server
 func CreateMessage(body CreateMessageBody, r Request) (CreateMessageReturn, error) {
 
-	address, err := url.JoinPath(r.Domain, "_matrix", "client", "r0", "rooms", r.RoomId, "send", "m.room.message")
+	address, err := url.JoinPath(r.BaseUrl, "_matrix", "client", "r0", "rooms", r.RoomId, "send", "m.room.message")
 	if err != nil {
 		return CreateMessageReturn{}, err
 	}

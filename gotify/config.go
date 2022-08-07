@@ -13,7 +13,7 @@ type Config struct {
 
 // Request is to define the request data
 type Request struct {
-	Domain, XGotifyKey string
+	BaseUrl, XGotifyKey string
 }
 
 // Send is to send a new request
