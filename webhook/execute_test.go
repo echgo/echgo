@@ -11,9 +11,9 @@ import (
 // And send a testing message to the service
 func TestExecute(t *testing.T) {
 
-	domain := ""
+	url := ""
 
-	err := os.Setenv("WEBHOOK_DOMAIN", domain)
+	err := os.Setenv("WEBHOOK_URL", url)
 	if err != nil {
 		t.Fatal(err)
 	}
