@@ -6,12 +6,12 @@ import (
 )
 
 // Set the base url for telegram bot's
-const baseUrl = "https://api.telegram.org/bot"
+const baseUrl = "https://api.telegram.org"
 
 // Config is to define config data
 type Config struct {
-	Path, Method string
-	Body         []byte
+	Url, Method string
+	Body        []byte
 }
 
 // Request is to define the request data
@@ -24,11 +24,9 @@ type Request struct {
 // & return the response
 func (c *Config) Send(r Request) (*http.Response, error) {
 
-	url := baseUrl + r.ApiToken + c.Path
-
 	client := &http.Client{}
 
-	request, err := http.NewRequest(c.Method, url, bytes.NewBuffer(c.Body))
+	request, err := http.NewRequest(c.Method, c.Url, bytes.NewBuffer(c.Body))
 	if err != nil {
 		return nil, err
 	}

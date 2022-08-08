@@ -11,10 +11,10 @@ import (
 // And send a testing message to the service
 func TestExecute(t *testing.T) {
 
-	domain := ""
+	baseUrl := ""
 	key := ""
 
-	err := os.Setenv("GOTIFY_DOMAIN", domain)
+	err := os.Setenv("GOTIFY_BASE_URL", baseUrl)
 	if err != nil {
 		t.Fatal(err)
 	}

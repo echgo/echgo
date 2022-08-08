@@ -9,11 +9,11 @@ import (
 // & lead all configuration data
 func Execute(headline, message string) {
 
-	lookup := environment.Lookup("WEBHOOK_DOMAIN")
+	lookup := environment.Lookup("WEBHOOK_URL")
 	if lookup {
 
 		r := Request{
-			Domain: environment.String("WEBHOOK_DOMAIN"),
+			Url: environment.String("WEBHOOK_URL"),
 		}
 
 		b := SendBody{

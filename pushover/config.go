@@ -6,23 +6,21 @@ import (
 )
 
 // Set the base url for pushover service
-const baseUrl = "https://api.pushover.net/1"
+const baseUrl = "https://api.pushover.net"
 
 // Config is to define config data
 type Config struct {
-	Path, Method string
-	Body         []byte
+	Url, Method string
+	Body        []byte
 }
 
 // Send is to send a new request
 // & return the response
 func (c *Config) Send() (*http.Response, error) {
 
-	url := baseUrl + c.Path
-
 	client := &http.Client{}
 
-	request, err := http.NewRequest(c.Method, url, bytes.NewBuffer(c.Body))
+	request, err := http.NewRequest(c.Method, c.Url, bytes.NewBuffer(c.Body))
 	if err != nil {
 		return nil, err
 	}

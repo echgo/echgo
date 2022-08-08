@@ -10,11 +10,11 @@ import (
 // & lead all configuration data
 func Execute(headline, message string) {
 
-	lookup := environment.Lookup("MATRIX_DOMAIN", "MATRIX_ROOM_ID", "MATRIX_ACCESS_TOKEN")
+	lookup := environment.Lookup("MATRIX_BASE_URL", "MATRIX_ROOM_ID", "MATRIX_ACCESS_TOKEN")
 	if lookup {
 
 		r := Request{
-			Domain:      environment.String("MATRIX_DOMAIN"),
+			BaseUrl:     environment.String("MATRIX_BASE_URL"),
 			RoomId:      environment.String("MATRIX_ROOM_ID"),
 			AccessToken: environment.String("MATRIX_ACCESS_TOKEN"),
 		}

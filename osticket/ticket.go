@@ -3,6 +3,7 @@ package osticket
 import (
 	"encoding/json"
 	"io"
+	"net/url"
 )
 
 // CreateTicketBody is to structure the body data
@@ -22,13 +23,18 @@ type CreateTicketBody struct {
 // CreateTicket is to create a ticket in zendesk
 func CreateTicket(body CreateTicketBody, r Request) (string, error) {
 
+	address, err := url.JoinPath(r.BaseUrl, "api", "tickets.json")
+	if err != nil {
+		return "", err
+	}
+
 	convert, err := json.Marshal(body)
 	if err != nil {
 		return "", err
 	}
 
 	c := Config{
-		Path:   "/api/tickets.json",
+		Url:    address,
 		Method: "POST",
 		Body:   convert,
 	}

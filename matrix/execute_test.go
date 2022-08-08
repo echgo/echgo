@@ -11,11 +11,11 @@ import (
 // And send a testing message to the service
 func TestExecute(t *testing.T) {
 
-	domain := ""
+	baseUrl := ""
 	roomId := ""
 	accessToken := ""
 
-	err := os.Setenv("MATRIX_DOMAIN", domain)
+	err := os.Setenv("MATRIX_BASE_URL", baseUrl)
 	if err != nil {
 		t.Fatal(err)
 	}

@@ -23,7 +23,7 @@ docker run --name echgo-init -d --rm \
     echgo/echgo:latest
 ```
 
-If the container was started, then the directory `/etc/echgo/configuration` is created. Here you will find the configuration for the different communication paths. Please fill in and save this as required. If you want to adjust the configuration. You do not have to restart the Docker container again. The software reads the configuration once before each run, so it is always up-to-date.
+If the container was started, then the directory `/etc/echgo/configuration` is created. Here you will find the configuration for the different communication paths. Please fill in and save this as required. If you want to adjust the configuration. You do not have to restart the Docker container again. The software reads the configuration once before each run, so it is always up-to-date. [Here](https://github.com/echgo/echgo/wiki/Configuration-file#demo-data) you find once the file with demo data, so that you see, how the file looks. If you need more information about the individual keys and tokens, you can find them [here](https://github.com/echgo/echgo/wiki/Environment-Variables#channel-variables) in the channel variables.
 
 The container is stopped automatically and removed.
 

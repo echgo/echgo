@@ -7,12 +7,12 @@ import (
 )
 
 // Set the base url for twillo
-const baseUrl = "https://api.twilio.com/2010-04-01"
+const baseUrl = "https://api.twilio.com"
 
 // Config is to define config data
 type Config struct {
-	Path, Method string
-	Body         string
+	Url, Method string
+	Body        string
 }
 
 // Request is to define the request data
@@ -25,13 +25,11 @@ type Request struct {
 // & return the response
 func (c *Config) Send(r Request) (*http.Response, error) {
 
-	url := baseUrl + c.Path
-
 	encoded := base64.StdEncoding.EncodeToString([]byte(r.AccountSid + ":" + r.AuthToken))
 
 	client := &http.Client{}
 
-	request, err := http.NewRequest(c.Method, url, strings.NewReader(c.Body))
+	request, err := http.NewRequest(c.Method, c.Url, strings.NewReader(c.Body))
 	if err != nil {
 		return nil, err
 	}

@@ -19,18 +19,23 @@ type CreateMessageReturn struct {
 // CreateMessage is to create a message on a matrix server
 func CreateMessage(body CreateMessageBody, r Request) (CreateMessageReturn, error) {
 
+	address, err := url.JoinPath(r.BaseUrl, "_matrix", "client", "r0", "rooms", r.RoomId, "send", "m.room.message")
+	if err != nil {
+		return CreateMessageReturn{}, err
+	}
+
 	convert, err := json.Marshal(body)
 	if err != nil {
 		return CreateMessageReturn{}, err
 	}
 
 	c := Config{
-		Path:   "/_matrix/client/r0/rooms/" + r.RoomId + "/send/m.room.message",
+		Url:    address,
 		Method: "POST",
 		Body:   convert,
 	}
 
-	parse, err := url.Parse(c.Path)
+	parse, err := url.Parse(c.Url)
 	if err != nil {
 		return CreateMessageReturn{}, err
 	}
@@ -43,7 +48,7 @@ func CreateMessage(body CreateMessageBody, r Request) (CreateMessageReturn, erro
 	newUrl.Add("access_token", r.AccessToken)
 
 	parse.RawQuery = newUrl.Encode()
-	c.Path = parse.String()
+	c.Url = parse.String()
 
 	response, err := c.Send(r)
 	if err != nil {

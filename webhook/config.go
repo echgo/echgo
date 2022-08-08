@@ -13,14 +13,14 @@ type Config struct {
 
 // Request is to define the request data
 type Request struct {
-	Domain string
+	Url string
 }
 
 // Send is to send a new request
 // & return the response
 func (c *Config) Send(r Request) (*http.Response, error) {
 
-	url := r.Domain
+	url := r.Url
 
 	client := &http.Client{}
 

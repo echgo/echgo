@@ -44,6 +44,11 @@ type CreateMessageReturn struct {
 // CreateMessage is to create a message via twillo
 func CreateMessage(body CreateMessageBody, r Request) (CreateMessageReturn, error) {
 
+	address, err := url.JoinPath(baseUrl, "2010-04-01", "Accounts", r.AccountSid, "Messages.json")
+	if err != nil {
+		return CreateMessageReturn{}, err
+	}
+
 	data := url.Values{}
 
 	data.Set("Body", body.Message)
@@ -53,7 +58,7 @@ func CreateMessage(body CreateMessageBody, r Request) (CreateMessageReturn, erro
 	encode := data.Encode()
 
 	c := Config{
-		Path:   "/Accounts/" + r.AccountSid + "/Messages.json",
+		Url:    address,
 		Method: "POST",
 		Body:   encode,
 	}

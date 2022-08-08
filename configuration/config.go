@@ -21,8 +21,8 @@ type Channels struct {
 }
 
 type Gotify struct {
-	Domain string `json:"domain"`
-	Key    string `json:"key"`
+	BaseUrl string `json:"base_url"`
+	Key     string `json:"key"`
 }
 
 type Pushover struct {
@@ -31,7 +31,7 @@ type Pushover struct {
 }
 
 type Matrix struct {
-	Domain      string `json:"domain"`
+	BaseUrl     string `json:"base_url"`
 	RoomId      string `json:"room_id"`
 	AccessToken string `json:"access_token"`
 }
@@ -85,7 +85,7 @@ type SMTP struct {
 }
 
 type Webhook struct {
-	Domain string `json:"domain"`
+	Url string `json:"url"`
 }
 
 // Data is to save & get the data of the loaded configuration file

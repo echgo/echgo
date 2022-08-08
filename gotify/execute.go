@@ -9,11 +9,11 @@ import (
 // & lead all configuration data
 func Execute(headline, message string) {
 
-	lookup := environment.Lookup("GOTIFY_DOMAIN", "GOTIFY_KEY")
+	lookup := environment.Lookup("GOTIFY_BASE_URL", "GOTIFY_KEY")
 	if lookup {
 
 		r := Request{
-			Domain:     environment.String("GOTIFY_DOMAIN"),
+			BaseUrl:    environment.String("GOTIFY_BASE_URL"),
 			XGotifyKey: environment.String("GOTIFY_KEY"),
 		}
 
