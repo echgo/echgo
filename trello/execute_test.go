@@ -11,9 +11,21 @@ import (
 // And send a testing message to the service
 func TestExecute(t *testing.T) {
 
-	webhookUrl := ""
+	key := ""
+	token := ""
+	idList := ""
 
-	err := os.Setenv("SLACK_WEBHOOK_URL", webhookUrl)
+	err := os.Setenv("TRELLO_KEY", key)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	err = os.Setenv("TRELLO_TOKEN", token)
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	err = os.Setenv("TRELLO_ID_LIST", idList)
 	if err != nil {
 		t.Fatal(err)
 	}
