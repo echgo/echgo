@@ -21,10 +21,20 @@ func Execute(headline, message string) {
 
 		_, err := CreateMessage(b)
 		if err != nil {
+
 			attributes := make(map[string]any)
+			attributes["channel"] = channel
 			attributes["error"] = err
-			console.Log("error", "An error occurred while creating the message via pushover.", attributes)
+			console.Log("error", "An error occurred while creating the message.", attributes)
+
 		}
+
+	} else {
+
+		attributes := make(map[string]any)
+		attributes["channel"] = channel
+		attributes["lookup"] = lookup
+		console.Log("error", "An error occurred while lookup the environment variables.", attributes)
 
 	}
 
