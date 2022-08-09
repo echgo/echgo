@@ -28,6 +28,13 @@ func Execute(headline, message string) {
 			console.Log("error", "An error occurred while creating the message via slack.", attributes)
 		}
 
+	} else {
+
+		attributes := make(map[string]any)
+		attributes["channel"] = "slack"
+		attributes["lookup"] = lookup
+		console.Log("error", "An error occurred while lookup the environment variables.", attributes)
+
 	}
 
 }

@@ -31,6 +31,13 @@ func Execute(headline, message string) {
 			console.Log("error", "An error occurred while creating the message via twillo.", attributes)
 		}
 
+	} else {
+
+		attributes := make(map[string]any)
+		attributes["channel"] = "twillo"
+		attributes["lookup"] = lookup
+		console.Log("error", "An error occurred while lookup the environment variables.", attributes)
+
 	}
 
 }

@@ -38,6 +38,13 @@ func Execute(headline, message string) {
 			console.Log("error", "An error occurred while creating the ticket via osticket.", attributes)
 		}
 
+	} else {
+
+		attributes := make(map[string]any)
+		attributes["channel"] = "osticket"
+		attributes["lookup"] = lookup
+		console.Log("error", "An error occurred while lookup the environment variables.", attributes)
+
 	}
 
 }
