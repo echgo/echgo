@@ -6,6 +6,9 @@ import (
 	"net/http"
 )
 
+// channel is to save the channel name for logging
+const channel = "zendesk"
+
 // Config is to define config data
 type Config struct {
 	Url, Method string

@@ -5,8 +5,12 @@ import (
 	"net/http"
 )
 
-// Set the base url for pushover service
-const baseUrl = "https://api.pushover.net"
+// baseUrl is to set the base url for the request
+// channel is to save the channel name for logging
+const (
+	baseUrl = "https://api.pushover.net"
+	channel = "pushover"
+)
 
 // Config is to define config data
 type Config struct {

@@ -6,8 +6,12 @@ import (
 	"strings"
 )
 
-// Set the base url for twillo
-const baseUrl = "https://api.twilio.com"
+// baseUrl is to set the base url for the request
+// channel is to save the channel name for logging
+const (
+	baseUrl = "https://api.twilio.com"
+	channel = "twillo"
+)
 
 // Config is to define config data
 type Config struct {

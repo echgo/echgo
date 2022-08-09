@@ -5,6 +5,9 @@ import (
 	"net/http"
 )
 
+// channel is to save the channel name for logging
+const channel = "discord"
+
 // Config is to define config data
 type Config struct {
 	Method string

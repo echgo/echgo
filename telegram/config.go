@@ -5,8 +5,12 @@ import (
 	"net/http"
 )
 
-// Set the base url for telegram bot's
-const baseUrl = "https://api.telegram.org"
+// baseUrl is to set the base url for the request
+// channel is to save the channel name for logging
+const (
+	baseUrl = "https://api.telegram.org"
+	channel = "telegram"
+)
 
 // Config is to define config data
 type Config struct {

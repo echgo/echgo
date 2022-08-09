@@ -32,7 +32,7 @@ func Execute(headline, message string) {
 		if err != nil {
 
 			attributes := make(map[string]any)
-			attributes["channel"] = "zendesk"
+			attributes["channel"] = channel
 			attributes["error"] = err
 			console.Log("error", "An error occurred while creating the ticket.", attributes)
 
@@ -41,7 +41,7 @@ func Execute(headline, message string) {
 	} else {
 
 		attributes := make(map[string]any)
-		attributes["channel"] = "zendesk"
+		attributes["channel"] = channel
 		attributes["lookup"] = lookup
 		console.Log("error", "An error occurred while lookup the environment variables.", attributes)
 

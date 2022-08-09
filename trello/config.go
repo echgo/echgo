@@ -4,8 +4,12 @@ import (
 	"net/http"
 )
 
-// Set the base url for trello
-const baseUrl = "https://api.trello.com"
+// baseUrl is to set the base url for the request
+// channel is to save the channel name for logging
+const (
+	baseUrl = "https://api.trello.com"
+	channel = "trello"
+)
 
 // Config is to define config data
 type Config struct {
