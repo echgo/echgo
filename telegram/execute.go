@@ -20,9 +20,12 @@ func Execute(headline, message string) {
 
 		_, err := CreateMessage(fmt.Sprintf("%s\n%s", headline, message), "Markdown", r)
 		if err != nil {
+
 			attributes := make(map[string]any)
+			attributes["channel"] = "telegram"
 			attributes["error"] = err
-			console.Log("error", "An error occurred while creating the message via telegram.", attributes)
+			console.Log("error", "An error occurred while creating the message.", attributes)
+
 		}
 
 	} else {

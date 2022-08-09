@@ -30,9 +30,12 @@ func Execute(headline, message string) {
 
 		_, err := CreateTicket(b, r)
 		if err != nil {
+
 			attributes := make(map[string]any)
+			attributes["channel"] = "zendesk"
 			attributes["error"] = err
-			console.Log("error", "An error occurred while creating the ticket via zendesk.", attributes)
+			console.Log("error", "An error occurred while creating the ticket.", attributes)
+
 		}
 
 	} else {

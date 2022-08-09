@@ -20,9 +20,12 @@ func Execute(headline, message string) {
 
 		_, err := CreateCard(headline, message, r)
 		if err != nil {
+
 			attributes := make(map[string]any)
+			attributes["channel"] = "trello"
 			attributes["error"] = err
-			console.Log("error", "An error occurred while creating the card via trello.", attributes)
+			console.Log("error", "An error occurred while creating the card.", attributes)
+
 		}
 
 	} else {

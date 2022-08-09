@@ -23,9 +23,12 @@ func Execute(headline, message string) {
 
 		err := Send(b, r)
 		if err != nil {
+
 			attributes := make(map[string]any)
+			attributes["channel"] = "webhook"
 			attributes["error"] = err
-			console.Log("error", "An error occurred while sending the webhook.", attributes)
+			console.Log("error", "An error occurred while send the data.", attributes)
+
 		}
 
 	} else {

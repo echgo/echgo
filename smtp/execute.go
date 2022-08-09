@@ -33,9 +33,12 @@ func Execute(headline, message string) {
 
 		err := SendEmail(d, a)
 		if err != nil {
+
 			attributes := make(map[string]any)
+			attributes["channel"] = "smtp"
 			attributes["error"] = err
-			console.Log("error", "An error occurred while sending the email via smtp.", attributes)
+			console.Log("error", "An error occurred while sending the email.", attributes)
+
 		}
 
 	} else {

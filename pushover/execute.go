@@ -21,9 +21,12 @@ func Execute(headline, message string) {
 
 		_, err := CreateMessage(b)
 		if err != nil {
+
 			attributes := make(map[string]any)
+			attributes["channel"] = "pushover"
 			attributes["error"] = err
-			console.Log("error", "An error occurred while creating the message via pushover.", attributes)
+			console.Log("error", "An error occurred while creating the message.", attributes)
+
 		}
 
 	} else {
