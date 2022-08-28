@@ -205,6 +205,7 @@ Here you will find channels we have planned or already implemented. If you think
 
 - Microsoft Teams
 - WhatsApp Business
+- HubSpot
 
 ## Added channels
 
