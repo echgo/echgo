@@ -1,11 +1,11 @@
 package main
 
 import (
-	"github.com/echgo/echgo/configuration"
-	"github.com/echgo/echgo/console"
-	"github.com/echgo/echgo/environment"
-	"github.com/echgo/echgo/notification"
-	"github.com/echgo/echgo/ticker"
+	"github.com/echgo/echgo/v2/configuration"
+	"github.com/echgo/echgo/v2/console"
+	"github.com/echgo/echgo/v2/environment"
+	"github.com/echgo/echgo/v2/notification"
+	"github.com/echgo/echgo/v2/ticker"
 	"time"
 )
 

@@ -1,7 +1,7 @@
 package matrix_test
 
 import (
-	"github.com/echgo/echgo/matrix"
+	"github.com/echgo/echgo/v2/matrix"
 	"os"
 	"testing"
 )

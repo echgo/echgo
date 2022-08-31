@@ -1,7 +1,7 @@
 package osticket_test
 
 import (
-	"github.com/echgo/echgo/osticket"
+	"github.com/echgo/echgo/v2/osticket"
 	"os"
 	"testing"
 )

@@ -1,7 +1,7 @@
 package ticker
 
 import (
-	"github.com/echgo/echgo/environment"
+	"github.com/echgo/echgo/v2/environment"
 	"time"
 )
 

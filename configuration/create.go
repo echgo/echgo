@@ -3,7 +3,7 @@ package configuration
 import (
 	"encoding/json"
 	"flag"
-	"github.com/echgo/echgo/console"
+	"github.com/echgo/echgo/v2/console"
 	"log"
 	"os"
 	"path/filepath"

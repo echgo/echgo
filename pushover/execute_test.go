@@ -1,7 +1,7 @@
 package pushover_test
 
 import (
-	"github.com/echgo/echgo/pushover"
+	"github.com/echgo/echgo/v2/pushover"
 	"os"
 	"testing"
 )

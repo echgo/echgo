@@ -1,7 +1,7 @@
 package slack_test
 
 import (
-	"github.com/echgo/echgo/slack"
+	"github.com/echgo/echgo/v2/slack"
 	"os"
 	"testing"
 )

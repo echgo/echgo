@@ -2,8 +2,8 @@ package discord
 
 import (
 	"fmt"
-	"github.com/echgo/echgo/console"
-	"github.com/echgo/echgo/environment"
+	"github.com/echgo/echgo/v2/console"
+	"github.com/echgo/echgo/v2/environment"
 )
 
 // Execute is to execute the create message function

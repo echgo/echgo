@@ -2,7 +2,7 @@ package notification
 
 import (
 	"bufio"
-	"github.com/echgo/echgo/channels"
+	"github.com/echgo/echgo/v2/channels"
 	"os"
 	"strings"
 )

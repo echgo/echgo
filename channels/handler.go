@@ -1,18 +1,18 @@
 package channels
 
 import (
-	"github.com/echgo/echgo/discord"
-	"github.com/echgo/echgo/gotify"
-	"github.com/echgo/echgo/matrix"
-	"github.com/echgo/echgo/osticket"
-	"github.com/echgo/echgo/pushover"
-	"github.com/echgo/echgo/slack"
-	"github.com/echgo/echgo/smtp"
-	"github.com/echgo/echgo/telegram"
-	"github.com/echgo/echgo/trello"
-	"github.com/echgo/echgo/twillo"
-	"github.com/echgo/echgo/webhook"
-	"github.com/echgo/echgo/zendesk"
+	"github.com/echgo/echgo/v2/discord"
+	"github.com/echgo/echgo/v2/gotify"
+	"github.com/echgo/echgo/v2/matrix"
+	"github.com/echgo/echgo/v2/osticket"
+	"github.com/echgo/echgo/v2/pushover"
+	"github.com/echgo/echgo/v2/slack"
+	"github.com/echgo/echgo/v2/smtp"
+	"github.com/echgo/echgo/v2/telegram"
+	"github.com/echgo/echgo/v2/trello"
+	"github.com/echgo/echgo/v2/twillo"
+	"github.com/echgo/echgo/v2/webhook"
+	"github.com/echgo/echgo/v2/zendesk"
 	"strings"
 )
 
