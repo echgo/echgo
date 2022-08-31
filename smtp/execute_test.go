@@ -1,7 +1,7 @@
 package smtp_test
 
 import (
-	"github.com/echgo/echgo/smtp"
+	"github.com/echgo/echgo/v2/smtp"
 	"os"
 	"testing"
 )

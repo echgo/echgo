@@ -1,7 +1,7 @@
 package console_test
 
 import (
-	"github.com/echgo/echgo/console"
+	"github.com/echgo/echgo/v2/console"
 	"testing"
 )
 

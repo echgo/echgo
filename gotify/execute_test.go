@@ -1,7 +1,7 @@
 package gotify_test
 
 import (
-	"github.com/echgo/echgo/gotify"
+	"github.com/echgo/echgo/v2/gotify"
 	"os"
 	"testing"
 )

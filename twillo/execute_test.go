@@ -1,7 +1,7 @@
 package twillo_test
 
 import (
-	"github.com/echgo/echgo/twillo"
+	"github.com/echgo/echgo/v2/twillo"
 	"os"
 	"testing"
 )

@@ -1,7 +1,7 @@
 package telegram_test
 
 import (
-	"github.com/echgo/echgo/telegram"
+	"github.com/echgo/echgo/v2/telegram"
 	"os"
 	"testing"
 )

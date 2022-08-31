@@ -1,9 +1,9 @@
 package notification
 
 import (
-	"github.com/echgo/echgo/configuration"
-	"github.com/echgo/echgo/console"
-	"github.com/echgo/echgo/environment"
+	"github.com/echgo/echgo/v2/configuration"
+	"github.com/echgo/echgo/v2/console"
+	"github.com/echgo/echgo/v2/environment"
 	"log"
 	"os"
 	"path/filepath"

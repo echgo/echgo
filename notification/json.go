@@ -2,7 +2,7 @@ package notification
 
 import (
 	"encoding/json"
-	"github.com/echgo/echgo/channels"
+	"github.com/echgo/echgo/v2/channels"
 	"io"
 	"log"
 	"os"

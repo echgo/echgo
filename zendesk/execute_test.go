@@ -1,7 +1,7 @@
 package zendesk_test
 
 import (
-	"github.com/echgo/echgo/zendesk"
+	"github.com/echgo/echgo/v2/zendesk"
 	"os"
 	"testing"
 )

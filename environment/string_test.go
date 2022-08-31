@@ -1,7 +1,7 @@
 package environment_test
 
 import (
-	"github.com/echgo/echgo/environment"
+	"github.com/echgo/echgo/v2/environment"
 	"os"
 	"testing"
 )

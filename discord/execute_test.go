@@ -1,7 +1,7 @@
 package discord_test
 
 import (
-	"github.com/echgo/echgo/discord"
+	"github.com/echgo/echgo/v2/discord"
 	"os"
 	"testing"
 )

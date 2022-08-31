@@ -1,8 +1,8 @@
 package webhook
 
 import (
-	"github.com/echgo/echgo/console"
-	"github.com/echgo/echgo/environment"
+	"github.com/echgo/echgo/v2/console"
+	"github.com/echgo/echgo/v2/environment"
 )
 
 // Execute is to execute the webhook function

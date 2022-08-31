@@ -1,7 +1,7 @@
 package webhook_test
 
 import (
-	"github.com/echgo/echgo/webhook"
+	"github.com/echgo/echgo/v2/webhook"
 	"os"
 	"testing"
 )
