@@ -3,14 +3,17 @@
 # After that we create a scratch image that based on alpine:latest, copy the files from the build image & start the application
 FROM golang:alpine AS build
 
-WORKDIR /tmp/src/
+RUN apk --no-cache add \
+    make
+
+WORKDIR /tmp/src
 
 COPY go.mod .
 COPY go.sum .
 RUN go mod download
 
 COPY . .
-RUN go build -o echgo
+RUN make build
 
 FROM alpine:latest AS production
 
@@ -20,9 +23,9 @@ RUN apk --no-cache add \
 
 ENV TZ=Europe/Berlin
 
-WORKDIR /app/
+WORKDIR /app
 
 COPY files/ files/
 COPY --from=build /tmp/src/echgo .
 
-ENTRYPOINT ["./echgo"]
+ENTRYPOINT ["/app/echgo"]
