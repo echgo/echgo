@@ -21,6 +21,9 @@ upgrade:
 download:
 	go mod download
 
+build:
+	go build -o ${BINARY_NAME}
+
 test-build:
 	docker build -t ${DOCKER_IMAGE_NAME}:testing .
 
