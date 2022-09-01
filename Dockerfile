@@ -9,8 +9,6 @@ RUN apk --no-cache add \
 WORKDIR /tmp/src
 
 COPY go.mod .
-COPY go.sum .
-RUN go mod download
 
 COPY . .
 RUN make build
