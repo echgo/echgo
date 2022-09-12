@@ -1,4 +1,4 @@
-name: VMerge
+name: CompVer
 
 on:
     push:
@@ -26,21 +26,20 @@ jobs:
               run: echo ::set-output name=tag::${GITHUB_REF#refs/*/}
 
             - name: Get the major version
-              id: vmerge
-              uses: gowizzard/vmerge@v1.2.0
-              env:
-                  VERSION: ${{ steps.information.outputs.tag }}
-                  SUFFIX: "v"
+              id: compver
+              uses: gowizzard/compver@v3.1.2
+              with:
+                  args: "-core -block major -version1 ${{ steps.information.outputs.tag }}"
 
             - name: Set git config
               run: |
                   git config --local user.name "$USER_NAME"
                   git config --local user.email "$USER_EMAIL"
 
-            - name: Merge data from master branch
+            - name: Merge data from default branch
               run: |
                   git fetch
-                  git checkout ${{ steps.vmerge.outputs.branch_name }}
+                  git checkout v${{ steps.compver.outputs.number }}
                   git pull
                   git merge --no-ff "origin/$DEFAULT_BRANCH" -m "$COMMIT_MESSAGE"
                   git push
