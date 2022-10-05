@@ -26,8 +26,5 @@ jobs:
             - name: Create Docker Buildx
               run: docker buildx create --use
 
-            - name: Build Docker Image
-              run: make docker-build
-
-            - name: Push Image to Docker Hub
-              run: make docker-push
+            - name: Build Docker Image with Buildx
+              run: make docker-buildx

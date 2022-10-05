@@ -25,10 +25,8 @@ version:
 build:
 	go build -o ${BINARY_NAME}
 
-docker-build:
-	docker buildx b \
+docker-buildx:
+	docker buildx build \
 		--platform linux/amd64,linux/arm64,linux/arm/v7 \
+		--push \
 		-t ${DOCKER_HUB_USERNAME}/${BINARY_NAME}:${VERSION} -t ${DOCKER_HUB_USERNAME}/${BINARY_NAME}:latest .
-
-docker-push:
-	docker push -a ${DOCKER_HUB_USERNAME}/${BINARY_NAME}
