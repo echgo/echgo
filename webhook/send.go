@@ -1,14 +1,18 @@
+// Copyright 2022 Jonas Kwiedor. All rights reserved.
+// Use of this source code is governed by the MIT
+// license that can be found in the LICENSE file.
+
 package webhook
 
 import "encoding/json"
 
-// SendBody is to structure the body data
+// SendBody is to structure the body data.
 type SendBody struct {
 	Headline string `json:"headline"`
 	Message  string `json:"message"`
 }
 
-// Send is to send the webhook
+// Send is to send the webhook.
 func Send(body SendBody, r Request) error {
 
 	convert, err := json.Marshal(body)

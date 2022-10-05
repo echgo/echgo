@@ -1,3 +1,7 @@
+// Copyright 2022 Jonas Kwiedor. All rights reserved.
+// Use of this source code is governed by the MIT
+// license that can be found in the LICENSE file.
+
 package slack
 
 import (
@@ -5,12 +9,12 @@ import (
 	"io"
 )
 
-// CreateMessageBody is to structure the body data
+// CreateMessageBody is to structure the body data.
 type CreateMessageBody struct {
 	Text string `json:"text"`
 }
 
-// CreateMessage is to create a message on a matrix server
+// CreateMessage is to create a message on a matrix server.
 func CreateMessage(body CreateMessageBody, r Request) (string, error) {
 
 	convert, err := json.Marshal(body)

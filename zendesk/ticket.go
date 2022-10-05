@@ -1,3 +1,7 @@
+// Copyright 2022 Jonas Kwiedor. All rights reserved.
+// Use of this source code is governed by the MIT
+// license that can be found in the LICENSE file.
+
 package zendesk
 
 import (
@@ -6,7 +10,7 @@ import (
 	"time"
 )
 
-// CreateTicketBody is to structure the body data
+// CreateTicketBody is to structure the body data.
 type CreateTicketBody struct {
 	Ticket CreateTicketBodyTicket `json:"ticket"`
 }
@@ -21,7 +25,7 @@ type CreateTicketBodyComment struct {
 	Body string `json:"body"`
 }
 
-// CreateTicketReturn is to decode the json data
+// CreateTicketReturn is to decode the json data.
 type CreateTicketReturn struct {
 	Ticket struct {
 		Url        string      `json:"url"`
@@ -126,7 +130,7 @@ type CreateTicketReturn struct {
 	} `json:"audit"`
 }
 
-// CreateTicket is to create a ticket in zendesk
+// CreateTicket is to create a ticket in zendesk.
 func CreateTicket(body CreateTicketBody, r Request) (CreateTicketReturn, error) {
 
 	address, err := url.JoinPath(r.BaseUrl, "api", "v2", "tickets")

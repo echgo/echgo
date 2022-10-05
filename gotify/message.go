@@ -1,3 +1,7 @@
+// Copyright 2022 Jonas Kwiedor. All rights reserved.
+// Use of this source code is governed by the MIT
+// license that can be found in the LICENSE file.
+
 package gotify
 
 import (
@@ -6,7 +10,7 @@ import (
 	"time"
 )
 
-// CreateMessageBody is to structure the body data
+// CreateMessageBody is to structure the body data.
 type CreateMessageBody struct {
 	Priority int                      `json:"priority"`
 	Title    string                   `json:"title"`
@@ -27,7 +31,7 @@ type CreateMessageBodyChangeTemperature struct {
 	Temperature int `json:"temperature"`
 }
 
-// CreateMessageReturn is to decode the json data
+// CreateMessageReturn is to decode the json data.
 type CreateMessageReturn struct {
 	Id       int    `json:"id"`
 	Appid    int    `json:"appid"`
@@ -46,7 +50,7 @@ type CreateMessageReturn struct {
 }
 
 // CreateMessage is to create a new message
-// To send the request & decode the response
+// to send the request & decode the response.
 func CreateMessage(body CreateMessageBody, r Request) (CreateMessageReturn, error) {
 
 	address, err := url.JoinPath(r.BaseUrl, "message")

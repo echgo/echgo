@@ -1,3 +1,10 @@
+// Copyright 2022 Jonas Kwiedor. All rights reserved.
+// Use of this source code is governed by the MIT
+// license that can be found in the LICENSE file.
+
+// Package trello is used to define the configuration
+// for the request, the functions so that the
+// request can be built and processed.
 package trello
 
 import (
@@ -6,7 +13,7 @@ import (
 	"time"
 )
 
-// CreateCardReturn is to decode the json data
+// CreateCardReturn is to decode the json data.
 type CreateCardReturn struct {
 	Attachments []interface{} `json:"attachments"`
 	Id          string        `json:"id"`
@@ -76,7 +83,7 @@ type CreateCardReturn struct {
 	} `json:"limits"`
 }
 
-// CreateCard is to create a card to trello
+// CreateCard is to create a card to trello.
 func CreateCard(name, desc string, r Request) (CreateCardReturn, error) {
 
 	address, err := url.JoinPath(baseUrl, "1", "cards")

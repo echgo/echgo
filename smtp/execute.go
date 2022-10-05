@@ -1,3 +1,7 @@
+// Copyright 2022 Jonas Kwiedor. All rights reserved.
+// Use of this source code is governed by the MIT
+// license that can be found in the LICENSE file.
+
 package smtp
 
 import (
@@ -6,8 +10,8 @@ import (
 	"net/mail"
 )
 
-// Execute is to execute the send function
-// & load all configuration data
+// Execute is to execute the send
+// function & load all configuration data
 func Execute(headline, message string) {
 
 	lookup := environment.Lookup("SMTP_HOST", "SMTP_PORT", "SMTP_USERNAME", "SMTP_PASSWORD", "SMTP_EMAIL_RECIPIENT")

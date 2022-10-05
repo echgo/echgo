@@ -1,3 +1,7 @@
+// Copyright 2022 Jonas Kwiedor. All rights reserved.
+// Use of this source code is governed by the MIT
+// license that can be found in the LICENSE file.
+
 package osticket
 
 import (
@@ -6,8 +10,8 @@ import (
 	"github.com/echgo/echgo/v2/environment"
 )
 
-// Execute is to execute the create ticket function
-// & lead all configuration data
+// Execute is to execute the create ticket
+// function & lead all configuration data.
 func Execute(headline, message string) {
 
 	lookup := environment.Lookup("OS_TICKET_BASE_URL", "OS_TICKET_API_TOKEN", "OS_TICKET_USERNAME", "OS_TICKET_EMAIL_RECIPIENT")

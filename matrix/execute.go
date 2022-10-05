@@ -1,3 +1,7 @@
+// Copyright 2022 Jonas Kwiedor. All rights reserved.
+// Use of this source code is governed by the MIT
+// license that can be found in the LICENSE file.
+
 package matrix
 
 import (
@@ -6,8 +10,8 @@ import (
 	"github.com/echgo/echgo/v2/environment"
 )
 
-// Execute is to execute the create message function
-// & lead all configuration data
+// Execute is to execute the create message
+// function & lead all configuration data.
 func Execute(headline, message string) {
 
 	lookup := environment.Lookup("MATRIX_BASE_URL", "MATRIX_ROOM_ID", "MATRIX_ACCESS_TOKEN")
