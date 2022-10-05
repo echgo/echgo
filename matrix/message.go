@@ -1,3 +1,7 @@
+// Copyright 2022 Jonas Kwiedor. All rights reserved.
+// Use of this source code is governed by the MIT
+// license that can be found in the LICENSE file.
+
 package matrix
 
 import (
@@ -5,18 +9,18 @@ import (
 	"net/url"
 )
 
-// CreateMessageBody is to structure the body data
+// CreateMessageBody is to structure the body data.
 type CreateMessageBody struct {
 	Msgtype string `json:"msgtype"`
 	Body    string `json:"body"`
 }
 
-// CreateMessageReturn is to decode the json data
+// CreateMessageReturn is to decode the json data.
 type CreateMessageReturn struct {
 	EventId string `json:"event_id"`
 }
 
-// CreateMessage is to create a message on a matrix server
+// CreateMessage is to create a message on a matrix server.
 func CreateMessage(body CreateMessageBody, r Request) (CreateMessageReturn, error) {
 
 	address, err := url.JoinPath(r.BaseUrl, "_matrix", "client", "r0", "rooms", r.RoomId, "send", "m.room.message")
