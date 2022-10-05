@@ -73,9 +73,9 @@ Now you can use the following variables for the different services. If a service
 
 Now we create a notification to be sent to different channels. You can also enter only one channel. How these notification files are created later is up to you. With a bash script or from another program does not matter.
 
-The only important thing is that the file is placed in this folder `/var/lib/echgo/notification`. The name of the file does not matter. It only matters that the file extension and the file format are correct. Currently, we can read the following formats: `.txt, .json & .xml`. 
+The only important thing is that the file is placed in this folder `/var/lib/echgo/notification`. The name of the file does not matter. It only matters that the file extension and the file format are correct. Currently, we can read the following formats: `.txt`, `.json` & `.xml`. 
 
-You can store the following channels in the file, if they are configured: `gotify, pushover, matrix, telegram, discord, slack, trello, zendesk, osticket, twillo, smtp & webhook`. These are always specified in an array. That means you can address one or more channels with one notification file. Now let's look at the currently available file formats and how you can configure them.
+You can store the following channels in the file, if they are configured: `gotify`, `pushover`, `matrix`, `telegram`, `discord`, `slack`, `trello`, `zendesk`, `osticket`, `twillo`, `smtp` & `webhook`. These are always specified in an array. That means you can address one or more channels with one notification file. Now let's look at the currently available file formats and how you can configure them.
 
 #### TXT file
 
