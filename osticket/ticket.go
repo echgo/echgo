@@ -1,3 +1,7 @@
+// Copyright 2022 Jonas Kwiedor. All rights reserved.
+// Use of this source code is governed by the MIT
+// license that can be found in the LICENSE file.
+
 package osticket
 
 import (
@@ -6,7 +10,7 @@ import (
 	"net/url"
 )
 
-// CreateTicketBody is to structure the body data
+// CreateTicketBody is to structure the body data.
 type CreateTicketBody struct {
 	Alert       bool                `json:"alert"`
 	Autorespond bool                `json:"autorespond"`
@@ -20,7 +24,7 @@ type CreateTicketBody struct {
 	Attachments []map[string]string `json:"attachments,omitempty"`
 }
 
-// CreateTicket is to create a ticket in zendesk
+// CreateTicket is to create a ticket in zendesk.
 func CreateTicket(body CreateTicketBody, r Request) (string, error) {
 
 	address, err := url.JoinPath(r.BaseUrl, "api", "tickets.json")
