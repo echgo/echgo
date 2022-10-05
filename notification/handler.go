@@ -1,3 +1,7 @@
+// Copyright 2022 Jonas Kwiedor. All rights reserved.
+// Use of this source code is governed by the MIT
+// license that can be found in the LICENSE file.
+
 package notification
 
 import (
@@ -9,8 +13,8 @@ import (
 	"path/filepath"
 )
 
-// Handler is to handle the notification of file messaging files
-// To open the file, check the file extension & remove the files
+// Handler is to handle the notification of file messaging files.
+// To open the file, check the file extension & remove the files.
 func Handler() {
 
 	if !environment.Boolean("USE_ENVIRONMENT") {
