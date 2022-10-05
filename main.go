@@ -1,3 +1,7 @@
+// Copyright 2022 Jonas Kwiedor. All rights reserved.
+// Use of this source code is governed by the MIT
+// license that can be found in the LICENSE file.
+
 package main
 
 import (
@@ -9,13 +13,13 @@ import (
 	"time"
 )
 
-// Initialise the software with a console information
+// Initialise the software with a console information.
 func init() {
-	console.Init()
+	console.Initialize()
 }
 
-// If no env we add a dummy configuration file, if none exists
-// And start ticker function with notification handler
+// If no env we add a dummy configuration file, if none
+// exists and start ticker function with notification handler.
 func main() {
 
 	if !environment.Boolean("USE_ENVIRONMENT") {
