@@ -1,3 +1,7 @@
+// Copyright 2022 Jonas Kwiedor. All rights reserved.
+// Use of this source code is governed by the MIT
+// license that can be found in the LICENSE file.
+
 package twillo
 
 import (
@@ -5,14 +9,14 @@ import (
 	"net/url"
 )
 
-// CreateMessageBody is to structure the body data
+// CreateMessageBody is to structure the body data.
 type CreateMessageBody struct {
 	Message       string
 	PhoneNumber   string
 	MyPhoneNumber string
 }
 
-// CreateMessageReturn is to decode the json data
+// CreateMessageReturn is to decode the json data.
 type CreateMessageReturn struct {
 	Sid                 string      `json:"sid"`
 	DateCreated         string      `json:"date_created"`
@@ -41,7 +45,7 @@ type CreateMessageReturn struct {
 	MoreInfo string `json:"more_info"`
 }
 
-// CreateMessage is to create a message via twillo
+// CreateMessage is to create a message via twillo.
 func CreateMessage(body CreateMessageBody, r Request) (CreateMessageReturn, error) {
 
 	address, err := url.JoinPath(baseUrl, "2010-04-01", "Accounts", r.AccountSid, "Messages.json")

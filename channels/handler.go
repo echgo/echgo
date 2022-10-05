@@ -1,3 +1,9 @@
+// Copyright 2022 Jonas Kwiedor. All rights reserved.
+// Use of this source code is governed by the MIT
+// license that can be found in the LICENSE file.
+
+// Package channels is used to transfer the different headlines
+// and messages to the different execute functions of the packages.
 package channels
 
 import (
@@ -16,8 +22,7 @@ import (
 	"strings"
 )
 
-// Handler is to handle the channels
-// And send the notifications to them
+// Handler is to handle the channels and send the notifications to them.
 func Handler(headline, message string, types []string) {
 
 	for _, value := range types {

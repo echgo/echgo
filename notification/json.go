@@ -1,3 +1,7 @@
+// Copyright 2022 Jonas Kwiedor. All rights reserved.
+// Use of this source code is governed by the MIT
+// license that can be found in the LICENSE file.
+
 package notification
 
 import (
@@ -8,15 +12,15 @@ import (
 	"os"
 )
 
-// JsonBody is to decode the json file
+// JsonBody is to decode the json file.
 type JsonBody struct {
 	Channels []string `json:"channels"`
 	Headline string   `json:"headline"`
 	Message  string   `json:"message"`
 }
 
-// Json is to handle the json files from the notification
-// Check them & send them to the channel handler
+// Json is to handle the json files from the notification.
+// Check them & send them to the channel handler.
 func Json(file *os.File) {
 
 	var decode JsonBody

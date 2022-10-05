@@ -1,3 +1,7 @@
+// Copyright 2022 Jonas Kwiedor. All rights reserved.
+// Use of this source code is governed by the MIT
+// license that can be found in the LICENSE file.
+
 package console
 
 import (
@@ -7,17 +11,19 @@ import (
 	"time"
 )
 
+// cyan, red, reset are to save the color codes.
 const (
 	cyan  = "\u001B[36m"
 	red   = "\u001B[31m"
 	reset = "\u001B[0m"
 )
 
+// color is to save the color of the kind.
 var color string
 
-// Log is to print the console output
-// First check the color / kind & then print the kind, message
-// Now check the attribute keys & sort them to print them
+// Log is to print the console output. First check the
+// color / kind & then print the kind, message. Now
+// check the attribute keys & sort them to print them
 func Log(kind, message string, attributes map[string]any) {
 
 	switch {

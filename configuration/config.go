@@ -1,6 +1,14 @@
+// Copyright 2022 Jonas Kwiedor. All rights reserved.
+// Use of this source code is governed by the MIT
+// license that can be found in the LICENSE file.
+
+// Package configuration is used to import or create the
+// different configurations for the different channels,
+// so that a configuration json file is used
+// to store the different access data.
 package configuration
 
-// Body is to save & decode the json data
+// Body is to save & decode the json data.
 type Body struct {
 	Channels Channels `json:"channels"`
 }
@@ -88,7 +96,7 @@ type Webhook struct {
 	Url string `json:"url"`
 }
 
-// Data is to save & get the data of the loaded configuration file
+// Data is to save & get the data of the loaded configuration file.
 var (
 	Data Body
 )

@@ -1,3 +1,7 @@
+// Copyright 2022 Jonas Kwiedor. All rights reserved.
+// Use of this source code is governed by the MIT
+// license that can be found in the LICENSE file.
+
 package smtp
 
 import (
@@ -6,8 +10,8 @@ import (
 	"strconv"
 )
 
-// SendEmail is to send an email
-// You can send the emails with smtp & add attachment files
+// SendEmail is to send an email. You can send
+// the emails with smtp & add attachment files
 func SendEmail(d Data, a Access) error {
 
 	headers := make(map[string]string)

@@ -1,3 +1,9 @@
+// Copyright 2022 Jonas Kwiedor. All rights reserved.
+// Use of this source code is governed by the MIT
+// license that can be found in the LICENSE file.
+
+// Package ticker is used to start a function
+// as goroutine in an interval to the full minute.
 package ticker
 
 import (
@@ -5,14 +11,14 @@ import (
 	"time"
 )
 
-// Config is to structure the data
+// Config is to structure the data.
 type Config struct {
 	Time time.Time
 }
 
-// Start is to start the ticker with a job function every
-// The default value is 15 to tick every 15 seconds
-// You can overwrite this default with the environment `INTERVAL`
+// Start is to start the ticker with a job function every.
+// The default value is 15 to tick every 15 seconds. You
+// can overwrite this default with the environment `INTERVAL`.
 func (c *Config) Start(job func()) {
 
 	second := c.Time.Second()

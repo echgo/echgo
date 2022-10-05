@@ -1,3 +1,7 @@
+// Copyright 2022 Jonas Kwiedor. All rights reserved.
+// Use of this source code is governed by the MIT
+// license that can be found in the LICENSE file.
+
 package configuration
 
 import (
@@ -9,8 +13,8 @@ import (
 	"path/filepath"
 )
 
-// Create is to create a configuration file, if none exists
-// We add dummy data to the file
+// Create is to create a configuration file, if
+// none exists. We add dummy data to the file.
 func Create() {
 
 	path := filepath.Join("files", "configuration", "default.json")

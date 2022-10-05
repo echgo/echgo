@@ -1,3 +1,7 @@
+// Copyright 2022 Jonas Kwiedor. All rights reserved.
+// Use of this source code is governed by the MIT
+// license that can be found in the LICENSE file.
+
 package pushover
 
 import (
@@ -5,20 +9,20 @@ import (
 	"net/url"
 )
 
-// CreateMessageBody is to structure the body data
+// CreateMessageBody is to structure the body data.
 type CreateMessageBody struct {
 	Token   string `json:"token"`
 	User    string `json:"user"`
 	Message string `json:"message"`
 }
 
-// CreateMessageReturn is to decode the json data
+// CreateMessageReturn is to decode the json data.
 type CreateMessageReturn struct {
 	Status  int    `json:"status"`
 	Request string `json:"request"`
 }
 
-// CreateMessage is to create a message to pushover
+// CreateMessage is to create a message to pushover.
 func CreateMessage(body CreateMessageBody) (CreateMessageReturn, error) {
 
 	address, err := url.JoinPath(baseUrl, "1", "messages.json")

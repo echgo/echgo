@@ -1,3 +1,7 @@
+// Copyright 2022 Jonas Kwiedor. All rights reserved.
+// Use of this source code is governed by the MIT
+// license that can be found in the LICENSE file.
+
 package configuration_test
 
 import (
@@ -9,7 +13,7 @@ import (
 	"testing"
 )
 
-// TestCreate is to test the creation of the configuration file
+// TestCreate is to test the creation of the configuration file.
 func TestCreate(t *testing.T) {
 
 	_, filename, _, _ := runtime.Caller(0)
