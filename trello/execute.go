@@ -1,3 +1,7 @@
+// Copyright 2022 Jonas Kwiedor. All rights reserved.
+// Use of this source code is governed by the MIT
+// license that can be found in the LICENSE file.
+
 package trello
 
 import (
@@ -5,8 +9,8 @@ import (
 	"github.com/echgo/echgo/v2/environment"
 )
 
-// Execute is to execute the create card function
-// & lead all configuration data
+// Execute is to execute the create card
+// function & lead all configuration data.
 func Execute(headline, message string) {
 
 	lookup := environment.Lookup("TRELLO_KEY", "TRELLO_TOKEN", "TRELLO_ID_LIST")
