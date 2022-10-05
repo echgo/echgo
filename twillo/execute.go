@@ -1,3 +1,7 @@
+// Copyright 2022 Jonas Kwiedor. All rights reserved.
+// Use of this source code is governed by the MIT
+// license that can be found in the LICENSE file.
+
 package twillo
 
 import (
@@ -6,8 +10,8 @@ import (
 	"github.com/echgo/echgo/v2/environment"
 )
 
-// Execute is to execute to send message function
-// & lead all configuration data
+// Execute is to execute to send message
+// function & lead all configuration data.
 func Execute(headline, message string) {
 
 	lookup := environment.Lookup("TWILLO_ACCOUNT_SID", "TWILLO_AUTH_TOKEN", "TWILLO_PHONE_NUMBER", "TWILLO_MY_PHONE_NUMBER")
