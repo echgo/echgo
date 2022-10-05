@@ -1,3 +1,7 @@
+// Copyright 2022 Jonas Kwiedor. All rights reserved.
+// Use of this source code is governed by the MIT
+// license that can be found in the LICENSE file.
+
 package telegram
 
 import (
@@ -6,7 +10,7 @@ import (
 	"net/url"
 )
 
-// CreateMessageReturn is to decode the json data
+// CreateMessageReturn is to decode the json data.
 type CreateMessageReturn struct {
 	Ok     bool `json:"ok"`
 	Result struct {
@@ -28,7 +32,7 @@ type CreateMessageReturn struct {
 	} `json:"result"`
 }
 
-// CreateMessage is to create a message with a bot in a telegram chat
+// CreateMessage is to create a message with a bot in a telegram chat.
 func CreateMessage(message, parseMode string, r Request) (CreateMessageReturn, error) {
 
 	address, err := url.JoinPath(baseUrl, r.ApiToken, "sendMessage")
