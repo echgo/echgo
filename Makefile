@@ -25,6 +25,21 @@ version:
 build:
 	go build -o ${BINARY_NAME}
 
+docker-test-build:
+	docker build -t ${BINARY_NAME}-testing .
+
+docker-test-run:
+	docker run --name ${BINARY_NAME}-testing -d --restart always \
+        -v /etc/${BINARY_NAME}/configuration:/app/files/configuration \
+        -v /var/lib/${BINARY_NAME}/notification:/app/files/notification \
+        ${BINARY_NAME}:testing
+
+docker-test-stop:
+	docker stop ${BINARY_NAME}-testing
+
+docker-test-remove:
+	docker rm ${BINARY_NAME}-testing
+
 docker-buildx:
 	docker buildx build \
 		--platform linux/amd64,linux/arm64,linux/arm/v7 \
