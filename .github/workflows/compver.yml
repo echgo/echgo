@@ -27,7 +27,7 @@ jobs:
 
             - name: Get the major version
               id: compver
-              uses: gowizzard/compver@v3.1.2
+              uses: gowizzard/compver@v4.1.3
               with:
                   args: "-core -block major -version1 ${{ steps.information.outputs.tag }}"
 
@@ -39,7 +39,7 @@ jobs:
             - name: Merge data from default branch
               run: |
                   git fetch
-                  git checkout v${{ steps.compver.outputs.number }}
+                  git checkout v${{ steps.compver.outputs.core_result }}
                   git pull
                   git merge --no-ff "origin/$DEFAULT_BRANCH" -m "$COMMIT_MESSAGE"
                   git push
