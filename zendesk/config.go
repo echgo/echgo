@@ -1,3 +1,10 @@
+// Copyright 2022 Jonas Kwiedor. All rights reserved.
+// Use of this source code is governed by the MIT
+// license that can be found in the LICENSE file.
+
+// Package zendesk is used to define the configuration
+// for the request, the functions so that the
+// request can be built and processed.
 package zendesk
 
 import (
@@ -6,24 +13,23 @@ import (
 	"net/http"
 )
 
-// channel is to save the channel name for logging
+// channel is to save the channel name for logging.
 const channel = "zendesk"
 
-// Config is to define config data
+// Config is to define config data.
 type Config struct {
 	Url, Method string
 	Body        []byte
 }
 
-// Request is to define the request data
+// Request is to define the request data.
 type Request struct {
 	BaseUrl  string
 	Username string
 	ApiToken string
 }
 
-// Send is to send a new request
-// & return the response
+// Send is to send a new request & return the response.
 func (c *Config) Send(r Request) (*http.Response, error) {
 
 	encoded := base64.StdEncoding.EncodeToString([]byte(r.Username + "/token:" + r.ApiToken))
