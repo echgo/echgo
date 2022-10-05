@@ -1,3 +1,7 @@
+// Copyright 2022 Jonas Kwiedor. All rights reserved.
+// Use of this source code is governed by the MIT
+// license that can be found in the LICENSE file.
+
 package configuration
 
 import (
@@ -12,9 +16,9 @@ import (
 	"strings"
 )
 
-// Import is to import the configuration file
-// An open, decode & close the json file
-// Then we use reflect to create environments with regex
+// Import is to import the configuration file.
+// An open, decode & close the json file. Then
+// we use reflect to create environments with regex
 func Import() {
 
 	path := filepath.Join("files", "configuration", "default.json")
