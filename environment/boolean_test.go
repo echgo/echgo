@@ -1,3 +1,7 @@
+// Copyright 2022 Jonas Kwiedor. All rights reserved.
+// Use of this source code is governed by the MIT
+// license that can be found in the LICENSE file.
+
 package environment_test
 
 import (
@@ -6,9 +10,9 @@ import (
 	"testing"
 )
 
-// TestBoolean is to test the environment boolean function
-// We set the environment from the local variables & test the function
-// The return value is output in logging
+// TestBoolean is to test the environment boolean function.
+// We set the environment from the local variables & test
+// the function. The return value is output in logging.
 func TestBoolean(t *testing.T) {
 
 	name := "USE_ENV"
