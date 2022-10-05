@@ -1,3 +1,7 @@
+// Copyright 2022 Jonas Kwiedor. All rights reserved.
+// Use of this source code is governed by the MIT
+// license that can be found in the LICENSE file.
+
 package discord
 
 import (
@@ -7,7 +11,7 @@ import (
 )
 
 // Execute is to execute the create message function
-// & lead all configuration data
+// & lead all configuration data.
 func Execute(headline, message string) {
 
 	lookup := environment.Lookup("DISCORD_WEBHOOK_URL")
