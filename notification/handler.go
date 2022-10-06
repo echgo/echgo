@@ -30,7 +30,7 @@ func Handler() {
 
 		if !value.IsDir() {
 
-			file, err := os.Open(path + value.Name())
+			file, err := os.Open(filepath.Join(path, value.Name()))
 			if err != nil {
 				log.Fatalln(err)
 			}
