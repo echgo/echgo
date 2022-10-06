@@ -53,7 +53,7 @@ func Handler() {
 				log.Fatalln(err)
 			}
 
-			err = os.Remove(path + value.Name())
+			err = os.Remove(filepath.Join(path, value.Name()))
 			if err != nil {
 				log.Fatalln(err)
 			}
