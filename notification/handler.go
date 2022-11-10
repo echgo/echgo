@@ -2,6 +2,8 @@
 // Use of this source code is governed by the MIT
 // license that can be found in the LICENSE file.
 
+// Package notification is used to select the different
+// file types and to read out and pass on the contents.
 package notification
 
 import (
@@ -21,6 +23,8 @@ func Handler() {
 		configuration.Import()
 	}
 
+	path := filepath.Join("files", "notification")
+
 	files, err := os.ReadDir(path)
 	if err != nil {
 		log.Fatalln(err)
@@ -30,7 +34,9 @@ func Handler() {
 
 		if !value.IsDir() {
 
-			file, err := os.Open(filepath.Join(path, value.Name()))
+			path := filepath.Join("files", "notification", value.Name())
+
+			file, err := os.Open(path)
 			if err != nil {
 				log.Fatalln(err)
 			}
@@ -53,7 +59,7 @@ func Handler() {
 				log.Fatalln(err)
 			}
 
-			err = os.Remove(filepath.Join(path, value.Name()))
+			err = os.Remove(path)
 			if err != nil {
 				log.Fatalln(err)
 			}
