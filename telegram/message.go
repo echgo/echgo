@@ -62,7 +62,7 @@ func CreateMessage(message, parseMode string, r Request) (CreateMessageReturn, e
 	parse.RawQuery = newUrl.Encode()
 	c.Url = parse.String()
 
-	response, err := c.Send(r)
+	response, err := c.Send()
 	if err != nil {
 		return CreateMessageReturn{}, err
 	}
