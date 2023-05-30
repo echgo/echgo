@@ -32,7 +32,7 @@ type Request struct {
 }
 
 // Send is to send a new request & return the response.
-func (c *Config) Send(r Request) (*http.Response, error) {
+func (c *Config) Send() (*http.Response, error) {
 
 	client := &http.Client{}
 
