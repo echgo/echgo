@@ -24,16 +24,7 @@ jobs:
               id: meta
               uses: docker/metadata-action@v4
               with:
-                  images: |
-                    ${{ env.IMAGE_NAME }}
-                    ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-                  tags: |
-                    type=ref,event=branch
-                    type=ref,event=pr
-                    type=semver,pattern={{version}}
-                    type=semver,pattern={{major}}.{{minor}}
-                    type=semver,pattern={{major}}
-                    type=sha
+                  images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
             - name: Set up QEMU
               uses: docker/setup-qemu-action@v2
