@@ -1,0 +1,30 @@
+// Copyright 2024 Jonas Kwiedor. All rights reserved.
+
+package main
+
+import (
+	"github.com/echgo/echgo/v2/internal/configuration"
+	"github.com/echgo/echgo/v2/internal/console"
+	"github.com/echgo/echgo/v2/internal/environment"
+	"github.com/echgo/echgo/v2/internal/notification"
+	"github.com/echgo/echgo/v2/internal/ticker"
+	"time"
+)
+
+// Initialise the software with a console information.
+func init() {
+	console.Initialize()
+}
+
+// If no env we add a dummy configuration file, if none
+// exists and start ticker function with notification handler.
+func main() {
+
+	if !environment.Boolean("USE_ENVIRONMENT") {
+		configuration.Create()
+	}
+
+	c := ticker.Config{Time: time.Now()}
+	c.Start(notification.Handler)
+
+}

@@ -1,0 +1,25 @@
+// Copyright 2024 Jonas Kwiedor. All rights reserved.
+
+package environment_test
+
+import (
+	"github.com/echgo/echgo/v2/internal/environment"
+	"testing"
+)
+
+// TestLookup is to test the environment lookup function.
+// We set the environment from the local variables & test
+// the function. The return value is output in logging.
+func TestLookup(t *testing.T) {
+
+	name := "INTERVAL"
+	content := "15"
+
+	t.Setenv(name, content)
+
+	lookup := environment.Lookup(name)
+	if lookup {
+		t.Logf("The environment variable with the name \"%s\" exists.\n", name)
+	}
+
+}

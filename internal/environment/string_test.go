@@ -1,0 +1,24 @@
+// Copyright 2024 Jonas Kwiedor. All rights reserved.
+
+package environment_test
+
+import (
+	"github.com/echgo/echgo/v2/internal/environment"
+	"testing"
+)
+
+// TestString is to test the environment string function.
+// We set the environment from the local variables & test
+// the function. The return value is output in logging.
+func TestString(t *testing.T) {
+
+	name := "BOT_NAME"
+	content := "echGo"
+
+	t.Setenv(name, content)
+
+	variable := environment.String(name)
+
+	t.Logf("The gotten value of the environment variable with the name \"%s\" is \"%s\". The expected value was \"%s\".\n", name, variable, content)
+
+}

@@ -1,0 +1,48 @@
+// Copyright 2024 Jonas Kwiedor. All rights reserved.
+
+// Package osticket is used to define the configuration
+// for the request, the functions so that the
+// request can be built and processed.
+package osticket
+
+import (
+	"bytes"
+	"net/http"
+)
+
+// channel is to save the channel name for logging.
+const channel = "osticket"
+
+// Config is to define config data.
+type Config struct {
+	Url, Method string
+	Body        []byte
+}
+
+// Request is to define the request data.
+type Request struct {
+	BaseUrl  string
+	ApiToken string
+}
+
+// Send is to send a new request & return the response
+func (c *Config) Send(r Request) (*http.Response, error) {
+
+	client := &http.Client{}
+
+	request, err := http.NewRequest(c.Method, c.Url, bytes.NewBuffer(c.Body))
+	if err != nil {
+		return nil, err
+	}
+
+	request.Header.Set("Content-Type", "application/json")
+	request.Header.Set("X-API-Key", r.ApiToken)
+
+	response, err := client.Do(request)
+	if err != nil {
+		return nil, err
+	}
+
+	return response, nil
+
+}
