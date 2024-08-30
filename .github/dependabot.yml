@@ -1,0 +1,14 @@
+# Here the various external packages are
+# automatically updated daily with the dependabot.
+
+version: 2
+updates:
+    - package-ecosystem: gomod
+      directory: /
+      schedule:
+          interval: daily
+      open-pull-requests-limit: 10
+      assignees:
+          - gowizzard
+      commit-message:
+          prefix: ci(deps)
