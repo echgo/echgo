@@ -1,7 +1,6 @@
-// Copyright 2022 Jonas Kwiedor. All rights reserved.
-// Use of this source code is governed by the MIT
-// license that can be found in the LICENSE file.
+// Copyright 2024 Jonas Kwiedor. All rights reserved.
 
+// Package configuration_test is for testing the configuration package.
 package configuration_test
 
 import (
@@ -18,7 +17,7 @@ func TestCreate(t *testing.T) {
 
 	_, filename, _, _ := runtime.Caller(0)
 
-	dir := path.Join(path.Dir(filename), "..")
+	dir := path.Join(path.Dir(filename), "..", "..")
 	err := os.Chdir(dir)
 	if err != nil {
 		log.Fatalln(err)

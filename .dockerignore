@@ -2,7 +2,6 @@
 # After that we ignore the file types & more.
 .git/
 .github/
-.idea/
 
 .gitignore
 LICENSE

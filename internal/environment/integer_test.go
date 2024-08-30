@@ -1,12 +1,9 @@
-// Copyright 2022 Jonas Kwiedor. All rights reserved.
-// Use of this source code is governed by the MIT
-// license that can be found in the LICENSE file.
+// Copyright 2024 Jonas Kwiedor. All rights reserved.
 
 package environment_test
 
 import (
 	"github.com/echgo/echgo/v2/internal/environment"
-	"os"
 	"testing"
 )
 
@@ -18,10 +15,7 @@ func TestInteger(t *testing.T) {
 	name := "INTERVAL"
 	content := "15"
 
-	err := os.Setenv(name, content)
-	if err != nil {
-		t.Fatal(err)
-	}
+	t.Setenv(name, content)
 
 	variable := environment.Integer(name)
 
