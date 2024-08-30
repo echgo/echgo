@@ -17,7 +17,7 @@ func TestImport(t *testing.T) {
 
 	_, file, _, _ := runtime.Caller(0)
 
-	dir := path.Join(path.Dir(file), "..")
+	dir := path.Join(path.Dir(file), "..", "..")
 	err := os.Chdir(dir)
 	if err != nil {
 		log.Fatalln(err)
