@@ -17,10 +17,6 @@ RUN make build
 
 # The final preparation phase for the production-ready image. Essential system packages and set the correct timezone is set.
 FROM alpine:latest AS production
-LABEL org.opencontainers.image.title="echgo" \
-  org.opencontainers.image.description="The easy way to send notifications via txt, json or xml file." \
-  org.opencontainers.image.vendor="Jonas Kwiedor" \
-  org.opencontainers.image.source="https://github.com/echgo/echgo"
 RUN apk add --no-cache tzdata
 ENV TZ=Europe/Berlin
 WORKDIR /app
