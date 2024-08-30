@@ -4,7 +4,6 @@ package environment_test
 
 import (
 	"github.com/echgo/echgo/v2/internal/environment"
-	"os"
 	"testing"
 )
 
@@ -16,10 +15,7 @@ func TestLookup(t *testing.T) {
 	name := "INTERVAL"
 	content := "15"
 
-	err := os.Setenv(name, content)
-	if err != nil {
-		t.Fatal(err)
-	}
+	t.Setenv(name, content)
 
 	lookup := environment.Lookup(name)
 	if lookup {

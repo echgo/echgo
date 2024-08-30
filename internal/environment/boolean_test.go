@@ -4,7 +4,6 @@ package environment_test
 
 import (
 	"github.com/echgo/echgo/v2/internal/environment"
-	"os"
 	"testing"
 )
 
@@ -16,10 +15,7 @@ func TestBoolean(t *testing.T) {
 	name := "USE_ENV"
 	content := "true"
 
-	err := os.Setenv(name, content)
-	if err != nil {
-		t.Fatal(err)
-	}
+	t.Setenv(name, content)
 
 	variable := environment.Boolean(name)
 
