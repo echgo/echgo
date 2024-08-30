@@ -1,6 +1,4 @@
-// Copyright 2022 Jonas Kwiedor. All rights reserved.
-// Use of this source code is governed by the MIT
-// license that can be found in the LICENSE file.
+// Copyright 2024 Jonas Kwiedor. All rights reserved.
 
 // Package ticker is used to start a function
 // as goroutine in an interval to the full minute.
