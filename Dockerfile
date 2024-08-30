@@ -1,30 +1,24 @@
-# With this file you can build the docker image. We load the language
-# golang:alpine from docker hub load, change the workdir, load the
-# modules & build the application. After that we create a scratch image that based
-# on alpine:latest, copy the files from the build image & start the application.
-FROM golang:alpine AS build
+# Dockerfile for the echgo application to send notifications via txt, json or xml.
+# This file details the process for constructing a lightweight and efficient Docker image using a multi-stage build process.
+# The chosen base is Alpine Linux for its minimalistic size, while still providing necessary functionalities.
 
-RUN apk --no-cache add \
-    make
+########################################################################################################################
 
+# This phase uses the Alpine-based Go image to compile the source code of the application.
+# By parameterizing the Go version, it becomes straightforward to maintain and modify in the future.
+ARG GO_VERSION=1.23
+FROM golang:${GO_VERSION}-alpine AS build
+RUN apk add --no-cache make
 WORKDIR /tmp/src
-
-COPY go.mod .
-
 COPY . .
 RUN make build
 
+########################################################################################################################
+
+# The final preparation phase for the production-ready image. Essential system packages and set the correct timezone is set.
 FROM alpine:latest AS production
-
-RUN apk --no-cache add \
-    tzdata \
-    curl
-
+RUN apk add --no-cache tzdata
 ENV TZ=Europe/Berlin
-
 WORKDIR /app
-
-COPY files/ files/
 COPY --from=build /tmp/src/echgo .
-
-ENTRYPOINT ["/app/echgo"]
+CMD ["/app/echgo"]
